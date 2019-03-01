@@ -1,0 +1,8 @@
+#!/bin/bash
+case $BLOCK_BUTTON in
+	1) xkblayout-state set +1
+	  ;;
+	#2): have some info in a notification
+esac
+
+xkblayout-state print "<span font='monospace'>%s</span>"

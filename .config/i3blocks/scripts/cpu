@@ -1,0 +1,6 @@
+#!/bin/bash
+case $BLOCK_BUTTON in
+	1) notify-send "cpu conumers:" "$(ps axch -o %cpu,cmd --sort=-%cpu | head -n 6)";;
+	3) notify-send "cpu module:" "shows core tempratures\nclick to show cpu consumers";;
+esac
+sensors | ~/.config/i3blocks/scripts/_cpu

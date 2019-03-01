@@ -1,0 +1,21 @@
+#!/bin/bash
+case $BLOCK_BUTTON in
+	1) pa-simplified set-vol -7%;;
+	2) pa-simplified toggle-mute;;
+	3) pa-simplified set-vol +7%;;
+	4) pa-simplified set-vol +2%;;
+	5) pa-simplified set-vol -2%;;
+esac
+vol=$(pa-simplified get-vol)
+if [ $(pa-simplified is-muted) == "yes" ]; then
+	icon=" "
+else
+	if [ $vol -le "33" ]; then
+		icon=" "
+	elif [ $vol -le "66" ]; then
+		icon=" "
+	else
+		icon=" "
+	fi
+fi
+echo "$icon$vol%"

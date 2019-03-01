@@ -1,0 +1,2 @@
+#/bin/bash
+lsblk -ro "name,type,size,mountpoint" | ~/.config/i3blocks/scripts/_usb
