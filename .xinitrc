@@ -16,7 +16,7 @@ start-pulseaudio-x11 &
 # start composite manager for transparency
 compton -b
 # set background
-feh --bg-scale Downloads/mandelbrot.png
+feh --bg-scale .wallpapers/mandelbrot.png
 # update with Xresources, cos appearently it doesnt happen automatically
 xrdb ~/.Xresources
 #[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
