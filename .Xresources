@@ -1,0 +1,28 @@
+*.color0: #111111
+*.color1: #dd352d
+*.color2: #98b71a
+*.color3: #d7b961
+*.color4: #6192be
+*.color5: #b16286
+*.color6: #689d6a
+*.color7: #a89984
+*.color8: #928374
+*.color9: #fc3430
+*.color10: #b8bb26
+*.color11: #fadd2f
+*.color12: #81a2be
+*.color13: #d3869b
+*.color14: #8ec07c
+*.color15: #ebebd2
+!! Transparency (0-255):
+*.alpha: 190
+!! Set a default font and font size as below:
+
+!!Xft.autohint: 1
+!!Xft.antialias: 1
+!!Xft.hinting: true
+!!Xft.hintstyle: hintslight
+!!Xft.rgba: rgb
+!!Xft.lcdfilter: lcddefault
+
+*.font: Monospace-16;

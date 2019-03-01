@@ -1,0 +1,10 @@
+#!/bin/sh
+alias ka="killall" \
+	ls="ls -hN --color=auto --group-directories-first" \
+	diff="diff --color=auto" \
+	wifish="wifish -i wlp2s0"\
+	c="clear"\
+	config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
+
+command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
+
