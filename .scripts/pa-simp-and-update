@@ -1,0 +1,3 @@
+#!/bin/bash
+pa-simplified $1 $2 $3
+pkill -SIGRTMIN+4 i3blocks
