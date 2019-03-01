@@ -1,0 +1,53 @@
+#S=scrips
+#general settings:
+markup=pango
+
+[usb]
+interval=30
+label=
+command=~/.config/i3blocks/scripts/usb
+color=#88cfcf
+
+[memory]
+interval=30
+label=
+#label=<span color='pink'></span>
+command=~/.config/i3blocks/scripts/memory
+color=#cc9999
+
+[cpu-temp]
+label=
+command=~/.config/i3blocks/scripts/cpu
+interval=2
+color=#a4C2e4
+
+
+# Guess the weather every 2 hours
+[weather]
+command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
+interval=7200
+color=#aaaaea
+
+[pa-control]
+command=~/.config/i3blocks/scripts/pa-control
+interval=once
+signal=4
+color=#ffbbff
+
+[xkb-state]
+command=~/.config/i3blocks/scripts/xkb
+interval=once
+signal=10
+color=#ffbb77
+# refresh battery status every minute
+[battery2]
+command=~/.config/i3blocks/scripts/battery2
+markup=pango
+interval=60
+
+# Update time every minute
+[time]
+label=
+command=date +%R
+interval=60
+color=#eeeea5
