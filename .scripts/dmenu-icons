@@ -2,4 +2,4 @@
 icon=$(cat ~/.icons | dmenu -l 8 -fn "mono:pixelsize=16:antialias=true:autohint=true" | awk '{print $1}')
 [[ -z icon ]] && exit 1
 echo $icon | xsel -ib
-notifi-send
+notify-send "Copied  $icon"

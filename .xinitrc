@@ -16,14 +16,13 @@ start-pulseaudio-x11 &
 # start composite manager for transparency
 compton -b
 # set background
-feh --bg-scale .wallpapers/mandelbrot.png
+feh --bg-scale .wallpapers/wp_yellow_mount.png
 # update with Xresources, cos appearently it doesnt happen automatically
 xrdb ~/.Xresources
 #[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 # start redshift
 redshift -l 31.5:34.75 &
 # Finally, launch i3
-exec i3
-#sxhkd &
-#exec bspwm
+#exec i3
+exec bspwm
 

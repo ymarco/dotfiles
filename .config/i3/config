@@ -223,7 +223,7 @@ bar {
 
 		background	#202022b9
 		separator	#70707099
-		# COLOR_CLASS		BORDER		BACKGROUND	TEXT
+		#COLOR_CLASS		BORDER		BACKGROUND	TEXT
 		focused_workspace	#4c7899 	#78b6e7b9 	#101010
 		active_workspace   	#444444 	#5f676ab9 	#ffffff
 		inactive_workspace 	#444444 	#202020b9 	#aaaaaa
@@ -237,12 +237,6 @@ bar {
 	mode dock
 	modifier None
 }
-#bar {
-	#colors {
-		#background #20202095
-	#}
-	#i3bar_command i3bar -t
-#}
 
 bindsym XF86AudioMute					exec --no-startup-id pa-simp-and-update toggle-mute
 bindsym XF86AudioLowerVolume			exec --no-startup-id pa-simp-and-update set-vol -2%

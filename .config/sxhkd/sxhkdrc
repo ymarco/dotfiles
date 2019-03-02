@@ -1,0 +1,87 @@
+##############
+##  SYSTEM  ##
+##############
+
+# Restart stuff
+super {_,shift +} BackSpace
+	pkill -USR1 sxhkd; {:,bspc wm -r}
+
+# VOLUME
+{ctrl +,_,shift +} XF86AudioLowerVolume
+	pa-simp-and-update set-vol -{1,2,5}%
+{ctrl +,_,shift +} XF86AudioRaiseVolume
+	pa-simp-and-update set-vol +{1,2,5}%
+# BACKLIGHT
+{ctrl +,_,shift +} XF86MonBrightnessDown
+	xbacklight -dec {2,5,15}
+{ctrl +,_,shift +} XF86MonBrightnessUp
+	xbacklight -inc {2,5,15}
+# MONITOR SELECTION
+{super + p,XF86Display}
+	dmenu-display
+# X KEYBOARD LAYOUT CHANGING
+super + space
+	change-lang
+
+##############
+####  WM  ####
+##############
+
+# Change window
+super + {h,j,k,l}
+	bspc node -f {west,south,north,east}
+
+# Move window
+super + shift + {h,j,k,l}
+	bspc node -s {west,south,north,east}
+
+# Change to desktop
+super + {0-9}
+	bspc desktop -f {0-9}
+	#notify-send {0-9}
+
+# Move window to desktop
+super + shift + {0-9}
+	bspc node -d {0-9}
+
+# Cycle between 2 last active nodes
+super + c
+	bspc wm -h off; \
+	bspc node -f {older,newer}; \
+	bspc wm -h on
+
+# Cycle between 2 last active desktops
+super + v
+	bspc wm -h off; \
+	bspc desktop -f {older,newer}; \
+	bspc wm -h on
+
+# Swap current node with a bigger one
+super {_,shift +} u
+	bspc node -s {@parent/brother,biggest.local}
+
+# Rotate!
+super + {_,shift +} r
+	bspc node @/ --rotate {+,-}90
+
+
+##############
+#### APPS ####
+##############
+
+# close/kill window
+super + {_,shift +} i
+	bspc node {-c,-k}
+
+# Run dmenu
+super + d
+	dmenu_run -fn "mono:pixelsize=19:antialias=true:autohint=true"
+
+# Launch apps
+super + o; {b,e,t,r,f}
+	{$BROWSER,$EDITOR,$TERMINAL,$READER,$FILE}
+
+# Open terminal
+super + Return
+	$TERMINAL
+
