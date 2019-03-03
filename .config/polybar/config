@@ -33,16 +33,16 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = Ubuntu 18
+font-0 = Ubuntu:pixelsize=16;1
 font-1 = unifont:fontformat=truetype:size=16:antialias=false;0
-font-2 = Siji:pixelsize=16;1
+font-2 = Siji:pixelsize=16;
 
-modules-left = bspwm
+modules-left = bspwm i3
 modules-center = mpd
 modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
 
 tray-position = right
-tray-padding = 0
+tray-padding = 2
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm

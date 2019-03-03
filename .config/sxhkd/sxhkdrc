@@ -35,14 +35,15 @@ super + {h,j,k,l}
 super + shift + {h,j,k,l}
 	bspc node -s {west,south,north,east}
 
-# Change to desktop
-super + {0-9}
-	bspc desktop -f {0-9}
-	#notify-send {0-9}
-
-# Move window to desktop
+# Move window to selected desktop
 super + shift + {0-9}
 	bspc node -d {0-9}
+
+# Focus selected desktop
+super + {0-9}
+	T='{0-9}';\
+	bspc desktop -f {0-9};\
+	notify-send -t 500 "$T"
 
 # Cycle between 2 last active nodes
 super + c
@@ -63,6 +64,10 @@ super {_,shift +} u
 # Rotate!
 super + {_,shift +} r
 	bspc node @/ --rotate {+,-}90
+
+# Change window size
+super + ctrl + {h,j,k,l}
+	bspc node --resize top_left {-10 0,0 10,0 -10,10 0}
 
 
 ##############
