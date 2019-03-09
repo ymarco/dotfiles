@@ -10,6 +10,9 @@ syntax on
 " turn on relative line numbering
 set number relativenumber
 
+" set color scheme
+colo torte
+
 "set encoding
 set encoding=utf-8
 
@@ -25,7 +28,7 @@ vnoremap `<Tab> <Esc>/<++><Enter>"_c4l
 map `<Tab> <Esc>/<++><Enter>"_c4l
 
 " Automatically deletes all trailing whitespace on save.
-autocmd BufWritePre * %s/\s\+$//e
+autocmd BufWritePre * %s/\S\s\+$//e
 
 " Automatically update xorg when saving .Xresources
 autocmd BufWritePost .Xresources !xrdb %
@@ -37,6 +40,5 @@ autocmd FileType cpp,h inoremap ;pa <Esc>astd::pair<> <++><Esc>5hi
 autocmd FileType cpp,h inoremap ;st <Esc>astd::string
 autocmd FileType cpp,h inoremap ;sp <Esc>astd::shared_ptr<> <++><Esc>5hi
 autocmd FileType cpp,h inoremap ;um <Esc>astd::unordered_map<> <++><Esc>5hi
-
-
 autocmd FileType cpp,h inoremap ;for <Esc>ifor(){<Enter><++><Enter>}<Esc>3k$hi
+autocmd FileType c,cpp,h inoremap <C-e> /*  */<Esc>hhi

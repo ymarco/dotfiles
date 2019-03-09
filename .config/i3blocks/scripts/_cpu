@@ -20,7 +20,8 @@ function color(temp){
     exit 33
 }
 function apply_color(string, color){
-    return sprintf("<span color='%s'>%s</span>", color,string);
+    return sprintf("%{F%s}%s%{F-}", color,string);
+    #return sprintf("<span color='%s'>%s</span>", color,string);
 }
 function color_temp(temp){
     return apply_color(temp, color(temp));

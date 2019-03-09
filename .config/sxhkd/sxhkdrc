@@ -10,7 +10,9 @@ super {_,shift +} BackSpace
 {ctrl +,_,shift +} XF86AudioLowerVolume
 	pa-simp-and-update set-vol -{1,2,5}%
 {ctrl +,_,shift +} XF86AudioRaiseVolume
-	pa-simp-and-update set-vol +{1,2,5}%
+	pa-simp-and-update set-vol +2%
+super + {minus,plus}
+	pa-simp-and-update set-vol {-,+}2%
 # BACKLIGHT
 {ctrl +,_,shift +} XF86MonBrightnessDown
 	xbacklight -dec {2,5,15}
@@ -22,6 +24,14 @@ super {_,shift +} BackSpace
 # X KEYBOARD LAYOUT CHANGING
 super + space
 	change-lang
+# MPD CONTROLS
+super + bracket{left,right}
+	mpc seek {-,+}20
+super + shift + bracket{left,right}
+	mpc {prev,next}
+super + backslash
+	mpc toggle
+
 
 ##############
 ####  WM  ####
@@ -36,26 +46,32 @@ super + shift + {h,j,k,l}
 	bspc node -s {west,south,north,east}
 
 # Move window to selected desktop
-super + shift + {0-9}
-	bspc node -d {0-9}
+super + shift + {0-8}
+	bspc node -d {0-8} --focus;\
+	pkill -SIGRTMIN+1 lemonbarc
 
 # Focus selected desktop
-super + {0-9}
-	T='{0-9}';\
-	bspc desktop -f {0-9};\
-	notify-send -t 500 "$T"
+super + {0-8}
+	bspc desktop -f {0-8};\
+	pkill -SIGRTMIN+1 lemonbarc
 
 # Cycle between 2 last active nodes
 super + c
-	bspc wm -h off; \
-	bspc node -f {older,newer}; \
-	bspc wm -h on
+	bspc node -f last.local; \
+	pkill -SIGRTMIN+1 lemonbarc
+	#bspc wm -h off; \
+	#bspc node -f {older,newer}; \
+	#bspc wm -h on;\
+	#pkill -SIGRTMIN+1 lemonbarc
 
 # Cycle between 2 last active desktops
 super + v
-	bspc wm -h off; \
-	bspc desktop -f {older,newer}; \
-	bspc wm -h on
+	bspc desktop -f last; \
+	pkill -SIGRTMIN+1 lemonbarc
+#	bspc wm -h off; \
+#	bspc desktop -f {older,newer}; \
+#	bspc wm -h on;\
+#	pkill -SIGRTMIN+1 lemonbarc
 
 # Swap current node with a bigger one
 super {_,shift +} u
@@ -66,8 +82,16 @@ super + {_,shift +} r
 	bspc node @/ --rotate {+,-}90
 
 # Change window size
-super + ctrl + {h,j,k,l}
-	bspc node --resize top_left {-10 0,0 10,0 -10,10 0}
+super + m : {h,j,k,l}
+	bspc node --resize top_left {-15 0,0 15,0 -15,15 0}
+
+# change window to fullscreen
+super + f
+	bspc node --state ~fullscreen
+
+# change gap size
+super + g
+	bspc config window_gap {0,12}
 
 
 ##############

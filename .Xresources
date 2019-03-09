@@ -1,21 +1,61 @@
-*.color0: #111111
-*.color1: #dd352d
-*.color2: #98b71a
-*.color3: #d7b961
-*.color4: #6192be
-*.color5: #b16286
-*.color6: #689d6a
-*.color7: #a89984
-*.color8: #928374
-*.color9: #fc3430
-*.color10: #b8bb26
-*.color11: #fadd2f
-*.color12: #81a2be
-*.color13: #d3869b
-*.color14: #8ec07c
-*.color15: #ebebd2
+!*.color0: #1c1c1c
+!*.color1: #dd352d
+!*.color2: #98b71a
+!*.color3: #d7b951
+!*.color4: #6192be
+!*.color5: #b16286
+!*.color6: #689d6a
+!*.color7: #a89984
+!*.color8: #928374
+!*.color9: #fc3430
+!*.color10: #d8bbf6
+!*.color11: #faddff
+!*.color12: #81a2be
+!*.color13: #d3869b
+!*.color14: #8ec07c
+!*.color15: #ebebd2
 !! Transparency (0-255):
-*.alpha: 190
+
+
+! special
+*.foreground:   #f0f2f0
+*.background:   #1d1f21
+*.cursorColor:  #f0f2f0
+
+! black
+*.color0:       #111111
+*.color8:       #35373b
+
+! red
+*.color1:       #ff3a3a
+*.color9:       #f05757
+
+! green
+*.color2:       #dbff5a
+*.color10:      #ebfc88
+
+! yellow
+*.color3:       #f0b735
+*.color11:      #f0b674
+
+! blue
+*.color4:       #4c99fd
+*.color12:      #5bb3ff
+
+! magenta
+*.color5:       #bc4ee1
+*.color13:      #cc7ce6
+
+! cyan
+*.color6:       #2af8de
+*.color14:      #8dd9ce
+
+! white
+*.color7:       #e1ede8
+*.color15:      #f5f8f6
+
+
+*.alpha: 210
 !! Set a default font and font size as below:
 
 !!Xft.autohint: 1
