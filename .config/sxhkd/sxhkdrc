@@ -11,13 +11,17 @@ super {_,shift +} BackSpace
 	pa-simp-and-update set-vol -{1,2,5}%
 {ctrl +,_,shift +} XF86AudioRaiseVolume
 	pa-simp-and-update set-vol +2%
+XF86AudioMute
+	pa-simp-and-update toggle-mute
 super + {minus,plus}
 	pa-simp-and-update set-vol {-,+}2%
 # BACKLIGHT
 {ctrl +,_,shift +} XF86MonBrightnessDown
-	xbacklight -dec {2,5,15}
+	xbacklight -dec {2,5,15}; \
+	pkill -SIGRTMIN+4 lemonbarc
 {ctrl +,_,shift +} XF86MonBrightnessUp
-	xbacklight -inc {2,5,15}
+	xbacklight -inc {2,5,15}; \
+	pkill -SIGRTMIN+4 lemonbarc
 # MONITOR SELECTION
 {super + p,XF86Display}
 	dmenu-display

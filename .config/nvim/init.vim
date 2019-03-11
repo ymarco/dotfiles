@@ -28,7 +28,7 @@ vnoremap `<Tab> <Esc>/<++><Enter>"_c4l
 map `<Tab> <Esc>/<++><Enter>"_c4l
 
 " Automatically deletes all trailing whitespace on save.
-autocmd BufWritePre * %s/\S\s\+$//e
+" autocmd BufWritePre * %s/\s\+$//e
 
 " Automatically update xorg when saving .Xresources
 autocmd BufWritePost .Xresources !xrdb %

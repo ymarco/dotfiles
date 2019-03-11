@@ -14,5 +14,4 @@ export XDG_CONFIG_HOME="$HOME/.config"
 #export SUDO_ASKPASS="$HOME/.scripts/tools/dmenupass"
 #export PIX="$HOME/.pix/"
 #start X if wm isnt running
-#[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx
 [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x bspwm >/dev/null && exec startx

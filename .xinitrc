@@ -22,7 +22,6 @@ xrdb ~/.Xresources
 #[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 # start redshift
 redshift -l 31.5:34.75 &
-# Finally, launch i3
-#exec i3
+# finally, start the wm
 exec bspwm
 
