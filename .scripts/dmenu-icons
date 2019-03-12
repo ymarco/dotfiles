@@ -1,5 +1,5 @@
 #!/bin/bash
-icon=$(cat ~/.icons | dmenu -l 8 -fn "mono:pixelsize=16:antialias=true:autohint=true" | awk '{print $1}')
+icon=$(cat ~/.icons | dmenu -l 8 -fn "Hack:pixelsize=16:antialias=true:autohint=true" | awk '{print $1}')
 [[ -z $icon ]] && exit 1
 printf $icon | xsel -ib
 notify-send "Copied  $icon"

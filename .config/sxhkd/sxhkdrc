@@ -10,7 +10,7 @@ super {_,shift +} BackSpace
 {ctrl +,_,shift +} XF86AudioLowerVolume
 	pa-simp-and-update set-vol -{1,2,5}%
 {ctrl +,_,shift +} XF86AudioRaiseVolume
-	pa-simp-and-update set-vol +2%
+	pa-simp-and-update set-vol +{1,2,5}%
 XF86AudioMute
 	pa-simp-and-update toggle-mute
 super + {minus,equal}
@@ -119,3 +119,5 @@ super + o; {b,e,t,r,f}
 super + Return
 	$TERMINAL
 
+super + o; c
+	$TERMINAL -e edit-config

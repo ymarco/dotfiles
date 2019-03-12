@@ -1,0 +1,4 @@
+#!/bin/sh
+
+file="$(/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME ls-tree --full-tree -r --name-only HEAD | fzf --reverse --height=40%)"
+[ -z "$file" ] || vim "$HOME/$file"

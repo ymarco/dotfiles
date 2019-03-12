@@ -9,15 +9,12 @@ alias \
 	vim="nvim"\
 	v="vim"\
 	fzf="fzf --color=dark --height=40% --reverse"\
-	dmenu="dmenu -fn 'mono:pixelsize=19:antialias=true:autohint=true'"
+	dmenu="dmenu -fn 'mono:pixelsize=19:antialias=true:autohint=true'"\
+	ec="edit-config"
 
 	
 # search in bash history
 hs(){
-	sort .bash_history | uniq | fzf  --print0 | xsel -ib
+	sort -u .bash_history | fzf  --print0 | xsel -ib
 }
 # search in config git repo
-ec(){
-	file="$(config ls-tree --full-tree -r --name-only HEAD | fzf)"
-	[[ -z "$file" ]] || vim "$file"
-}

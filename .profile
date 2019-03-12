@@ -1,8 +1,9 @@
 #!/bin/sh
 export HISTCONTROL=ignoredups
+export HISTSIZE=HISTFILESIZE=1000
+export HISTIGNORE='c:clear'
 #add ./scrips and its subdirs to path
 export PATH="$PATH:$(du "$HOME/.scripts/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
-echo $PATH
 export EDITOR="vim"
 export TERMINAL="st"
 export BROWSER="firefox"
