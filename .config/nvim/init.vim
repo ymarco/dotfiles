@@ -21,6 +21,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'godlygeek/tabular'
 
 call plug#end()
 

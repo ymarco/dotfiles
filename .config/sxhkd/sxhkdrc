@@ -119,5 +119,5 @@ super + o; {b,e,t,r,f}
 super + Return
 	$TERMINAL
 
-super + o; c
+super + b
 	$TERMINAL -e edit-config
