@@ -21,35 +21,27 @@
 *.foreground:   #f0f2f0
 *.background:   #1d1f21
 *.cursorColor:  #f0f2f0
-
 ! black
 *.color0:       #111111
 *.color8:       #35373b
-
 ! red
 *.color1:       #ff3a3a
 *.color9:       #f05757
-
 ! green
 *.color2:       #dbff5a
 *.color10:      #ebfc88
-
 ! yellow
-*.color3:       #f0b735
-*.color11:      #f0b674
-
+*.color3:       #f0c735
+*.color11:      #e5c674
 ! blue
 *.color4:       #4c99fd
 *.color12:      #5bb3ff
-
 ! magenta
 *.color5:       #bc4ee1
 *.color13:      #cc7ce6
-
 ! cyan
 *.color6:       #2af8de
 *.color14:      #8dd9ce
-
 ! white
 *.color7:       #e1ede8
 *.color15:      #f5f8f6

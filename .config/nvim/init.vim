@@ -16,6 +16,14 @@ colo torte
 "set encoding
 set encoding=utf-8
 
+" PLUGINS
+call plug#begin('~/.local/share/nvim/plugged')
+
+Plug 'kovetskiy/sxhkd-vim'
+Plug 'ctrlpvim/ctrlp.vim'
+
+call plug#end()
+
 " Shortcutting split navigation, saving a keypress:
 map <C-h> <C-w>h
 map <C-j> <C-w>j

@@ -1,11 +1,23 @@
 #!/bin/sh
-alias ka="killall" \
+alias \
+	ka="killall" \
 	ls="ls -hN --color=auto --group-directories-first" \
 	diff="diff --color=auto" \
 	wifish="wifish -i wlp2s0"\
 	c="clear"\
 	config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"\
 	vim="nvim"\
-	v="vim"
+	v="vim"\
+	fzf="fzf --color=dark --height=40% --reverse"\
+	dmenu="dmenu -fn 'mono:pixelsize=19:antialias=true:autohint=true'"
 
-
+	
+# search in bash history
+hs(){
+	sort .bash_history | uniq | fzf  --print0 | xsel -ib
+}
+# search in config git repo
+ec(){
+	file="$(config ls-tree --full-tree -r --name-only HEAD | fzf)"
+	[[ -z "$file" ]] || vim "$file"
+}

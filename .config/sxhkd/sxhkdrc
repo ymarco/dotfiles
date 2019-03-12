@@ -13,7 +13,7 @@ super {_,shift +} BackSpace
 	pa-simp-and-update set-vol +2%
 XF86AudioMute
 	pa-simp-and-update toggle-mute
-super + {minus,plus}
+super + {minus,equal}
 	pa-simp-and-update set-vol {-,+}2%
 # BACKLIGHT
 {ctrl +,_,shift +} XF86MonBrightnessDown
@@ -34,7 +34,8 @@ super + bracket{left,right}
 super + shift + bracket{left,right}
 	mpc {prev,next}
 super + backslash
-	mpc toggle
+	mpc toggle; \
+	pkill -SIGRTMIN+5 lemonbarc
 
 
 ##############
@@ -72,10 +73,10 @@ super + c
 super + v
 	bspc desktop -f last; \
 	pkill -SIGRTMIN+1 lemonbarc
-#	bspc wm -h off; \
-#	bspc desktop -f {older,newer}; \
-#	bspc wm -h on;\
-#	pkill -SIGRTMIN+1 lemonbarc
+# Move window between last 2 active desktop
+super + alt + v
+	bspc node -d last --focus; \
+	pkill -SIGRTMIN+1 lemonbarc
 
 # Swap current node with a bigger one
 super {_,shift +} u

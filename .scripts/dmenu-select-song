@@ -1,0 +1,3 @@
+#!/bin/sh
+
+ls ~/Dropbox/yoav/Music | dmenu -i -l 10 -fn "mono:pixelsize=19:antialias=true:autohint=true" | mpc insert
