@@ -3,7 +3,7 @@
 ##############
 
 # Restart stuff
-super {_,shift +} BackSpace
+mod4 {_,shift +} BackSpace
 	pkill -USR1 sxhkd; {:,bspc wm -r}
 
 # VOLUME
@@ -13,7 +13,7 @@ super {_,shift +} BackSpace
 	pa-simp-and-update set-vol +{1,2,5}%
 XF86AudioMute
 	pa-simp-and-update toggle-mute
-super + {minus,equal}
+mod4 + {minus,equal}
 	pa-simp-and-update set-vol {-,+}2%
 # BACKLIGHT
 {ctrl +,_,shift +} XF86MonBrightnessDown
@@ -23,17 +23,17 @@ super + {minus,equal}
 	xbacklight -inc {2,5,15}; \
 	pkill -SIGRTMIN+4 lemonbarc
 # MONITOR SELECTION
-{super + p,XF86Display}
+{mod4 + p,XF86Display}
 	dmenu-display
 # X KEYBOARD LAYOUT CHANGING
-super + space
+mod4 + space
 	change-lang
 # MPD CONTROLS
-super + bracket{left,right}
+mod4 + bracket{left,right}
 	mpc seek {-,+}20
-super + shift + bracket{left,right}
+mod4 + shift + bracket{left,right}
 	mpc {prev,next}
-super + backslash
+mod4 + backslash
 	mpc toggle; \
 	pkill -SIGRTMIN+5 lemonbarc
 
@@ -42,82 +42,71 @@ super + backslash
 ####  WM  ####
 ##############
 
-# Change window
-super + {h,j,k,l}
-	bspc node -f {west,south,north,east}
+##### WINDOWS #######
 
+# Change window
+mod4 + {h,j,k,l}
+	bspc node -f {west,south,north,east}
 # Move window
-super + shift + {h,j,k,l}
+mod4 + shift + {h,j,k,l}
 	bspc node -s {west,south,north,east}
 
-# Move window to selected desktop
-super + shift + {0-8}
-	bspc node -d {0-8} --focus;\
-	pkill -SIGRTMIN+1 lemonbarc
-
-# Focus selected desktop
-super + {0-8}
-	bspc desktop -f {0-8};\
-	pkill -SIGRTMIN+1 lemonbarc
-
 # Cycle between 2 last active nodes
-super + c
+mod4 + c
 	bspc node -f last.local; \
 	pkill -SIGRTMIN+1 lemonbarc
-	#bspc wm -h off; \
-	#bspc node -f {older,newer}; \
-	#bspc wm -h on;\
-	#pkill -SIGRTMIN+1 lemonbarc
+# Swap current node with a bigger one
+mod4 {_,shift +} u
+	bspc node -s {@parent/brother,biggest.local}
+# Rotate!
+mod4 + {_,shift +} r
+	bspc node @/ --rotate {+,-}90
+# Change window size
+mod4 + m : {h,j,k,l}
+	bspc node --resize top_left {-15 0,0 15,0 -15,15 0}
+# change window to fullscreen
+mod4 + f
+	bspc node --state ~fullscreen
+# change gap size
+mod4 + g
+	bspc config window_gap {0,12}
 
+
+##### DESKTOPS ######
+
+# Focus selected desktop
+mod4 + {0-8}
+	bspc desktop -f '^{0-8}';\
+	pkill -SIGRTMIN+1 lemonbarc
+# Move window to selected desktop
+mod4 + shift + {0-8}
+	bspc node -d '^{0-8}' --focus;\
+	pkill -SIGRTMIN+1 lemonbarc
 # Cycle between 2 last active desktops
-super + v
+mod4 + v
 	bspc desktop -f last; \
 	pkill -SIGRTMIN+1 lemonbarc
 # Move window between last 2 active desktop
-super + alt + v
+mod4 + shift + v
 	bspc node -d last --focus; \
 	pkill -SIGRTMIN+1 lemonbarc
-
-# Swap current node with a bigger one
-super {_,shift +} u
-	bspc node -s {@parent/brother,biggest.local}
-
-# Rotate!
-super + {_,shift +} r
-	bspc node @/ --rotate {+,-}90
-
-# Change window size
-super + m : {h,j,k,l}
-	bspc node --resize top_left {-15 0,0 15,0 -15,15 0}
-
-# change window to fullscreen
-super + f
-	bspc node --state ~fullscreen
-
-# change gap size
-super + g
-	bspc config window_gap {0,12}
-
 
 ##############
 #### APPS ####
 ##############
 
 # close/kill window
-super + {_,shift +} i
+mod4 + {_,shift +} i
 	bspc node {-c,-k}
-
 # Run dmenu
-super + d
-	dmenu_run -fn "mono:pixelsize=19:antialias=true:autohint=true"
-
+mod4 + d
+	dmenu_run
 # Launch apps
-super + o; {b,e,t,r,f}
+mod4 + o; {b,e,t,r,f}
 	{$BROWSER,$EDITOR,$TERMINAL,$READER,$FILE}
-
 # Open terminal
-super + Return
+mod4 + Return
 	$TERMINAL
-
-super + b
+# edit dotfiles config
+mod4 + b
 	$TERMINAL -e edit-config

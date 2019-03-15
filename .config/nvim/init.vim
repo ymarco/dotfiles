@@ -24,7 +24,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'godlygeek/tabular'
 
 call plug#end()
-
+autocmd VimEnter * if @% == '.config/sxhkd/sxhkdrc' | hi Comment ctermfg=Red 
 " Shortcutting split navigation, saving a keypress:
 map <C-h> <C-w>h
 map <C-j> <C-w>j

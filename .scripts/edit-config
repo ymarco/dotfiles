@@ -1,4 +1,2 @@
 #!/bin/sh
-
-file="$(/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME ls-tree --full-tree -r --name-only HEAD | fzf)"
-[ -z "$file" ] || $EDITOR "$HOME/$file"
+/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME ls-tree --full-tree -r --name-only HEAD | fzf | xargs -r -I % $EDITOR %

@@ -8,11 +8,10 @@ alias \
 	config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"\
 	vim="nvim"\
 	v="vim"\
-	dmenu="dmenu -fn 'mono:pixelsize=19:antialias=true:autohint=true'"\
 	ec="edit-config"
 
 	
 # search in bash history
 hs(){
-	sort -u .bash_history | fzf  --print0 | xsel -ib
+	sort -u $HOME/.bash_history | fzf  --print0 | xsel -ib
 }

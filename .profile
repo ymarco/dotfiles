@@ -4,6 +4,7 @@ export HISTSIZE=HISTFILESIZE=1000
 export HISTIGNORE='c:clear'
 #add ./scrips and its subdirs to path
 export PATH="$PATH:$(du "$HOME/.scripts/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
+export PATH=/opt/texlive/2018/bin/x86_64-linux/:$PATH
 export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="firefox"
