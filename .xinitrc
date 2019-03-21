@@ -14,12 +14,16 @@ fi
 # start pulseaudio
 start-pulseaudio-x11 &
 # start composite manager for transparency
+echo "starting compton!"
 compton -b
+echo "done"
 # set background
 feh --randomize --bg-fill ~/.wallpapers/*
 # update with Xresources, cos appearently it doesnt happen automatically
 xrdb ~/.Xresources
 #[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+# Adjust typematic delay and rate
+xset r rate 300 30
 # start redshift
 redshift -l 31.5:34.75 &
 # finally, start the wm

@@ -2,7 +2,7 @@
 export HISTCONTROL=ignoredups
 export HISTSIZE=HISTFILESIZE=1000
 export HISTIGNORE='c:clear'
-#add ./scrips and its subdirs to path
+# add ./scrips and its subdirs to path
 export PATH="$PATH:$(du "$HOME/.scripts/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 export PATH=/opt/texlive/2018/bin/x86_64-linux/:$PATH
 export EDITOR="nvim"
@@ -16,5 +16,8 @@ export FZF_DEFAULT_OPTS="--reverse --height 40%"
 #export REFER="$HOME/.referbib"
 #export SUDO_ASKPASS="$HOME/.scripts/tools/dmenupass"
 #export PIX="$HOME/.pix/"
-#start X if wm isnt running
-[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x bspwm >/dev/null && exec startx
+# Prompt user whether to use nvidia or intel gpu:
+X=$(echo -e 'startx\nnvidia-xrun' | fzf)
+# start X with the chosen card
+exec $X
+#[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x bspwm >/dev/null && exec startx

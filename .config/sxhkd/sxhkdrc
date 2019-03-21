@@ -53,8 +53,7 @@ mod4 + shift + {h,j,k,l}
 
 # Cycle between 2 last active nodes
 mod4 + c
-	bspc node -f last.local; \
-	pkill -SIGRTMIN+1 lemonbarc
+	bspc node -f last.local
 # Swap current node with a bigger one
 mod4 {_,shift +} u
 	bspc node -s {@parent/brother,biggest.local}
@@ -67,20 +66,20 @@ mod4 + m : {h,j,k,l}
 # change window to fullscreen
 mod4 + f
 	bspc node --state ~fullscreen
-# change gap size
+# change gap size between windows
 mod4 + g
-	bspc config window_gap {0,12}
+	bspc config window_gap {0,12,25}
 
 
 ##### DESKTOPS ######
 
 # Focus selected desktop
 mod4 + {0-8}
-	bspc desktop -f '^{0-8}';\
+	bspc desktop -f '^{0-8}'; \
 	pkill -SIGRTMIN+1 lemonbarc
 # Move window to selected desktop
 mod4 + shift + {0-8}
-	bspc node -d '^{0-8}' --focus;\
+	bspc node -d '^{0-8}' --follow; \
 	pkill -SIGRTMIN+1 lemonbarc
 # Cycle between 2 last active desktops
 mod4 + v
@@ -88,14 +87,23 @@ mod4 + v
 	pkill -SIGRTMIN+1 lemonbarc
 # Move window between last 2 active desktop
 mod4 + shift + v
-	bspc node -d last --focus; \
+	bspc node -d last --follow; \
 	pkill -SIGRTMIN+1 lemonbarc
+# Go to an empty desktop
+mod4 + b
+	bspc desktop -f 'any.!occupied'; \
+	pkill -SIGRTMIN+1 lemonbarc
+# Move window to an empty desktop
+mod4 + shift + b
+	bspc node -d 'any.!occupied' --follow; \
+	pkill -SIGRTMIN+1 lemonbarc
+
 
 ##############
 #### APPS ####
 ##############
 
-# close/kill window
+# Close/Kill window
 mod4 + {_,shift +} i
 	bspc node {-c,-k}
 # Run dmenu
@@ -107,6 +115,6 @@ mod4 + o; {b,e,t,r,f}
 # Open terminal
 mod4 + Return
 	$TERMINAL
-# edit dotfiles config
-mod4 + b
+# Edit dotfiles config
+mod4 + x
 	$TERMINAL -e edit-config

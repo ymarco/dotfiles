@@ -5,13 +5,29 @@ alias \
 	diff="diff --color=auto" \
 	wifish="wifish -i wlp2s0"\
 	c="clear"\
-	config="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"\
+	config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"\
 	vim="nvim"\
 	v="vim"\
-	ec="edit-config"
+	ec="edit-config"\
+	grep="grep --color=auto"\
+	rand-bg="feh --randomize --bg-fill ~/.wallpapers/*"
 
 	
 # search in bash history
 hs(){
-	sort -u $HOME/.bash_history | fzf  --print0 | xsel -ib
+	sort -u $HOME/.bash_history | fzf  --tac --no-sort --print0 | xsel -ib
 }
+
+# prepare package from AUR for installation
+pac-aur() {
+	cd ~/desk
+	git clone https://aur.archlinux.org/$1.git &&
+	cd $1 &&
+	makepkg -Acsf
+}
+
+# get preformance info about a process
+pinfo(){
+	ps axch -o cmd,%cpu,%mem | fzf --header "PROCESS                      CPU  MEM" > /dev/null
+}
+

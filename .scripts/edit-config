@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME ls-tree --full-tree -r --name-only HEAD | fzf | xargs -r -I % $EDITOR %
+/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME ls-tree --full-tree -r --name-only HEAD | fzf | xargs -r -I % $EDITOR ~/%

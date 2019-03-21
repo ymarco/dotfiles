@@ -14,7 +14,6 @@
 !*.color13: #d3869b
 !*.color14: #8ec07c
 !*.color15: #ebebd2
-!! Transparency (0-255):
 
 
 ! special
@@ -47,7 +46,8 @@
 *.color15:      #f5f8f6
 
 
-*.alpha: 210
+!! Transparency (0-255):
+*.alpha: 169
 !! Set a default font and font size as below:
 
 !!Xft.autohint: 1
@@ -57,4 +57,4 @@
 !!Xft.rgba: rgb
 !!Xft.lcdfilter: lcddefault
 
-*.font: Monospace-16;
+*.font: Monospace-15;
