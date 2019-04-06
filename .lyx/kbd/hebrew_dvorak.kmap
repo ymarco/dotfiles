@@ -1,0 +1,40 @@
+#
+# Hebrew keyboard definition for LyX
+#
+# (C)2000 by Dekel Tsur, dekelts@tau.ac.il
+#
+\kmap ` ;
+\kmap ' /
+\kmap "," '
+\kmap . ק
+\kmap p ר
+\kmap y א
+\kmap f ט
+\kmap g ו
+\kmap c ן
+\kmap r ם
+\kmap l פ
+
+\kmap a ש
+\kmap o ד
+\kmap e ג
+\kmap u כ
+\kmap i ע
+\kmap d י
+\kmap h ח
+\kmap t ל
+\kmap n ך
+\kmap s ף
+\kmap - ","
+
+\kmap ' ז
+\kmap q ס
+\kmap j ב
+\kmap k ה
+\kmap x נ
+\kmap b מ
+\kmap m צ
+\kmap w ת
+\kmap v ץ
+\kmap z .
+

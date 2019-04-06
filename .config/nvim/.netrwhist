@@ -1,7 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/home/yoavm448/desktop/lemonbarc/scripts'
 let g:netrw_dirhist_2='/home/yoavm448'
 let g:netrw_dirhist_3='/home/yoavm448/desktop/dmenu'
 let g:netrw_dirhist_4='/home/yoavm448/.local/share/nvim/plugged/sxhkd-vim'
 let g:netrw_dirhist_5='/home/yoavm448/.local/share/nvim/plugged/sxhkd-vim/syntax'
+let g:netrw_dirhist_6='/home/yoavm448/.config/nvim'

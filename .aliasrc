@@ -10,12 +10,13 @@ alias \
 	v="vim"\
 	ec="edit-config"\
 	grep="grep --color=auto"\
-	rand-bg="feh --randomize --bg-fill ~/.wallpapers/*"
+	rand-bg="feh --randomize --bg-fill ~/.wallpapers/*"\
+	idea="export _JAVA_AWT_WM_NONREPARENTING=1 && idea &"
 
 	
 # search in bash history
 hs(){
-	sort -u $HOME/.bash_history | fzf  --tac --no-sort --print0 | xsel -ib
+	sort -u $HOME/.bash_history | fzf  --tac --no-sort --print0 | xclip -selection cilpboard 
 }
 
 # prepare package from AUR for installation
@@ -29,5 +30,11 @@ pac-aur() {
 # get preformance info about a process
 pinfo(){
 	ps axch -o cmd,%cpu,%mem | fzf --header "PROCESS                      CPU  MEM" > /dev/null
+}
+lbar(){
+	wd="$(pwd)"
+	cd ~/desk/lemonbarc/
+	./run.sh &
+	cd "$wd"
 }
 

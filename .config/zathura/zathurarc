@@ -1,1 +1,5 @@
 set selection-clipboard clipboard
+set default-fg "#f0f2f0"
+set default-bg "#444444"
+set font "monospace normal 14"
+set guioptions "sv"

@@ -1,0 +1,3 @@
+\bind_file cua.bind
+
+\bind "F12" "language hebrew"

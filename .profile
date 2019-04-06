@@ -20,4 +20,4 @@ export FZF_DEFAULT_OPTS="--reverse --height 40%"
 X=$(echo -e 'startx\nnvidia-xrun' | fzf)
 # start X with the chosen card
 exec $X
-#[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x bspwm >/dev/null && exec startx
+#[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x bspwm >/dev/null && startx

@@ -1,0 +1,81 @@
+# LyX 2.3.2 generated this file. If you want to make your own
+# modifications you should do them from inside LyX and save.
+
+Format 24
+
+\bind_file "cua_he"
+
+#
+# MISC SECTION ######################################
+#
+
+\kbmap true
+\kbmap_primary "null"
+\kbmap_secondary "hebrew_dvorak"
+\user_name "yoavm448"
+\user_email ""
+
+#
+# SCREEN & FONTS SECTION ############################
+#
+
+\screen_font_roman "Arimo"
+\screen_font_sizes 5 7 8 9 10 12 14.4 17.26 20.74 24.88
+\single_instance false
+
+#
+# COLOR SECTION ###################################
+#
+
+
+#
+# PRINTER SECTION ###################################
+#
+
+
+#
+# TEX SECTION #######################################
+#
+
+
+#
+# FILE SECTION ######################################
+#
+
+
+#
+# PLAIN TEXT EXPORT SECTION ##############################
+#
+
+
+#
+# SPELLCHECKER SECTION ##############################
+#
+
+
+#
+# LANGUAGE SUPPORT SECTION ##########################
+#
+
+\visual_cursor true
+
+#
+# 2nd MISC SUPPORT SECTION ##########################
+#
+
+
+#
+# FORMATS SECTION ##########################
+#
+
+\default_view_format 
+
+#
+# CONVERTERS SECTION ##########################
+#
+
+
+#
+# COPIERS SECTION ##########################
+#
+

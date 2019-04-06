@@ -13,7 +13,7 @@ mod4 {_,shift +} BackSpace
 	pa-simp-and-update set-vol +{1,2,5}%
 XF86AudioMute
 	pa-simp-and-update toggle-mute
-mod4 + {minus,equal}
+mod4 + {minus,plus}
 	pa-simp-and-update set-vol {-,+}2%
 # BACKLIGHT
 {ctrl +,_,shift +} XF86MonBrightnessDown
@@ -30,12 +30,21 @@ mod4 + space
 	change-lang
 # MPD CONTROLS
 mod4 + bracket{left,right}
-	mpc seek {-,+}20
+	mpc --quiet seek {-,+}20
 mod4 + shift + bracket{left,right}
-	mpc {prev,next}
+	mpc --quiet {prev,next}
 mod4 + backslash
-	mpc toggle; \
+	mpc --quiet toggle; \
 	pkill -SIGRTMIN+5 lemonbarc
+# SCREENSHOT
+{_,shift +,ctrl +} Print
+	file="$(date '+%T,%b%d[%a].png')"; \
+	sleep 0.2s; \
+	scrot {_,--focused --border,--select} -e 'mv $f ~/temp/' "$file"; \
+	sleep 0.2s; \
+	xclip -selection clipboard -t "image/png" -i "$HOME/temp/$file"
+	
+
 
 
 ##############
@@ -50,9 +59,8 @@ mod4 + {h,j,k,l}
 # Move window
 mod4 + shift + {h,j,k,l}
 	bspc node -s {west,south,north,east}
-
-# Cycle between 2 last active nodes
-mod4 + c
+## Cycle between 2 last active nodes
+mod4 + n
 	bspc node -f last.local
 # Swap current node with a bigger one
 mod4 {_,shift +} u
@@ -61,11 +69,17 @@ mod4 {_,shift +} u
 mod4 + {_,shift +} r
 	bspc node @/ --rotate {+,-}90
 # Change window size
-mod4 + m : {h,j,k,l}
-	bspc node --resize top_left {-15 0,0 15,0 -15,15 0}
+mod4 + m : {_,shift +} {h,j,k,l}
+	bspc node --resize {top_left,bottom_right} {-15 0,0 15,0 -15,15 0}
+# move floating window
+mod4 + m : ctrl + {h,j,k,l}
+	bspc node --move {-20 0,0 20,0 -20,20 0}
 # change window to fullscreen
 mod4 + f
 	bspc node --state ~fullscreen
+# change window to floating	
+#mod4 + t
+#	bspc node --state ~floating
 # change gap size between windows
 mod4 + g
 	bspc config window_gap {0,12,25}
@@ -73,28 +87,30 @@ mod4 + g
 
 ##### DESKTOPS ######
 
+# {}(=*)+]
+# braceleft,braceright,parenleft,equal,asterisk,parenright,plus,bracketright
 # Focus selected desktop
-mod4 + {0-8}
-	bspc desktop -f '^{0-8}'; \
+mod4 + {3,4,5,6,7,8,9,0}
+	bspc desktop -f '^{1,2,3,4,5,6,7,8}'; \
 	pkill -SIGRTMIN+1 lemonbarc
 # Move window to selected desktop
-mod4 + shift + {0-8}
-	bspc node -d '^{0-8}' --follow; \
+mod4 + shift + {3,4,5,6,7,8,9,0}
+	bspc node -d '^{1,2,3,4,5,6,7,8}' --follow; \
 	pkill -SIGRTMIN+1 lemonbarc
-# Cycle between 2 last active desktops
-mod4 + v
+## Cycle between 2 last active desktops
+mod4 + t
 	bspc desktop -f last; \
 	pkill -SIGRTMIN+1 lemonbarc
 # Move window between last 2 active desktop
-mod4 + shift + v
+mod4 + shift + t
 	bspc node -d last --follow; \
 	pkill -SIGRTMIN+1 lemonbarc
 # Go to an empty desktop
-mod4 + b
+mod4 + s
 	bspc desktop -f 'any.!occupied'; \
 	pkill -SIGRTMIN+1 lemonbarc
 # Move window to an empty desktop
-mod4 + shift + b
+mod4 + shift + s
 	bspc node -d 'any.!occupied' --follow; \
 	pkill -SIGRTMIN+1 lemonbarc
 
@@ -110,8 +126,8 @@ mod4 + {_,shift +} i
 mod4 + d
 	dmenu_run
 # Launch apps
-mod4 + o; {b,e,t,r,f}
-	{$BROWSER,$EDITOR,$TERMINAL,$READER,$FILE}
+mod4 + o; {b,e,t,r,f,l}
+	{$BROWSER,$EDITOR,$TERMINAL,$READER,$FILE,lyx}
 # Open terminal
 mod4 + Return
 	$TERMINAL

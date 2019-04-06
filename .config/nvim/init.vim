@@ -18,13 +18,15 @@ set encoding=utf-8
 
 " PLUGINS
 call plug#begin('~/.local/share/nvim/plugged')
-
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'godlygeek/tabular'
-
 call plug#end()
 autocmd VimEnter * if @% == '.config/sxhkd/sxhkdrc' | hi Comment ctermfg=Red 
+
+
+" Y now works like C and D
+nnoremap Y y$
 " Shortcutting split navigation, saving a keypress:
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -50,4 +52,4 @@ autocmd FileType cpp,h inoremap ;st <Esc>astd::string
 autocmd FileType cpp,h inoremap ;sp <Esc>astd::shared_ptr<> <++><Esc>5hi
 autocmd FileType cpp,h inoremap ;um <Esc>astd::unordered_map<> <++><Esc>5hi
 autocmd FileType cpp,h inoremap ;for <Esc>ifor(){<Enter><++><Enter>}<Esc>3k$hi
-autocmd FileType c,cpp,h inoremap <C-e> /*  */<Esc>hhi
+autocmd FileType c,cpp,h,java inoremap <C-e> /*  */<Esc>hhi

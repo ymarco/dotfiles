@@ -1,43 +1,53 @@
 #! /bin/sh
 
-sxhkd &
+pgrep sxhkd || sxhkd -m 1 &
 
+DESKS1='1 2 3 4'
+DESKS2='5 6 7 8'
 
 ### MONITORS ###
-bspc monitor HDMI-1 -d 1 2 3 4
-bspc monitor HDMI-1-1 -d 1 2 3 4
-bspc monitor eDP1 -d 5 6 7 8
-bspc monitor eDP-1 -d 5 6 7 8
-bspc monitor eDP-1-1 -d 5 6 7 8
+bspc monitor			-d $DESKS1
+bspc monitor HDMI-1		-d $DESKS1
+bspc monitor HDMI-1-1	-d $DESKS1
+bspc monitor eDP1		-d $DESKS2
+bspc monitor eDP-1		-d $DESKS2
+bspc monitor eDP-1-1	-d $DESKS2
 bspc config remove_disabled_monitors on
 bspc config remove_unplugged_monitors on
 
-
-### GAPS ###
+###    GAPS     ###
 bspc config border_width         1
-bspc config window_gap          12
+bspc config window_gap           12
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
-bspc config single_monocle 	 	 true
+bspc config single_monocle       true
 
 
 ### COLORS ###
-set-color(){
+setXcolor(){
 	xrdb -query | awk "/$2/ {print \$NF}" | xargs -r -I % bspc config $1 %
 }
-set-color normal_border_color color0 # black
-set-color active_border_color color7 # dark white
-set-color focused_border_color color15 # white
+setXcolor normal_border_color color0 # black
+bspc config focused_border_color '#aaaaaa'
+#setXcolor active_border_color color7 # dark white
+#setXcolor focused_border_color color15 # white
 
 
 ### DESKTOP RULES ###
-bspc rule -a Gimp desktop='^8' state=floating follow=on
-bspc rule -a firefox desktop='^2'
-bspc rule -a mplayer2 state=floating
-bspc rule -a Kupfer.py focus=on
-bspc rule -a Screenkey manage=off
-#bspc rule -a *:st state=pseudo_tiled
+bspc rule -a Gimp		desktop='^8' state=floating follow=on
+bspc rule -a Firefox 	desktop='^2'
+bspc rule -a mplayer2 	state=floating
+bspc rule -a Kupfer.py 	focus=on
+bspc rule -a Screenkey 	manage=off
+bspc rule -a Zathura 	state=tiled
+#bspc rule -a St state=pseudo_tiled
+
+echo ASDAJWODIJAXKLCMASD!!!!!!!!!!
 
 ### GENERAL SETTINGS
 bspc config directional_focus_tightness low
-#polybar &
+if !pgrep lemonbar; then
+	cd ~/desk/lemonbarc/
+	./run.sh &
+	cd ~
+fi
