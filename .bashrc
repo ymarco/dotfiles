@@ -11,4 +11,4 @@ export PS1="\[$(tput bold)\]\[$(tput setaf 4)\][\[$(tput setaf 3)\]\u\[$(tput se
 [ -f "$HOME/.shortcuts" ] && source "$HOME/.shortcuts" # Load shortcut aliases
 [ -f "$HOME/.aliasrc" ] && source "$HOME/.aliasrc"
 # SET VI MODE YAAAAHHH
-set -o vi
+#set -o vi
