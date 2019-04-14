@@ -1,0 +1,5 @@
+#!/bin/sh
+a=$(echo -e "yes\nno" | dmenu -p "$1")
+[ "$a" == "yes" ] &&
+	"${@:2}"
+

@@ -1,4 +1,4 @@
-!*.color0: #1c1c1c
+
 !*.color1: #dd352d
 !*.color2: #98b71a
 !*.color3: #d7b951
@@ -21,7 +21,7 @@
 *.background:   #1d1f21
 *.cursorColor:  #f0f2f0
 ! black
-*.color0:       #111111
+*.color0:       #181818
 *.color8:       #35373b
 ! red
 *.color1:       #ff3a3a
@@ -47,7 +47,7 @@
 
 
 !! Transparency (0-255):
-*.alpha: 169
+!!*.alpha: 169
 !! Set a default font and font size as below:
 
 !!Xft.autohint: 1

@@ -11,19 +11,50 @@ syntax on
 set number relativenumber
 
 " set color scheme
-colo torte
+" colo torte
 
 "set encoding
 set encoding=utf-8
 
 " PLUGINS
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'kovetskiy/sxhkd-vim'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'kovetskiy/sxhkd-vim' " sxhkd colors
 Plug 'godlygeek/tabular'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'NLKNguyen/c-syntax.vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'elzr/vim-json'
+Plug 'hdima/python-syntax'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
-autocmd VimEnter * if @% == '.config/sxhkd/sxhkdrc' | hi Comment ctermfg=Red 
+" autocmd VimEnter * if @% == '.config/sxhkd/sxhkdrc' | hi Comment ctermfg=Red 
 
+" set background=dark
+colorscheme PaperColor
+let g:airline_powerline_fonts = 1
+let g:airline_theme='papercolor'
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default.dark': {
+  \       'transparent_background': 0
+  \     }
+  \   }
+  \ }
+
+let g:PaperColor_Theme_Options = {
+  \   'language': {
+  \     'python': {
+  \       'highlight_builtins' : 1
+  \     },
+  \     'cpp': {
+  \       'highlight_standard_library': 1
+  \     },
+  \     'c': {
+  \       'highlight_builtins' : 1
+  \     }
+  \   }
+  \ }
 
 " Y now works like C and D
 nnoremap Y y$

@@ -38,13 +38,15 @@ mod4 + backslash
 	pkill -SIGRTMIN+5 lemonbarc
 # SCREENSHOT
 {_,shift +,ctrl +} Print
-	file="$(date '+%T,%b%d[%a].png')"; \
+	file="$(date +$HOME/%T,%b-%d[%a].png)"; \
 	sleep 0.2s; \
-	scrot {_,--focused --border,--select} -e 'mv $f ~/temp/' "$file"; \
+	scrot '{_,--focused,--select}' -z $file; \
 	sleep 0.2s; \
-	xclip -selection clipboard -t "image/png" -i "$HOME/temp/$file"
-	
-
+	xclip -selection clipboard -t "image/png" -i "$file"
+XF86AudioMicMute
+	echo hi | dmenu; \
+	echo hi; \
+	systemctl suspend
 
 
 ##############
@@ -77,7 +79,7 @@ mod4 + m : ctrl + {h,j,k,l}
 # change window to fullscreen
 mod4 + f
 	bspc node --state ~fullscreen
-# change window to floating	
+# change window to floating
 #mod4 + t
 #	bspc node --state ~floating
 # change gap size between windows
@@ -114,6 +116,9 @@ mod4 + shift + s
 	bspc node -d 'any.!occupied' --follow; \
 	pkill -SIGRTMIN+1 lemonbarc
 
+# Apply canvases
+mod4 + 1
+	ls ~/.config/bspwm/canvases/ | dmenu | xargs -r -I % /usr/share/doc/bspwm/examples/receptacles/extract_canvas % | sh
 
 ##############
 #### APPS ####

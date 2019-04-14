@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 pgrep sxhkd || sxhkd -m 1 &
 
