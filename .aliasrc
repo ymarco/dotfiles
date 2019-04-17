@@ -40,3 +40,8 @@ lbar() {
 lbar-kill() {
 	ka lemonbarc lemonbar
 }
+lbar-restart() {
+	lbar-kill
+	lbar
+}
+

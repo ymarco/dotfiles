@@ -69,6 +69,24 @@ inoremap `<Tab> <Esc>/<++><Enter>"_c4l
 vnoremap `<Tab> <Esc>/<++><Enter>"_c4l
 map `<Tab> <Esc>/<++><Enter>"_c4l
 
+function! FzyCommand(choice_command, vim_command)
+  try
+    let output = system(a:choice_command . " | fzy ")
+    echo output
+  catch /Vim:Interrupt/
+    " Swallow errors from ^C, allow redraw! below
+  endtry
+  redraw!
+  echo output
+  "if v:shell_error == 0 && !empty(output)
+    "silent exec a:vim_command . ' ' . output
+  "endif
+endfunction
+
+nnoremap <leader>e :call FzyCommand("find . -type f", ":e")<cr>
+nnoremap <leader>v :call FzyCommand("find . -type f", ":vs")<cr>
+nnoremap <leader>s :call FzyCommand("find . -type f", ":sp")<cr>
+
 " Automatically deletes all trailing whitespace on save.
 " autocmd BufWritePre * %s/\s\+$//e
 

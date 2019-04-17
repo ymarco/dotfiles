@@ -38,15 +38,14 @@ mod4 + backslash
 	pkill -SIGRTMIN+5 lemonbarc
 # SCREENSHOT
 {_,shift +,ctrl +} Print
-	file="$(date +$HOME/%T,%b-%d[%a].png)"; \
+	file="$(date +$HOME/temp/%T,%b-%d[%a].png)"; \
 	sleep 0.2s; \
 	scrot '{_,--focused,--select}' -z $file; \
 	sleep 0.2s; \
 	xclip -selection clipboard -t "image/png" -i "$file"
+# suspend
 XF86AudioMicMute
-	echo hi | dmenu; \
-	echo hi; \
-	systemctl suspend
+	confirm "suspend?" && systemctl suspend
 
 
 ##############
