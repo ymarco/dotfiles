@@ -40,7 +40,7 @@ mod4 + backslash
 {_,shift +,ctrl +} Print
 	file="$(date +$HOME/temp/%T,%b-%d[%a].png)"; \
 	sleep 0.2s; \
-	scrot '{_,--focused,--select}' -z $file; \
+	scrot '{-d 1,--focused,--select}' -z $file; \
 	sleep 0.2s; \
 	xclip -selection clipboard -t "image/png" -i "$file"
 # suspend
@@ -100,7 +100,7 @@ mod4 + shift + {3,4,5,6,7,8,9,0}
 	pkill -SIGRTMIN+1 lemonbarc
 ## Cycle between 2 last active desktops
 mod4 + t
-	bspc desktop -f last; \
+	bspc desktop -f last.occupied; \
 	pkill -SIGRTMIN+1 lemonbarc
 # Move window between last 2 active desktop
 mod4 + shift + t

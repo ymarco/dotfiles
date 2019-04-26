@@ -2,16 +2,16 @@
 
 pgrep sxhkd || sxhkd -m 1 &
 
-DESKS1='1 2 3 4'
-DESKS2='5 6 7 8'
+DESKS1='0 1 2 3'
+DESKS2='4 5 6 7'
 
 ### MONITORS ###
 bspc monitor			-d $DESKS1
-bspc monitor HDMI-1		-d $DESKS1
-bspc monitor HDMI-1-1	-d $DESKS1
-bspc monitor eDP1		-d $DESKS2
-bspc monitor eDP-1		-d $DESKS2
-bspc monitor eDP-1-1	-d $DESKS2
+bspc monitor HDMI-1		-d $DESKS2
+bspc monitor HDMI-1-1	-d $DESKS2
+bspc monitor eDP1		-d $DESKS1
+bspc monitor eDP-1		-d $DESKS1
+bspc monitor eDP-1-1	-d $DESKS1
 bspc config remove_disabled_monitors on
 bspc config remove_unplugged_monitors on
 
