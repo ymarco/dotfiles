@@ -71,6 +71,8 @@ let g:PaperColor_Theme_Options = {
 " Y now works like C and D
 nnoremap Y y$
 " Shortcutting split navigation, saving a keypress:
+set splitbelow
+set splitright
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
