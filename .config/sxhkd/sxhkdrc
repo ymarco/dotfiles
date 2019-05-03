@@ -130,8 +130,8 @@ mod4 + {_,shift +} i
 mod4 + d
 	dmenu_run
 # Launch apps
-mod4 + o; {b,e,t,r,f,l}
-	{$BROWSER,$EDITOR,$TERMINAL,$READER,$FILE,lyx}
+mod4 + o; {b,e,t,r,f,l,z}
+	{$BROWSER,$EDITOR,$TERMINAL,$READER,$FILE,lyx,zathura}
 # Open terminal
 mod4 + Return
 	$TERMINAL

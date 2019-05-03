@@ -1,4 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =3
 let g:netrw_dirhist_1='/home/yoavm448/desk/csvdb/include'
 let g:netrw_dirhist_2='/home/yoavm448/Dropbox/yoav/Homework/Bibel'
+let g:netrw_dirhist_3='/home/yoavm448/.local/share/nvim/plugged/vim-go/gosnippets/UltiSnips'

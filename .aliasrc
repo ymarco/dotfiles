@@ -13,6 +13,12 @@ alias \
 	idea="export _JAVA_AWT_WM_NONREPARENTING=1 && idea &"\
 	n="nnn"
 
+# SHORTCUTS
+alias \
+	y="~/Dropbox/yoav"\
+	d="~/desk"\
+	D="~/Downloads"
+
 	
 # search in bash history
 hs() {
