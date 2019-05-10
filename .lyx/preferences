@@ -70,7 +70,9 @@ Format 24
 # FORMATS SECTION ##########################
 #
 
-\default_view_format 
+\format "bibtex" "tex" "BibTeX" "" "zathura" "gvim" "" "text/x-bibtex"
+\format "pdflatex" "tex" "LaTeX (pdflatex)" "" "zathura" "" "document,menu=export" ""
+\default_otf_view_format dvi3
 
 #
 # CONVERTERS SECTION ##########################
