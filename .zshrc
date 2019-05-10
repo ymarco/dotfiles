@@ -1,5 +1,3 @@
-# The following lines were added by compinstall
-
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' expand prefix suffix
@@ -21,21 +19,25 @@ zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
 zstyle :compinstall filename '/home/yoavm448/.zshrc'
 
 autoload -Uz compinit && compinit
-# End of lines added by compinstall
-# Lines configured by zsh-newuser-install
+# history settings
 HISTFILE=~/.zsh_history
 HISTSIZE=3000
 SAVEHIST=3000
+# up and down arrows search the entered text back in history
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+
 setopt autocd notify correctall
+# vi mode
 bindkey -v
+# shift-tab selects the previous completion
+bindkey '^[[Z' reverse-menu-complete
 export KEYTIMEOUT=1
 
-#appendhistory 
-# End of lines configured by zsh-newuser-install
-
+# child programs dont terminate when exiting zsh
 setopt NO_HUP
-
-[ -f "$HOME/.shortcuts" ] && source "$HOME/.shortcuts" # Load shortcut aliases
+# Load shortcut aliases
+[ -f "$HOME/.shortcuts" ] && source "$HOME/.shortcuts" 
 [ -f "$HOME/.aliasrc" ] && source "$HOME/.aliasrc"
 
 export PS1="%B%F{12}[%b%F{3}%n%F{white}:%F{13}%c%B%F{12}]%F{white}$ %b%f"
