@@ -22,7 +22,7 @@ alias \
 	
 # search in bash history
 hs() {
-	sort -u $HOME/.bash_history | fzy | xclip -selection cilpboard 
+	sort -ubi ~/.bash_history | fzy | xargs printf | xclip -selection cilpboard 
 }
 
 # prepare package from AUR for installation

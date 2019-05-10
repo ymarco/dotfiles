@@ -17,16 +17,14 @@ set encoding=utf-8
 " PLUGINS
 call plug#begin('~/.local/share/nvim/plugged')
 " language specific
-Plug 'kovetskiy/sxhkd-vim',      { 'for':'sxhkdrc'}                         " sxhkd colors
-Plug 'NLKNguyen/c-syntax.vim',   { 'for': ['c','cpp','cuda']}               " better c syntax highlighting
-Plug 'plasticboy/vim-markdown',  { 'for':'markdown'}                        " better markdown syntax highlighting (unsused)
-Plug 'elzr/vim-json',            { 'for':'json'}                            " better json syntax highlighting
-Plug 'vim-python/python-syntax', { 'for':'python'}                          " better python syntax highlighting
-Plug 'fatih/vim-go',             { 'do': ':GoInstallBinaries', 'for':'go' } " VIM GO
+Plug 'kovetskiy/sxhkd-vim',      { 'for':'sxhkdrc'}                         " syntax highlighting (sxhkd)
+Plug 'NLKNguyen/c-syntax.vim',   { 'for': ['c','cpp','cuda']}               " syntax highlighting (c family)
+Plug 'plasticboy/vim-markdown',  { 'for':'markdown'}                        " syntax highlighting (markdown) (unused)
+Plug 'elzr/vim-json',            { 'for':'json'}                            " syntax highlighting (json)
+Plug 'vim-python/python-syntax', { 'for':'python'}                          " syntax highlighting (python)
+Plug 'fatih/vim-go',             { 'do': ':GoInstallBinaries', 'for':'go' } " VIM-GO
 
 " util
-Plug 'vim-airline/vim-airline'        " vim statusbar theme
-Plug 'vim-airline/vim-airline-themes' " vim statusbar theme theme
 Plug 'SirVer/ultisnips'               " snippets
 Plug 'godlygeek/tabular'              " align text
 Plug 'NLKNguyen/papercolor-theme'     " theme
@@ -71,13 +69,23 @@ let g:PaperColor_Theme_Options = {
 " Y now works like C and D
 nnoremap Y y$
 " Shortcutting split navigation, saving a keypress:
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 set splitbelow
 set splitright
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
 
+" J and K are amplified j and k
+nnoremap J 5j
+nnoremap K 5k
+
+" Control + {h,j,k,l} are replacement for arrow keys
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
 " Navigating with guides
 inoremap `<Tab> <Esc>/<++><Enter>"_c4l
 vnoremap `<Tab> <Esc>/<++><Enter>"_c4l

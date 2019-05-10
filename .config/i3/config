@@ -24,24 +24,24 @@ font pango:Ubuntu 13
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn't scale on retina/hidpi displays.
 
-# Set Xresources colors:
-set_from_resource $darkblack	color0  #000000
-set_from_resource $darkred	color1  #000000
-set_from_resource $darkgreen	color2  #000000
-set_from_resource $darkyellow	color3  #000000
-set_from_resource $darkblue	color4  #000000
-set_from_resource $darkmagenta	color5  #000000
-set_from_resource $darkcyan	color6  #000000
-set_from_resource $darkwhite	color7  #000000
-set_from_resource $black	color8  #000000
-set_from_resource $red		color9  #000000
-set_from_resource $green	color10 #000000
-set_from_resource $yellow	color11 #000000
-set_from_resource $blue		color12 #000000
-set_from_resource $magenta	color13 #000000
-set_from_resource $cyan		color14 #000000
-set_from_resource $white	color15 #000000
-set $bgcolor				#333333
+# Set Xresources               color s:
+set_from_resource $darkblack   color 0  # 000000
+set_from_resource $darkred     color 1  # 000000
+set_from_resource $darkgreen   color 2  # 000000
+set_from_resource $darkyellow  color 3  # 000000
+set_from_resource $darkblue    color 4  # 000000
+set_from_resource $darkmagenta color 5  # 000000
+set_from_resource $darkcyan    color 6  # 000000
+set_from_resource $darkwhite   color 7  # 000000
+set_from_resource $black       color 8  # 000000
+set_from_resource $red         color 9  # 000000
+set_from_resource $green       color 10 # 000000
+set_from_resource $yellow      color 11 # 000000
+set_from_resource $blue        color 12 # 000000
+set_from_resource $magenta     color 13 # 000000
+set_from_resource $cyan        color 14 # 000000
+set_from_resource $white       color 15 # 000000
+set $bg                        color    # 333333
 
 #                       BORDER		BACKGROUND	TEXT		INDICATOR		CHILD_BORDER
 client.focused			$red		$red		$magenta	$cyan	  		$darkyellow

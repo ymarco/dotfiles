@@ -27,6 +27,8 @@ Format 24
 # COLOR SECTION ###################################
 #
 
+\set_color "background" "#f8f8bb"
+\set_color "mathbg" "#ffffc8"
 
 #
 # PRINTER SECTION ###################################
