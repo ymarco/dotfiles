@@ -1,4 +1,4 @@
-! special
+! specialr
 *.foreground:   #ffffff
 *.background:   #1d1f21
 *.cursorColor:  #ffffff
@@ -16,7 +16,7 @@
 *.color11:      #ffaf22
 ! blue
 *.color4:       #61aede
-*.color12:      #21bbff
+*.color12:      #5294e2
 ! magenta
 *.color5:       #bf59e3
 *.color13:      #c515ff
@@ -27,37 +27,29 @@
 *.color7:       #b8c1be
 *.color15:      #dadada
 
-!! special
-!*.foreground:   #f0f2f0
-!*.background:   #1d1f21
-!*.cursorColor:  #f0f2f0
-!! black
-!*.color0:       #181818
-!*.color8:       #35373b
-!! red
-!*.color1:       #ff3a3a
-!*.color9:       #f05757
-!! green
-!*.color2:       #dbff5a
-!*.color10:      #ebfc88
-!! yellow
-!*.color3:       #f0c735
-!*.color11:      #e5c674
-!! blue
-!*.color4:       #4c99fd
-!*.color12:      #5bb3ff
-!! magenta
-!*.color5:       #bc4ee1
-!*.color13:      #cc7ce6
-!! cyan
-!*.color6:       #2af8de
-!*.color14:      #8dd9ce
-!! white
-!*.color7:       #e1ede8
-!*.color15:      #f5f8f6
-!! Transparency (0-255):
-!!*.alpha: 169
+! Dracula Xresources palette
+!*.foreground:  #f8f8f2
+!*.background:  #282a36
+!*.color0:      #000000
+!*.color8:      #4d4d4d
+!*.color1:      #ff5555
+!*.color9:      #ff6e67
+!*.color2:      #50fa7b
+!*.color10:     #5af78e
+!*.color3:      #f1fa8c
+!*.color11:     #f4f99d
+!*.color4:      #bd93f9
+!*.color12:     #caa9fa
+!*.color5:      #ff79c6
+!*.color13:     #ff92d0
+!*.color6:      #8be9fd
+!*.color14:     #9aedfe
+!*.color7:      #bfbfbf
+!*.color15:     #e6e6e6
+
+*.alpha: 200
 !! Set a default font and font size as below:
+*.font: Monospace-15
 
 !!Xft.autohint: 1
 !!Xft.antialias: 1
@@ -66,4 +58,3 @@
 !!Xft.rgba: rgb
 !!Xft.lcdfilter: lcddefault
 
-*.font: Monospace-15;

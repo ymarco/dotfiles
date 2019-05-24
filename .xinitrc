@@ -27,5 +27,5 @@ xset r rate 300 30
 # start redshift
 redshift -l 31.5:34.75 &
 # finally, start the wm
-exec bspwm
-
+exec awesome
+#exec bspwm

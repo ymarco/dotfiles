@@ -9,7 +9,7 @@ set smartindent
 set number relativenumber
 
 " set color scheme
-"colo torte
+"colo desert
 
 "set encoding
 set encoding=utf-8
@@ -23,6 +23,7 @@ Plug 'plasticboy/vim-markdown',  { 'for':'markdown'}                        " sy
 Plug 'elzr/vim-json',            { 'for':'json'}                            " syntax highlighting (json)
 Plug 'vim-python/python-syntax', { 'for':'python'}                          " syntax highlighting (python)
 Plug 'fatih/vim-go',             { 'do': ':GoInstallBinaries', 'for':'go' } " VIM-GO
+Plug 'tbastos/vim-lua', 		 { 'for': 'lua'}                            " syntax highlighting (lua)
 
 " util
 Plug 'SirVer/ultisnips'               " snippets
@@ -31,6 +32,7 @@ Plug 'NLKNguyen/papercolor-theme'     " theme
 Plug 'jiangmiao/auto-pairs'           " auto closing braces
 call plug#end()
 
+set t_Co=16
 " Snippets
 let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsSnippetDir='/home/yoavm448/.config/nvim/UltiSnipsSnippets'
@@ -46,12 +48,8 @@ let g:go_highlight_operators      = 1
 " vim-python settings
 let g:python_highlight_all = 1
 
-" auto-pairs settings
-let g:AutoPairsFlyMode = 1
 " ASTHETICS
 colorscheme PaperColor
-let g:airline_powerline_fonts = 1
-let g:airline_theme='papercolor'
 let g:PaperColor_Theme_Options = {
   \   'language': {
   \     'python': {
@@ -68,6 +66,9 @@ let g:PaperColor_Theme_Options = {
 
 " Y now works like C and D
 nnoremap Y y$
+
+" ctrl+q is J
+noremap Q J
 " Shortcutting split navigation, saving a keypress:
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -80,6 +81,8 @@ set splitright
 " J and K are amplified j and k
 nnoremap J 5j
 nnoremap K 5k
+vnoremap J 5j
+vnoremap K 5k
 
 " Control + {h,j,k,l} are replacement for arrow keys
 inoremap <C-j> <Down>
@@ -90,6 +93,8 @@ inoremap <C-l> <Right>
 inoremap `<Tab> <Esc>/<++><Enter>"_c4l
 vnoremap `<Tab> <Esc>/<++><Enter>"_c4l
 map `<Tab> <Esc>/<++><Enter>"_c4l
+
+nnoremap <Tab> :bnext<Enter>
 
 " Automatically deletes all trailing whitespace on save.
 " autocmd BufWritePre * %s/\s\+$//e

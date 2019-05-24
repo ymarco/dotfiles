@@ -33,11 +33,12 @@ bindkey -v
 # shift-tab selects the previous completion
 bindkey '^[[Z' reverse-menu-complete
 export KEYTIMEOUT=1
-
+# no beep sound
+unsetopt BEEP
 # child programs dont terminate when exiting zsh
 setopt NO_HUP
 # Load shortcut aliases
 [ -f "$HOME/.shortcuts" ] && source "$HOME/.shortcuts" 
 [ -f "$HOME/.aliasrc" ] && source "$HOME/.aliasrc"
 
-export PS1="%B%F{12}[%b%F{3}%n%F{white}:%F{13}%c%B%F{12}]%F{white}$ %b%f"
+export PS1="%B%F{12}[%b%F{3}%n%F{white}%B:%F{13}%c%B%F{12}]%F{15}$ %b%f"

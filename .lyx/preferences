@@ -27,7 +27,7 @@ Format 24
 # COLOR SECTION ###################################
 #
 
-\set_color "background" "#f8f8bb"
+\set_color "background" "#fffabe"
 \set_color "mathbg" "#ffffc8"
 
 #
@@ -70,7 +70,7 @@ Format 24
 # FORMATS SECTION ##########################
 #
 
-\format "bibtex" "tex" "BibTeX" "" "zathura" "gvim" "" "text/x-bibtex"
+\format "bibtex" "tex" "BibTeX" "" "zathura" "st -e vim" "" "text/x-bibtex"
 \format "pdflatex" "tex" "LaTeX (pdflatex)" "" "zathura" "" "document,menu=export" ""
 \default_otf_view_format dvi3
 

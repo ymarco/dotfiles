@@ -52,3 +52,11 @@ lbar-restart() {
 	lbar
 }
 
+chtheme(){
+cd ~/.gvcci/themes/$1/
+xrdb xresources-colors.txt
+xrdb -merge <(echo \*.font: Monospace-14)
+xrdb -merge <(echo \*.alpha: 200)
+sleep 4
+feh --bg-scale wallpaper
+}
