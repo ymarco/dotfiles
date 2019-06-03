@@ -1,6 +1,6 @@
 #!/bin/sh
 alias \
-	ka="killall" \
+	ka="nocorrect killall" \
 	ls="ls -hN --color=auto --group-directories-first" \
 	diff="diff --color=auto" \
 	wifish="wifish -i wlp2s0"\

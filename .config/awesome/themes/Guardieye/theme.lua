@@ -18,13 +18,13 @@ theme.theme_path_debug = themes_path
 
 theme.font          = "Ubuntu 12"
 
-theme.bg_normal     = "#2f343f77"
+theme.bg_normal     = "#353944aa"
 theme.bg_systray    = theme.bg_normal
-theme.bg_focus      = "#5294e2"--"#d3ad5c"
+theme.bg_focus      = "#6090d5d8"--"#5294e2"
 theme.bg_urgent     = "#ff0000"
-theme.bg_minimize   = "#1f242f99"
+theme.bg_minimize   = "#1f242fbb"
 
-theme.fg_normal     = "#b3bdcb"
+theme.fg_normal     = "#c3cddb"
 theme.fg_focus      = "#e5eff9"
 theme.fg_urgent     = "#ff9999"
 theme.fg_minimize   = "#888888"
@@ -53,11 +53,10 @@ theme.hotkeys_modifiers_fg = theme.bg_focus
 
 theme.progressbar_bg = theme.bg_normal
 theme.progressbar_fg = theme.fg_focus
-theme.progressbar_color = theme.bg_normal
 theme.progressbar_shape = gears.shape.rounded_rect
 theme.progressbar_bar_shape = theme.progressbar_shape
 theme.progressbar_border_width = 3
-theme.progressbar_border_color = theme.bg_minimize
+theme.progressbar_border_color = "#00000000"--theme.bg_normal--theme.bg_minimize
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(6)
@@ -69,6 +68,9 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 )
 theme.taglist_shape_border_width = 10
 --theme.taglist_shape = gears.shape.rounded_bar
+
+theme.menubar_border_width = 2
+theme.menubar_border_color = theme.bg_minimize
 
 -- Variables set for theming notifications:
 -- notification_font

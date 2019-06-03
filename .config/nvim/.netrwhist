@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/home/yoavm448/.minecraft'
 let g:netrw_dirhist_2='/home/yoavm448/.config/sxhkd'
 let g:netrw_dirhist_3='/home/yoavm448/.config/awesome/themes/Guardieye'
+let g:netrw_dirhist_4='/home/yoavm448/.emacs.d'

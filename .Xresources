@@ -47,9 +47,9 @@
 !*.color7:      #bfbfbf
 !*.color15:     #e6e6e6
 
-*.alpha: 200
+st.alpha: 200
 !! Set a default font and font size as below:
-*.font: Monospace-15
+*.font: Hack-15
 
 !!Xft.autohint: 1
 !!Xft.antialias: 1

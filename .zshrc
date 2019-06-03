@@ -41,4 +41,7 @@ setopt NO_HUP
 [ -f "$HOME/.shortcuts" ] && source "$HOME/.shortcuts" 
 [ -f "$HOME/.aliasrc" ] && source "$HOME/.aliasrc"
 
-export PS1="%B%F{12}[%b%F{3}%n%F{white}%B:%F{13}%c%B%F{12}]%F{15}$ %b%f"
+echo "$(tput bold)$(tput setaf 12)$(tput setaf 3)$USER$(tput setaf 7)@$(tput setaf 14)$HOST"
+#echo "%B%F{12}[%b%F{3}%n%F{white}%B"
+
+export PS1="%F{13}%c%B%F{12}%F{14} $ %b%f"

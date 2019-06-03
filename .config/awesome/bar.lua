@@ -14,6 +14,10 @@ bar.textclock = wibox.widget.textclock()
 
 bar.launcher = awful.widget.launcher({ image = beautiful.awesome_icon,
                     				  menu = mymainmenu })
+local text_widget = {
+    text   = '   ',
+    widget = wibox.widget.textbox
+}
 
 bar.brightness_bar = {
 	widget = wibox.widget.progressbar
@@ -47,9 +51,9 @@ local taglist_buttons = gears.table.join(
 				             client.focus:toggle_tag(t)
 			             end
 		             end),
-		awful.button({ }, 4,
-		             function(t) awful.tag.viewnext(t.screen) end),
 		awful.button({ }, 5,
+		             function(t) awful.tag.viewnext(t.screen) end),
+		awful.button({ }, 4,
 		             function(t) awful.tag.viewprev(t.screen) end)
 )
 
@@ -171,43 +175,50 @@ function bar.new(s)
 	-- Add widgets to the wibox
 	this.wibox:setup {
 		layout = wibox.layout.align.horizontal,
-		spacing = 20,
 		{ -- Left widgets
 			layout = wibox.layout.fixed.horizontal,
 			bar.launcher,
 			this.taglist,
 			this.promptbox,
+			wibox.widget.textbox("  "),
+			spacing = 5,
 		},
 		-- Middle widget
 		this.tasklist, 
 		{ -- Right widgets
+			wibox.widget.textbox("  "),
+			awful.widget.watch('/home/yoavm448/desk/lemonbarc/scripts/battery', 2*60),
+			this.layoutbox,
 			layout = wibox.layout.fixed.horizontal,
-        	spacing_widget = {
-            	color  = '#dddddd',
-            	forced_width = 2,
-            	--widget = wibox.widget.separator 
-            },
 			spacing = 5,
 			{ bar.keyboardlayout, 
 			  shape = gears.shape.rounded_rect, 
-		  	  bg = beautiful.bg_minimize, fg = beautiful.fg_normal, 
+		  	  bg = beautiful.bg_normal, fg = beautiful.fg_normal, 
 		  	  widget = wibox.container.background, 
-		  	  forced_width= 120 },
-		  	--awful.widget.watch("/home/yoavm448/desk/lemonbarc/scripts/memory"),
-			bar.brightness_bar,
-			bar.sound_bar,
-			awful.widget.watch('/home/yoavm448/desk/lemonbarc/scripts/battery', 2*60),
-			--{ widget = awful. }
-			this.layoutbox,
-			{ bg = '#ee00ee', 
-			  { widget = wibox.container.mirror,
-			    bar.textclock,
-			    reflection = {horizontal = false, vertical=false},},
-			  widget = wibox.container.radialprogressbar,
-			  value = 0.7,
-			  forced_width = 160
+	        },--forced_width= 120 },
+			{ bar.brightness_bar,
+			  wibox.widget.textbox("  ^"),
+			  layout = wibox.layout.stack,
+		    },
+			{ bar.sound_bar,
+			  wibox.widget.textbox("  ^"),
+			  layout = wibox.layout.stack,
+		    },
+			{ bg = beautiful.bg_normal,
+			  bar.textclock,
+			  widget = wibox.container.background,
+			  shape = gears.shape.rounded_rect,
 			},
-		    wibox.widget.systray(),
+		    {
+		    	{
+		    		widget = wibox.container.background,
+		    		bg = string.sub(beautiful.bg_normal, 0, 7),
+					shape  = function(cr, width, height) gears.shape.partially_rounded_rect(cr, width, height, false, false, false, true, 8) end,
+					text_widget,
+		    	}, 
+		    	wibox.widget.systray(),
+		    	layout = wibox.layout.fixed.horizontal,
+		    }
 		},
 	}
 	s.bar = this

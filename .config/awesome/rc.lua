@@ -95,6 +95,7 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
+menubar.show_categories = false
 -- }}}
 
 -- {{{ Key bindings
@@ -104,7 +105,6 @@ local bar = require("bar")
 bar.launcher.menu = mymainmenu
 
 local function set_wallpaper(s)
-	-- Wallpaper
 	if beautiful.wallpaper then
 		local wallpaper = beautiful.wallpaper
 		-- If wallpaper is a function, call it with the screen
@@ -186,8 +186,8 @@ root.buttons(gears.table.join(
 		awful.button({ }, 3, function()
 			mymainmenu:toggle()
 		end),
-		awful.button({ }, 4, awful.tag.viewnext),
-		awful.button({ }, 5, awful.tag.viewprev)
+		awful.button({ }, 5, awful.tag.viewnext),
+		awful.button({ }, 4, awful.tag.viewprev)
 ))
 -- }}}
 

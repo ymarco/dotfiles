@@ -18,7 +18,7 @@ echo "starting compton!"
 compton -b
 echo "done"
 # set background
-feh --randomize --bg-fill ~/.wallpapers/*
+#feh --randomize --bg-fill ~/.wallpapers/*
 # update with Xresources, cos appearently it doesnt happen automatically
 xrdb ~/.Xresources
 #[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
@@ -26,6 +26,8 @@ xrdb ~/.Xresources
 xset r rate 300 30
 # start redshift
 redshift -l 31.5:34.75 &
+# start network manager applet if not already running
+pgrep nm-applet || nm-applet &
 # finally, start the wm
 exec awesome
 #exec bspwm
