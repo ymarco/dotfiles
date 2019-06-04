@@ -187,8 +187,11 @@ function bar.new(s)
 		this.tasklist, 
 		{ -- Right widgets
 			wibox.widget.textbox("  "),
-			awful.widget.watch('/home/yoavm448/desk/lemonbarc/scripts/battery', 2*60),
-			this.layoutbox,
+			{ bg = beautiful.bg_normal,
+			  awful.widget.watch('/home/yoavm448/desk/lemonbarc/scripts/battery', 2*60),
+			  widget = wibox.container.background,
+			  shape = gears.shape.rounded_rect,
+			},
 			layout = wibox.layout.fixed.horizontal,
 			spacing = 5,
 			{ bar.keyboardlayout, 
@@ -212,9 +215,10 @@ function bar.new(s)
 		    {
 		    	{
 		    		widget = wibox.container.background,
-		    		bg = string.sub(beautiful.bg_normal, 0, 7),
+		    		bg = beautiful.bg_minimize,
 					shape  = function(cr, width, height) gears.shape.partially_rounded_rect(cr, width, height, false, false, false, true, 8) end,
-					text_widget,
+					--text_widget,
+					{ this.layoutbox, widget = wibox.container.margin, left = 9,bottom = 2,top = 2,},
 		    	}, 
 		    	wibox.widget.systray(),
 		    	layout = wibox.layout.fixed.horizontal,

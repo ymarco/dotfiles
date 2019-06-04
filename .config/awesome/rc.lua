@@ -209,7 +209,7 @@ clientbuttons = gears.table.join(
 client.connect_signal("manage", function(c, startup)
 	-- Enable round corners with the shape api
 	c.shape = function(cr, w, h)
-		gears.shape.rounded_rect(cr, w, h, 6)
+		gears.shape.rounded_rect(cr, w, h, 8)
 	end
 end)
 

@@ -1,0 +1,34 @@
+snippet fun "inline function" 
+function(${1:args}) ${0:VISUAL} end
+endsnippet
+
+snippet func "inline long function"
+function(${1:args})
+	${2:${VISUAL}}
+end
+endsnippet
+
+snippet fu "function foo(a) .. end" b
+function ${1:name}(${2:args})
+	${3:${VISUAL}}
+end
+endsnippet
+
+snippet l "local" b
+local 
+endsnippet
+
+snippet if "if ... then ... end" b
+if $1 then
+	${2:${VISUAL}}
+end
+endsnippet
+
+
+snippet ife "if ... then ... else ... end" b
+if $1 then
+	${2:${VISUAL}}
+else
+	$3
+end
+endsnippet
