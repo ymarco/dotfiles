@@ -1,15 +1,17 @@
-local keys = {}
-local gears = require("gears")
-local awful = require("awful")
-local naughty = require("naughty")
-require("awful.autofocus")
--- Widget and layout library
--- Theme handling library
+local gears         = require("gears")
+local awful         = require("awful")
+local naughty       = require("naughty")
+local lain          = require("lain")
 local menubar       = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+require("awful.autofocus")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
+
+local keys = {}
+
+local quake = lain.util.quake({app = "st", argname = "-n %s", height = 1, width = 0.3, horiz = "right"})
 
 keys.mod = "Mod4"
 keys.alt = "Mod1"
@@ -162,6 +164,10 @@ keys.globals = gears.table.join(
 			          }
 		          end,
 		          { description = "lua execute prompt", group = "awesome" }),
+		awful.key({ keys.mod }, "z",
+				  function() quake:toggle() end,
+				  { deskription = "toggle quake?", group = "launcher" }),
+
 -- Menubar
 		awful.key({ keys.mod }, "p",
 		          function() menubar.show() end,

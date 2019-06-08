@@ -1,9 +1,17 @@
-awful = require("awful")
-gears = require("gears")
-wibox = require("wibox")
-beautiful = require("beautiful")
-keys = require("keys")
-bar = {}
+local awful = require("awful")
+local gears = require("gears")
+local wibox = require("wibox")
+local beautiful = require("beautiful")
+local lain = require("lain")
+local keys = require("keys")
+local dpi   = require("beautiful.xresources").apply_dpi
+local bar = {}
+
+local theme = beautiful.get()
+
+local function rr(w)
+	return wibox.container.background(wibox.container.margin(w, dpi(3), dpi(6)), beautiful.bg_normal, gears.shape.rounded_rect)
+end
 
 -- Keyboard map indicator and switcher
 bar.keyboardlayout = awful.widget.keyboardlayout()
@@ -25,16 +33,36 @@ bar.brightness_bar = {
 	value = 0.3,
 	color = "#fefe9a",
 	forced_width = 120,
-	--color = beautiful.bg_focus
 }
+
+bar.brightness_widget = { bar.brightness_bar,
+			  { {text = "", align = 'right', widget = wibox.widget.textbox},
+			  	  right = 9,
+			  	  widget = wibox.container.margin,
+			  },
+			  layout = wibox.layout.stack, }
+
 bar.sound_bar = {
 	widget = wibox.widget.progressbar
 	{ text = "a", widget = wibox.widget.textbox , align = 'center'},
 	value = 0.3,
 	color = "#7797ff",
 	forced_width = 120,
-	--color = beautiful.bg_focus
 }
+
+bar.sound_widget = {
+	bar.sound_bar,
+	{ 
+		{ { text = "", align = 'left', widget = wibox.widget.textbox},
+			widget = wibox.container.mirror,
+			reflection = {horizontal = true},
+		  },
+		right = 9,
+		widget = wibox.container.margin,
+	},
+	layout = wibox.layout.stack,
+}
+
 local taglist_buttons = gears.table.join(
 		awful.button({ }, 1,
 		             function(t) t:view_only() end),
@@ -92,6 +120,41 @@ local layoutbox_buttons = gears.table.join(
 
 
 
+local mpdicon = wibox.widget.imagebox(theme.widget_music)
+mpdicon:buttons(gears.table.join(
+    awful.button({ modkey }, 1, 
+    			 function () awful.spawn.with_shell(musicplr) end),
+    awful.button({ }, 1, 
+    		     function () os.execute("mpc prev") bar.mpd.update() end),
+    awful.button({ }, 2, 
+    			 function () os.execute("mpc toggle") bar.mpd.update() end),
+    awful.button({ }, 3, 
+    	 		 function () os.execute("mpc next") bar.mpd.update() end),
+    awful.button({ }, 4, 
+    	  		 function () os.execute("mpc seek -15") bar.mpd.update() end),
+    awful.button({ }, 5, 
+    		     function () os.execute("mpc seek +15") bar.mpd.update() end)))
+
+bar.mpd = lain.widget.mpd({
+    settings = function()
+    	widget:set_text("aoeu")
+        if mpd_now.state == "play" then
+            artist = " " .. mpd_now.artist .. " "
+            title  = mpd_now.title  .. " "
+            mpdicon:set_image(theme.widget_music_on)
+            widget:set_markup(markup.font(theme.font, markup("#FF8466", artist) .. " " .. title))
+        elseif mpd_now.state == "pause" then
+            --widget:set_markup(markup.font(theme.font, " mpd paused "))
+            mpdicon:set_image(theme.widget_music_pause)
+        else
+            widget:set_text("aoeuaoeu")
+            mpdicon:set_image(theme.widget_music)
+        end
+    end,
+    music_dir = os.getenv("HOME").."/Dropbox/yoav/Music/",
+    timeout = 1,
+})
+
 function bar.new(s)
 	local this = {}
 	-- Create a promptbox for each screen
@@ -117,7 +180,6 @@ function bar.new(s)
 				--bg_occupied = '#111122',
 				--shape = gears.shape.rounded_bar,
 				forced_width = 4,
-				--shape  = function(cr, width, height) gears.shape.partially_rounded_rect(cr, width, height, false, false, true, true) end,
 			},
 		}
 
@@ -186,39 +248,24 @@ function bar.new(s)
 		-- Middle widget
 		this.tasklist, 
 		{ -- Right widgets
-			wibox.widget.textbox("  "),
-			{ bg = beautiful.bg_normal,
-			  awful.widget.watch('/home/yoavm448/desk/lemonbarc/scripts/battery', 2*60),
-			  widget = wibox.container.background,
-			  shape = gears.shape.rounded_rect,
-			},
 			layout = wibox.layout.fixed.horizontal,
 			spacing = 5,
-			{ bar.keyboardlayout, 
-			  shape = gears.shape.rounded_rect, 
-		  	  bg = beautiful.bg_normal, fg = beautiful.fg_normal, 
-		  	  widget = wibox.container.background, 
-	        },--forced_width= 120 },
-			{ bar.brightness_bar,
-			  wibox.widget.textbox("  ^"),
-			  layout = wibox.layout.stack,
-		    },
-			{ bar.sound_bar,
-			  wibox.widget.textbox("  ^"),
-			  layout = wibox.layout.stack,
-		    },
-			{ bg = beautiful.bg_normal,
-			  bar.textclock,
-			  widget = wibox.container.background,
-			  shape = gears.shape.rounded_rect,
-			},
+
+			wibox.widget.textbox("  "),
+	        rr(bar.keyboardlayout),
+            rr(wibox.container.margin(wibox.widget { mpdicon, bar.mpd.widget, layout = wibox.layout.align.horizontal }, dpi(3), dpi(6))),
+			bar.brightness_widget,
+	        bar.sound_widget,
+			rr(awful.widget.watch('/home/yoavm448/desk/lemonbarc/scripts/battery', 2*60)),
+			rr(bar.textclock),
 		    {
 		    	{
 		    		widget = wibox.container.background,
-		    		bg = beautiful.bg_minimize,
-					shape  = function(cr, width, height) gears.shape.partially_rounded_rect(cr, width, height, false, false, false, true, 8) end,
-					--text_widget,
-					{ this.layoutbox, widget = wibox.container.margin, left = 9,bottom = 2,top = 2,},
+		    		bg = string.sub(beautiful.bg_minimize, 0, 7),
+					shape  = function(cr, width, height) 
+						gears.shape.partially_rounded_rect(cr, width, height, false, false, false, true, 8) 
+					end,
+					{ this.layoutbox, widget = wibox.container.margin, left = 6.5, right = 4,bottom = 2.5,top = 2.5,},
 		    	}, 
 		    	wibox.widget.systray(),
 		    	layout = wibox.layout.fixed.horizontal,

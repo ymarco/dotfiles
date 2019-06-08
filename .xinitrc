@@ -28,6 +28,8 @@ xset r rate 300 30
 redshift -l 31.5:34.75 &
 # start network manager applet if not already running
 pgrep nm-applet || nm-applet &
+# start unclutter to hide the mouse when not used
+unclutter &
 # finally, start the wm
 exec awesome
 #exec bspwm

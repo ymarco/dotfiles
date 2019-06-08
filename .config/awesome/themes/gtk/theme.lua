@@ -101,7 +101,7 @@ theme.gtk.menubar_border_color = mix(
 )
 
 
-theme.font          = theme.gtk.font_family .. ' ' .. theme.gtk.font_size
+theme.font = "Ubuntu 12"
 
 theme.bg_normal     = theme.gtk.bg_color
 theme.fg_normal     = theme.gtk.fg_color

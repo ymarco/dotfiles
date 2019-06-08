@@ -14,7 +14,7 @@ theme                                           = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/macos-bright"
 theme.wallpaper                                 = "/home/neo/Bilder/Wallpaper/bay.jpg"
 
-theme.font                                      = "sans 12"
+theme.font = "Ubuntu 12"
 theme.fg_normal                                 = "#000000"
 theme.fg_focus                                  = "#000000"
 theme.bg_normal                                 = "#e7e8ebA0"
