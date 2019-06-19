@@ -1,9 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/yoavm448/desk/soft1/hw6/files/src/il/ac/tau'
-let g:netrw_dirhist_2='/home/yoavm448/desk/soft1/hw6/files/src/il/ac/tau/cs'
-let g:netrw_dirhist_3='/home/yoavm448/desk/soft1/hw6/files/src/il/ac/tau/cs/sw1'
-let g:netrw_dirhist_4='/home/yoavm448/desk/soft1/hw6/files/src/il/ac/tau/cs/sw1/partsABC'
-let g:netrw_dirhist_5='/home/yoavm448/desk/soft1/hw6_reem/src/il/ac/tau/cs/sw1'
-let g:netrw_dirhist_6='/home/yoavm448/desk/soft1/hw6_reem/src/il/ac/tau/cs/sw1/partsABC'
-let g:netrw_dirhist_7='/home/yoavm448/desk/soft1/hw6/files/src/il/ac/tau/cs/sw1/partsABC'
+let g:netrw_dirhist_cnt =0

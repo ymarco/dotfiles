@@ -10,7 +10,7 @@ local bar = {}
 local theme = beautiful.get()
 
 local function rr(w)
-	return wibox.container.background(wibox.container.margin(w, dpi(3), dpi(6)), beautiful.bg_normal, gears.shape.rounded_rect)
+	return wibox.container.background(wibox.container.margin(w, dpi(3), dpi(4)), beautiful.bg_normal, gears.shape.rounded_rect)
 end
 
 -- Keyboard map indicator and switcher
@@ -137,22 +137,22 @@ mpdicon:buttons(gears.table.join(
 
 bar.mpd = lain.widget.mpd({
     settings = function()
-    	widget:set_text("aoeu")
-        if mpd_now.state == "play" then
-            artist = " " .. mpd_now.artist .. " "
-            title  = mpd_now.title  .. " "
-            mpdicon:set_image(theme.widget_music_on)
-            widget:set_markup(markup.font(theme.font, markup("#FF8466", artist) .. " " .. title))
-        elseif mpd_now.state == "pause" then
-            --widget:set_markup(markup.font(theme.font, " mpd paused "))
-            mpdicon:set_image(theme.widget_music_pause)
-        else
-            widget:set_text("aoeuaoeu")
-            mpdicon:set_image(theme.widget_music)
+        local artist = mpd_now.artist .. " - "
+		local title  = mpd_now.title
+        local image = theme.widget_music_on
+        if mpd_now.state == "pause" then
+            image = theme.widget_music_pause
+        elseif mpd_now.state == "stop" then
+            artist = ""
+            title  = ""
+            image = theme.widget_music
         end
+
+        widget:set_markup(artist..title)
+        mpdicon:set_image(image)
     end,
     music_dir = os.getenv("HOME").."/Dropbox/yoav/Music/",
-    timeout = 1,
+    timeout = 1000000
 })
 
 function bar.new(s)
@@ -253,7 +253,8 @@ function bar.new(s)
 
 			wibox.widget.textbox("  "),
 	        rr(bar.keyboardlayout),
-            rr(wibox.container.margin(wibox.widget { mpdicon, bar.mpd.widget, layout = wibox.layout.align.horizontal }, dpi(3), dpi(6))),
+            --rr(wibox.container.margin(wibox.widget { mpdicon, bar.mpd.widget, layout = wibox.layout.align.horizontal }, dpi(3), dpi(6))),
+            rr(mpdicon);
 			bar.brightness_widget,
 	        bar.sound_widget,
 			rr(awful.widget.watch('/home/yoavm448/desk/lemonbarc/scripts/battery', 2*60)),

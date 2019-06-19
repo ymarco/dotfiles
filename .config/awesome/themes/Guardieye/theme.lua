@@ -11,7 +11,7 @@ local gfs          = require("gears.filesystem")
 local this_path         = os.getenv("HOME").."/.config/awesome/themes/Guardieye/"
 local icons_path        = this_path.."icons/"
 local layouts_path      = icons_path.."layouts/"
-local titlebar_path     = icons_path.."titlebar"
+local titlebar_path     = icons_path.."titlebar/"
 
 local theme = {}
 

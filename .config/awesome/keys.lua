@@ -261,6 +261,7 @@ for i = 1, 8 do
 					          local tag = client.focus.screen.tags[i]
 					          if tag then
 						          client.focus:move_to_tag(tag)
+					          	  tag:view_only()
 					          end
 				          end
 			          end,

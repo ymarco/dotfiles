@@ -27,8 +27,9 @@ Format 24
 # COLOR SECTION ###################################
 #
 
-\set_color "background" "#fffabe"
-\set_color "mathbg" "#ffffc8"
+\set_color "background" "#fbffab"
+\set_color "mathbg" "#fbffab"
+\set_color "buttonhoverbg" "#9f9fa1"
 
 #
 # PRINTER SECTION ###################################

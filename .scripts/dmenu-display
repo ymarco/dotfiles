@@ -70,5 +70,4 @@ esac
 
 setbg  # Fix background if screen size/arangement has changed.
 remaps  # Re-remap keys if keyboard added (for laptop bases)
-pgrep -x dunst >/dev/null && killall dunst && setsid dunst & # Restart dunst to ensure proper location on screen
-
+xset r rate 300 30
