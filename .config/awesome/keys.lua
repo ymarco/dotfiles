@@ -11,7 +11,12 @@ require("awful.hotkeys_popup.keys")
 
 local keys = {}
 
-local quake = lain.util.quake({app = "st", argname = "-n %s", height = 1, width = 0.3, horiz = "right"})
+local quake = lain.util.quake({app = "st", 
+	                           argname = "-n %s",
+	                           height = 1,
+	                           width = 0.3,
+	                           horiz = "right",
+	                           followtag = true})
 
 keys.mod = "Mod4"
 keys.alt = "Mod1"
@@ -46,7 +51,26 @@ keys.globals = gears.table.join(
 		          awful.tag.viewnext,
 		          { description = "view next", group = "tag" }),
 		awful.key({ keys.mod, }, "t",
-		          awful.tag.history.restore,
+                  function()  lain.util.tag_view_nonempty(1) end,
+		          { description = "go to privieus", group = "tag" }),
+		awful.key({ keys.mod, }, "s",
+                  function()  
+				          local screen = awful.screen.focused()
+				          local tags    = screen.tags
+                  	  for i,tag in ipairs(tags) do
+                  	  	  if #tag:clients() == 0 then tag:view_only() return end
+                  	  end
+                  end,
+		          { description = "go to privieus", group = "tag" }),
+		awful.key({ keys.mod, "Shift"}, "s",
+                  function()  
+                  	  for i,tag in ipairs(awful.screen.focused().tags) do
+                  	  	  if #tag:clients() == 0 then 
+                  	 	      client.focus:move_to_tag(tag)
+                  	 	      tag:view_only() return 
+                  	  	  end
+                  	  end
+                  end,
 		          { description = "go to privieus", group = "tag" }),
 		-- mod+{h,j,k,l} change focus in their vim direction
 		awful.key({ keys.mod, }, "j",
@@ -65,7 +89,10 @@ keys.globals = gears.table.join(
 		          function() keys.callbacks.show_menu() end,
 		          { description = "show main menu", group = "awesome" }),
 		awful.key({ keys.mod, }, "n",
-				  awful.client.focus.history.previous,
+				  function()
+				      awful.client.focus.history.previous()
+				      client.focus:raise()
+				  end,
 				  { description = "focus previous client", group = "client" }),
 
 -- Layout manipulation

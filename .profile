@@ -24,6 +24,8 @@ export LESS_TERMCAP_us=$'\e[34m'   # start underline
 export LESS_TERMCAP_ue=$'\e[0m'    # stop underline
 
 export _JAVA_AWT_WM_NONREPARENTING=1
+pgrep mpd || mpd;
+
 
 #export BIB="$HOME/Documents/LaTeX/uni.bib"
 #export REFER="$HOME/.referbib"

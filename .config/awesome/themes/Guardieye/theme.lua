@@ -30,6 +30,7 @@ theme.fg_focus      = "#e5eff9"
 theme.fg_urgent     = "#ff9999"
 theme.fg_minimize   = "#888888"
 
+theme.gap_single_client   = false
 theme.useless_gap   = 8
 theme.border_width  = 0
 theme.border_normal = theme.bg_normal
