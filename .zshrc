@@ -14,8 +14,8 @@ zstyle ':completion:*' preserve-prefix '//[^/]##/'
 zstyle ':completion:*' select-prompt %SScrolling active: current at %p%s
 zstyle ':completion:*' substitute aoeualways
 zstyle ':completion:*' use-compctl false
-#zstyle ':completion:*:descriptions' format '%U%B%d%b%u' 
-zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b' 
+#zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
+zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
 zstyle :compinstall filename '/home/yoavm448/.zshrc'
 
 autoload -Uz compinit && compinit
@@ -38,7 +38,7 @@ unsetopt BEEP
 # child programs dont terminate when exiting zsh
 setopt NO_HUP
 # Load shortcut aliases
-[ -f "$HOME/.shortcuts" ] && source "$HOME/.shortcuts" 
+[ -f "$HOME/.shortcuts" ] && source "$HOME/.shortcuts"
 [ -f "$HOME/.aliasrc" ] && source "$HOME/.aliasrc"
 
 echo "$(tput bold)$(tput setaf 12)$(tput setaf 3)$USER$(tput setaf 7)@$(tput setaf 14)$HOST"

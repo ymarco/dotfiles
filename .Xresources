@@ -49,7 +49,8 @@
 
 st.alpha: 200
 !! Set a default font and font size as below:
-*.font: Hack-15
+*.font: Source Code Pro-14
+st.font: Source Code Pro-16
 
 !!Xft.autohint: 1
 !!Xft.antialias: 1

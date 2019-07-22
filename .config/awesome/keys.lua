@@ -50,6 +50,13 @@ keys.globals = gears.table.join(
 		awful.key({ keys.mod, }, "Right",
 		          awful.tag.viewnext,
 		          { description = "view next", group = "tag" }),
+		awful.key({ keys.mod, "Shift" }, "t",
+                  function()  
+                  	  local c = client.focus
+                      lain.util.tag_view_nonempty(1)
+                      c:move_to_tag(awful.screen.focused().selected_tag)
+                  end,
+		          { description = "go to privieus", group = "tag" }),
 		awful.key({ keys.mod, }, "t",
                   function()  lain.util.tag_view_nonempty(1) end,
 		          { description = "go to privieus", group = "tag" }),
@@ -71,7 +78,7 @@ keys.globals = gears.table.join(
                   	  	  end
                   	  end
                   end,
-		          { description = "go to privieus", group = "tag" }),
+		          { description = "go to empty", group = "tag" }),
 		-- mod+{h,j,k,l} change focus in their vim direction
 		awful.key({ keys.mod, }, "j",
 		          function() awful.client.focus.bydirection("down") end,

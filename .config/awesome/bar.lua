@@ -21,10 +21,10 @@ bar.keyboardlayout = awful.widget.keyboardlayout()
 bar.textclock = wibox.widget.textclock()
 
 bar.launcher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                    				  menu = mymainmenu })
+									   menu = mymainmenu })
 local text_widget = {
-    text   = '   ',
-    widget = wibox.widget.textbox
+	text   = '   ',
+	widget = wibox.widget.textbox
 }
 
 bar.brightness_bar = {
@@ -52,7 +52,7 @@ bar.sound_bar = {
 
 bar.sound_widget = {
 	bar.sound_bar,
-	{ 
+	{
 		{ { text = "", align = 'left', widget = wibox.widget.textbox},
 			widget = wibox.container.mirror,
 			reflection = {horizontal = true},
@@ -65,56 +65,56 @@ bar.sound_widget = {
 
 local taglist_buttons = gears.table.join(
 		awful.button({ }, 1,
-		             function(t) t:view_only() end),
+					 function(t) t:view_only() end),
 		awful.button({ keys.mod }, 1,
-		             function(t)
-			             if client.focus then
-				             client.focus:move_to_tag(t)
-			             end
-		             end),
+					 function(t)
+						 if client.focus then
+							 client.focus:move_to_tag(t)
+						 end
+					 end),
 		awful.button({ }, 3, awful.tag.viewtoggle),
 		awful.button({ keys.mod }, 3,
-		             function(t)
-			             if client.focus then
-				             client.focus:toggle_tag(t)
-			             end
-		             end),
+					 function(t)
+						 if client.focus then
+							 client.focus:toggle_tag(t)
+						 end
+					 end),
 		awful.button({ }, 5,
-		             function(t) awful.tag.viewnext(t.screen) end),
+					 function(t) awful.tag.viewnext(t.screen) end),
 		awful.button({ }, 4,
-		             function(t) awful.tag.viewprev(t.screen) end)
+					 function(t) awful.tag.viewprev(t.screen) end)
 )
 
 local tasklist_buttons = gears.table.join(
 		awful.button({ }, 1,
-		             function(c)
-			             if c == client.focus then
-				             c.minimized = true
-			             else
-				             c:emit_signal(
-						             "request::activate",
-						             "tasklist",
-						             { raise = true }
-				             )
-			             end
-		             end),
-		awful.button({ }, 2, 
+					 function(c)
+						 if c == client.focus then
+							 c.minimized = true
+						 else
+							 c:emit_signal(
+									 "request::activate",
+									 "tasklist",
+									 { raise = true }
+							 )
+						 end
+					 end),
+		awful.button({ }, 2,
 					 function(c) c:kill() end),
 		awful.button({ }, 3,
-		             function() awful.menu.client_list({ theme = { width = 250 } }) end),
+					 function() awful.menu.client_list({ theme = { width = 250 } }) end),
 		awful.button({ }, 4,
-		             function() awful.client.focus.byidx(1) end),
+					 function() awful.client.focus.byidx(1) end),
 		awful.button({ }, 5,
-		             function() awful.client.focus.byidx(-1) end))
+					 function() awful.client.focus.byidx(-1) end))
 
 local layoutbox_buttons = gears.table.join(
-			awful.button({ }, 1, 
+			awful.button({ }, 1,
 						 function() awful.layout.inc(1) end),
-			awful.button({ }, 3, 
+			awful.button({ }, 3,
 						 function() awful.layout.inc(-1) end),
-			awful.button({ }, 4, 
+			awful.button({ }, 4,
 						 function() awful.layout.inc(1) end),
-			awful.button({ }, 5, 
+			awful.button({ }, 5,
 						 function() awful.layout.inc(-1) end))
 
 
@@ -122,43 +122,45 @@ local layoutbox_buttons = gears.table.join(
 
 local mpdicon = wibox.widget.imagebox(theme.widget_music)
 mpdicon:buttons(gears.table.join(
-    awful.button({ modkey }, 1, 
-    			 function () awful.spawn.with_shell(musicplr) end),
-    awful.button({ }, 1, 
-    		     function () os.execute("mpc prev") bar.mpd.update() end),
-    awful.button({ }, 2, 
-    			 function () os.execute("mpc toggle") bar.mpd.update() end),
-    awful.button({ }, 3, 
-    	 		 function () os.execute("mpc next") bar.mpd.update() end),
-    awful.button({ }, 4, 
-    	  		 function () os.execute("mpc seek -15") bar.mpd.update() end),
-    awful.button({ }, 5, 
-    		     function () os.execute("mpc seek +15") bar.mpd.update() end)))
+	awful.button({ modkey }, 1,
+				 function () awful.spawn.with_shell(musicplr) end),
+	awful.button({ }, 1,
+				 function () os.execute("mpc prev") bar.mpd.update() end),
+	awful.button({ }, 2,
+				 function () os.execute("mpc toggle") bar.mpd.update() end),
+	awful.button({ }, 3,
+		 		 function () os.execute("mpc next") bar.mpd.update() end),
+	awful.button({ }, 4,
+		  		 function () os.execute("mpc seek -15") bar.mpd.update() end),
+	awful.button({ }, 5,
+				 function () os.execute("mpc seek +15") bar.mpd.update() end)))
 
 bar.mpd = lain.widget.mpd({
-    settings = function()
-        local artist = mpd_now.artist .. " - "
+	settings = function()
+		local artist = mpd_now.artist .. " - "
 		local title  = mpd_now.title
-        local image = theme.widget_music_on
-        if mpd_now.state == "pause" then
-            image = theme.widget_music_pause
-        elseif mpd_now.state == "stop" then
-            artist = ""
-            title  = ""
-            image = theme.widget_music
-        end
+		local image = theme.widget_music_on
+		if mpd_now.state == "pause" then
+			image = theme.widget_music_pause
+		elseif mpd_now.state == "stop" then
+			artist = ""
+			title  = ""
+			image = theme.widget_music
+		end
 
-        widget:set_markup(artist..title)
-        mpdicon:set_image(image)
-    end,
-    music_dir = os.getenv("HOME").."/Dropbox/yoav/Music/",
-    timeout = 1000000
+		widget:set_markup(artist..title)
+		mpdicon:set_image(image)
+	end,
+	music_dir = os.getenv("HOME").."/Dropbox/yoav/Music/",
+	timeout = 1000000
 })
+
+bar.promptbox = awful.widget.prompt({prompt = "exe: ", bg = "#00000000"})
 
 function bar.new(s)
 	local this = {}
 	-- Create a promptbox for each screen
-	this.promptbox = awful.widget.prompt()
+	this.promptbox = bar.promptbox
 	-- Create an imagebox widget which will contain an icon indicating which layout we're using.
 	-- We need one layoutbox per screen.
 	this.layoutbox = awful.widget.layoutbox(s)
@@ -168,12 +170,12 @@ function bar.new(s)
 		filter  = awful.widget.taglist.filter.all,
 		buttons = taglist_buttons,
 		layout  = { spacing = 12,
-        			 --spacing_widget = {
-            		 	 --color  = '#dddddd',
-            		 	 --forced_width = 4,
-            		 	 --widget = wibox.widget.separator 
-            		 --},
-        			 layout = wibox.layout.fixed.horizontal },
+					 --spacing_widget = {
+					 	 --color  = '#dddddd',
+					 	 --forced_width = 4,
+					 	 --widget = wibox.widget.separator
+					 --},
+					 layout = wibox.layout.fixed.horizontal },
 		style = {
 				shape_border_width = 2,
 				shape_border_color = '#777777',
@@ -188,48 +190,48 @@ function bar.new(s)
 		screen   = s,
 		filter   = awful.widget.tasklist.filter.currenttags,
 		buttons  = tasklist_buttons,
-		style    = {
+		style	= {
 				shape_border_width = 0,
 				shape_border_color = '#b7b757',
 				shape  = gears.shape.rounded_rect,
 		},
 		layout   = {spacing = 12,
-        			--spacing_widget = {
-            			 --color  = '#dddddd',
-            			 --forced_width = 4,
-            			 --widget = wibox.widget.separator 
-            		--},
+					--spacing_widget = {
+						 --color  = '#dddddd',
+						 --forced_width = 4,
+						 --widget = wibox.widget.separator
+					--},
 					layout = wibox.layout.flex.horizontal, },
---        			layout = wibox.layout.fixed.horizontal, },
---    	widget_template = {
---        	id     = 'background_role',
---        	widget = wibox.container.background,
---        	{
---            	left  = 10,
---            	right = 10,
---            	widget = wibox.container.margin,
---            	{
---                	layout = wibox.layout.fixed.horizontal,
---                	{
---                    	margins = 2,
---                    	widget  = wibox.container.margin,
---                    	{
---                        	id     = 'icon_role',
---                        	widget = wibox.widget.imagebox,
---                    	},
---                	},
---                	{
---                    	id     = 'text_role',
---                    	widget = wibox.widget.textbox,
---                    	forced_width = 200,
---                	},
---            	},
---        	},
---    	},
+--					layout = wibox.layout.fixed.horizontal, },
+--		widget_template = {
+--			id	 = 'background_role',
+--			widget = wibox.container.background,
+--			{
+--				left  = 10,
+--				right = 10,
+--				widget = wibox.container.margin,
+--				{
+--			    	layout = wibox.layout.fixed.horizontal,
+--			    	{
+--			        	margins = 2,
+--			        	widget  = wibox.container.margin,
+--			        	{
+--			            	id     = 'icon_role',
+--			            	widget = wibox.widget.imagebox,
+--			        	},
+--			    	},
+--			    	{
+--			        	id     = 'text_role',
+--			        	widget = wibox.widget.textbox,
+--			        	forced_width = 200,
+--			    	},
+--				},
+--			},
+--		},
 }
 
 	-- Create the wibox
-	this.wibox = awful.wibar({ position = "top", 
+	this.wibox = awful.wibar({ position = "top",
 							   screen = s,
 							 --bg = "#222222bb",
 						   })
@@ -246,31 +248,31 @@ function bar.new(s)
 			spacing = 5,
 		},
 		-- Middle widget
-		this.tasklist, 
+		this.tasklist,
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
 			spacing = 5,
 
 			wibox.widget.textbox("  "),
-	        rr(bar.keyboardlayout),
-            --rr(wibox.container.margin(wibox.widget { mpdicon, bar.mpd.widget, layout = wibox.layout.align.horizontal }, dpi(3), dpi(6))),
-            rr(mpdicon);
+			rr(bar.keyboardlayout),
+			--rr(wibox.container.margin(wibox.widget { mpdicon, bar.mpd.widget, layout = wibox.layout.align.horizontal }, dpi(3), dpi(6))),
+			rr(mpdicon);
 			bar.brightness_widget,
-	        bar.sound_widget,
+			bar.sound_widget,
 			rr(awful.widget.watch('/home/yoavm448/desk/lemonbarc/scripts/battery', 2*60)),
 			rr(bar.textclock),
-		    {
-		    	{
-		    		widget = wibox.container.background,
-		    		bg = string.sub(beautiful.bg_minimize, 0, 7),
-					shape  = function(cr, width, height) 
-						gears.shape.partially_rounded_rect(cr, width, height, false, false, false, true, 8) 
+			{
+				{
+					widget = wibox.container.background,
+					bg = string.sub(beautiful.bg_minimize, 0, 7),
+					shape  = function(cr, width, height)
+						gears.shape.partially_rounded_rect(cr, width, height, false, false, false, true, 8)
 					end,
 					{ this.layoutbox, widget = wibox.container.margin, left = 6.5, right = 4,bottom = 2.5,top = 2.5,},
-		    	}, 
-		    	wibox.widget.systray(),
-		    	layout = wibox.layout.fixed.horizontal,
-		    }
+				},
+				wibox.widget.systray(),
+				layout = wibox.layout.fixed.horizontal,
+			}
 		},
 	}
 	s.bar = this

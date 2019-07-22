@@ -14,9 +14,7 @@ fi
 # start pulseaudio
 start-pulseaudio-x11 &
 # start composite manager for transparency
-echo "starting compton!"
-compton -b
-echo "done"
+compton -b --config .config/compton/compton.conf
 # set background
 #feh --randomize --bg-fill ~/.wallpapers/*
 # update with Xresources, cos appearently it doesnt happen automatically

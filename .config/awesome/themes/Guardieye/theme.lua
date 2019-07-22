@@ -19,7 +19,7 @@ theme.theme_path_debug = themes_path
 
 theme.font = "Ubuntu 12"
 
-theme.bg_normal     = "#353944aa"
+theme.bg_normal     = "#3539448a"
 theme.bg_focus      = "#6090d5d8"--"#5294e2"
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#1f242fbb"

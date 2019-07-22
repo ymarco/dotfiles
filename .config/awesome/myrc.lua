@@ -63,11 +63,11 @@ awful.layout.layouts   = {
 	-- awful.layout.suit.tile.left,
 	-- awful.layout.suit.tile.bottom,
 	-- awful.layout.suit.tile.top,
-	awful.layout.suit.fair,
+	--awful.layout.suit.fair,
 	-- awful.layout.suit.fair.horizontal,
-	awful.layout.suit.spiral,
+	--awful.layout.suit.spiral,
 	-- awful.layout.suit.spiral.dwindle,
-	-- awful.layout.suit.max,
+	awful.layout.suit.max,
 	-- awful.layout.suit.max.fullscreen,
 	-- awful.layout.suit.magnifier,
 	-- awful.layout.suit.corner.nw,
@@ -138,7 +138,6 @@ function sound_module.apply()
 	awful.spawn('pa-simplified set-vol '..tostring(sound_module.value)..'%')
 	bar.sound_bar.widget:set_value(sound_module.value/100)
 end
-sound_module.apply()
 
 function sound_module.change(val)
 	sound_module.value = sound_module.value + val
