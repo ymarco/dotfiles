@@ -124,7 +124,7 @@ theme.titlebar_maximized_button_focus_inactive  = titlebar_path.."maximized_focu
 theme.titlebar_maximized_button_normal_active   = titlebar_path.."maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active    = titlebar_path.."maximized_focus_active.png"
 
-theme.wallpaper = "/home/yoavm448/.wallpapers/wp_ice_beach.jpg"
+theme.wallpaper = "/home/yoavm448/.wallpapers/wp_black_hole.jpg"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh      = layouts_path.."fairhw.png"
