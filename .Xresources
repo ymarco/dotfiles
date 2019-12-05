@@ -1,4 +1,4 @@
-! specialr
+! special
 *.foreground:   #ffffff
 *.background:   #1d1f21
 *.cursorColor:  #ffffff
@@ -6,8 +6,10 @@
 *.color0:       #1c1c1c
 *.color8:       #505050
 ! red
-*.color1:       #ee3f3f
-*.color9:       #f12525
+!*.color1:       #ee3f3f
+!*.color9:       #f12525
+*.color1:       #61aede
+*.color9:      #5294e2
 ! green
 *.color2:       #63b663
 *.color10:      #afd700
@@ -49,8 +51,8 @@
 
 st.alpha: 200
 !! Set a default font and font size as below:
-*.font: Source Code Pro-14
-st.font: Source Code Pro-16
+!*.font: Source Code Pro-14
+!st.font: Source Code Pro-16
 
 !!Xft.autohint: 1
 !!Xft.antialias: 1

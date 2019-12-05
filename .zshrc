@@ -26,10 +26,12 @@ SAVEHIST=3000
 # up and down arrows search the entered text back in history
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
+bindkey '\eOA' history-beginning-search-backward
+bindkey '\eOB' history-beginning-search-forward
 
-setopt autocd notify correctall
+setopt autocd notify correct
 # vi mode
-bindkey -v
+#bindkey -v
 # shift-tab selects the previous completion
 bindkey '^[[Z' reverse-menu-complete
 export KEYTIMEOUT=1
@@ -37,11 +39,11 @@ export KEYTIMEOUT=1
 unsetopt BEEP
 # child programs dont terminate when exiting zsh
 setopt NO_HUP
+setopt interactivecomments
 # Load shortcut aliases
 [ -f "$HOME/.shortcuts" ] && source "$HOME/.shortcuts"
 [ -f "$HOME/.aliasrc" ] && source "$HOME/.aliasrc"
 
 echo "$(tput bold)$(tput setaf 12)$(tput setaf 3)$USER$(tput setaf 7)@$(tput setaf 14)$HOST"
-#echo "%B%F{12}[%b%F{3}%n%F{white}%B"
 
 export PS1="%F{13}%c%B%F{12}%F{14} $ %b%f"

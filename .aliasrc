@@ -11,13 +11,16 @@ alias \
 	grep="grep --color=auto"\
 	rand-bg="feh --randomize --bg-fill ~/.wallpapers/*"\
 	idea="export _JAVA_AWT_WM_NONREPARENTING=1 && idea &"\
-	n="nnn"
+	n="nnn"\
+	python="python3"\
+	open="xdg-open"
 
 # SHORTCUTS
 alias \
 	y="~/Dropbox/yoav"\
-	d="~/desk"\
-	D="~/Downloads"
+	d="~/Desktop "\
+	D="~/Downloads"\
+	t="~/Downloads/Torrents"
 
 	
 # search in bash history

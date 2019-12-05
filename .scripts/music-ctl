@@ -1,0 +1,16 @@
+#!/bin/sh
+
+alias qdbus-vlc="qdbus org.mpris.MediaPlayer2.vlc /org/mpris/MediaPlayer2"
+if pgrep vlc; then # if playing from VLC, pause it
+    case "$1" in
+        seek) qdbus-vlc org.mpris.MediaPlayer2.Player.Seek "$2";;
+        toggle) qdbus-vlc org.mpris.MediaPlayer2.Player.PlayPause;;
+        next) qdbus-vlc org.mpris.MediaPlayer2.Player.Next;;
+        prev) qdbus-vlc org.mpris.MediaPlayer2.Player.Previous;;
+    esac
+else # probably playing from mpd
+    case "$1" in
+        seek) mpc seek "$2";;
+        toggle|next|prev) mpc "$1";;
+    esac
+fi

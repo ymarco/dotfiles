@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ -f /tmp/CONSUMER-program.txt ]; then
+    CONSUMER="$(cat /tmp/CONSUMER-program.txt)"
+    [ "$CONSUMER" = "" ] && exit
+    echo "chosen cpu consumer to cont is $CONSUMER"
+    notify-send "Resumed" "$CONSUMER"
+    pkill -CONT "$CONSUMER"
+    rm /tmp/CONSUMER-program.txt
+else
+    CONSUMER="$(ps axch -o %cpu,cmd --sort=-%cpu | dmenu -l 6 | awk '{print $2}')"
+    [ "$CONSUMER" = "" ] && exit
+    echo "chosen cpu consumer to stop is $CONSUMER"
+    notify-send "Suspended" "$CONSUMER"
+    echo "$CONSUMER" > /tmp/CONSUMER-program.txt
+    pkill -STOP "$CONSUMER"
+fi

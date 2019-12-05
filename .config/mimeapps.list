@@ -1,5 +1,13 @@
 [Added Associations]
 application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
+application/x-java-archive=org.gnome.FileRoller.desktop;JB-java-jdk12.desktop;
+application/epub+zip=calibre-ebook-viewer.desktop;FBReader.desktop;mupdf.desktop;org.gnome.Evince.desktop;firefox.desktop;org.gnome.FileRoller.desktop;
+application/futuresplash=nvim.desktop;
+image/svg+xml=inkscape.desktop;
+application/octet-stream=vim.desktop;
+audio/flac=vlc.desktop;
+image/png=eog.desktop;
+image/jpeg=eog.desktop;
 
 [Default Applications]
 image/png=feh.desktop

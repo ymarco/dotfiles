@@ -51,7 +51,7 @@ beautiful.init("/home/yoavm448/.config/awesome/themes/Guardieye/theme.lua")
 --beautiful.init("/usr/share/awesome/themes/xresources/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal   = os.getenv("TERMINAL") or "xterm"
+terminal   = os.getenv("TERMINAL") or "st"
 editor     = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal.." -e "..editor
 

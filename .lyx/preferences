@@ -1,4 +1,4 @@
-# LyX 2.3.2 generated this file. If you want to make your own
+# LyX 2.3.3 generated this file. If you want to make your own
 # modifications you should do them from inside LyX and save.
 
 Format 24
@@ -19,7 +19,7 @@ Format 24
 # SCREEN & FONTS SECTION ############################
 #
 
-\screen_font_roman "Arimo"
+\screen_font_roman "aakar"
 \screen_font_sizes 5 7 8 9 10 12 14.4 17.26 20.74 24.88
 \single_instance false
 
@@ -27,8 +27,8 @@ Format 24
 # COLOR SECTION ###################################
 #
 
-\set_color "background" "#fbffab"
-\set_color "mathbg" "#fbffab"
+\set_color "background" "#e5e5e5"
+\set_color "mathbg" "#eaeaea"
 \set_color "buttonhoverbg" "#9f9fa1"
 
 #
