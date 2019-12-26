@@ -1,5 +1,13 @@
 #!/bin/sh
 SONG="$(mpc current)" 
 STATUS="$(mpc status | awk 'NR==2 {print $3 "  " $4}')" 
+if mpc status | grep '\[playing\]'; then
+    PLAYING="  "
+elif mpc status | grep '\[paused\]'; then
+    PLAYING="  "
+else
+    PLAYING=""
+fi
+
 ICON=/usr/share/icons/Papirus/48x48/apps/org.gnome.music.svg
-notify-send "$SONG" "$STATUS" -i "$ICON"
+notify-send "$PLAYING$SONG" "$STATUS" -i "$ICON"

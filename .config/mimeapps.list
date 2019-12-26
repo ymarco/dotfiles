@@ -8,6 +8,7 @@ application/octet-stream=vim.desktop;
 audio/flac=vlc.desktop;
 image/png=eog.desktop;
 image/jpeg=eog.desktop;
+image/bmp=eog.desktop;
 
 [Default Applications]
 image/png=feh.desktop

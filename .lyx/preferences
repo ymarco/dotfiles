@@ -19,7 +19,8 @@ Format 24
 # SCREEN & FONTS SECTION ############################
 #
 
-\screen_font_roman "aakar"
+\screen_zoom 160
+\screen_font_roman "Latin Modern Roman"
 \screen_font_sizes 5 7 8 9 10 12 14.4 17.26 20.74 24.88
 \single_instance false
 
@@ -29,6 +30,7 @@ Format 24
 
 \set_color "background" "#e5e5e5"
 \set_color "mathbg" "#eaeaea"
+\set_color "mathframe" "#00dd9f"
 \set_color "buttonhoverbg" "#9f9fa1"
 
 #

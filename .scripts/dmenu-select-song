@@ -1,4 +1,4 @@
 #!/bin/sh
 
 cd ~/Music
-find . -type f | cut -b 3- | dmenu -i -l 10 | mpc insert
+find . -type f | cut -b 3- | sort | dmenu -i -l 6 -fn "DejaVu Sans Book-14" | mpc insert

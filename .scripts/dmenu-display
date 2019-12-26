@@ -5,6 +5,13 @@
 # User may also select "manual selection" which opens arandr.
 # I plan on adding a routine from multi-monitor setups later.
 
+multileft() {
+        primary="eDP-1"
+        secondary="HTMI-1"
+        direction="left"
+        xrandr --output "$primary" --auto --scale 1.0x1.0 --output "$secondary" --"$direction"-of "$primary" --auto --scale 1.0x1.0
+}
+
 twoscreen() { # If multi-monitor is selected and there are two screens.
 
     mirror=$(printf "no\\nyes" | dmenu -i -p "Mirror displays?")

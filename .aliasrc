@@ -3,7 +3,6 @@ alias \
 	ka="nocorrect killall" \
 	ls="ls -hN --group-directories-first" \
 	diff="diff --color=auto" \
-	wifish="wifish -i wlp2s0"\
 	config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"\
 	vim="nvim"\
 	v="vim"\
@@ -23,43 +22,34 @@ alias \
 	t="~/Downloads/Torrents"
 
 	
+# FUNCTIONS
 # search in bash history
 hs() {
-	sort -ubi ~/.bash_history | fzy | xargs printf | xclip -selection cilpboard 
-}
-
-# prepare package from AUR for installation
-pac-aur() {
-	cd ~/desk
-	git clone https://aur.archlinux.org/$1.git &&
-	cd $1 &&
-	makepkg -Acsf
+	sort -ubi ~/.zsh_history | fzy | xargs -r -I % printf "%" | xclip -selection clipboard
 }
 
 # get preformance info about a process
 pinfo() {
 	ps axch -o cmd,%cpu,%mem | fzf --header "PROCESS                      CPU  MEM" > /dev/null
 }
+
 lbar() {
 	wd="$(pwd)"
-	cd ~/desk/lemonbarc/
+	cd ~/desk/lemonbarc/ || return
 	./run.sh &
-	cd "$wd"
+	cd "$wd" || return
 }
 
-lbar-kill() {
+lbarkill() {
 	ka lemonbarc lemonbar
 }
-lbar-restart() {
+lbarrestart() {
 	lbar-kill
 	lbar
 }
 
-chtheme(){
-cd ~/.gvcci/themes/$1/
-xrdb xresources-colors.txt
-xrdb -merge <(echo \*.font: Monospace-14)
-xrdb -merge <(echo \*.alpha: 200)
-sleep 4
-feh --bg-scale wallpaper
+musicinfo() {
+	soxi -D  ./**/*.flac |
+	awk '{a+=$0; tot+=1} END {print tot " songs, " a/(60*60) " hours of playback, average song length is " a/tot/60 " mins."}';
+	echo "summing $(du -sh .)"
 }

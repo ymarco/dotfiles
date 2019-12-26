@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: hebrew-math
+# uuid: hebrew-math
+# expand-env: ((yas-after-exit-snippet-hook #'set-evil-hebrew-insert))
+# --
+‎\\(`yas-selected-text`$1\\)‏$0
