@@ -1,17 +1,15 @@
 #!/bin/sh
+#
 export HISTCONTROL=ignoredups
 export HISTSIZE=HISTFILESIZE=1000
 export HISTIGNORE='c:clear'
-# add ./scrips and its subdirs to path
+
 export PATH="$HOME/.scripts:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-export ANDROID_HOME="$HOME/Android/Sdk"
 export PATH="$ANDROID_STUDIO/tools/bin:$PATH"
-#export PATH=/opt/texlive/2018/bin/x86_64-linux/:$PATH
-export EDITOR="nvim"
-#export TERMINAL="st"
-#export BROWSER="firefox"
-export XDG_CONFIG_HOME="$HOME/.config"
+export ANDROID_HOME="$HOME/Android/Sdk"
+export EDITOR="emacs"
+export BROWSER="firefox"
 export FZF_DEFAULT_OPTS="--reverse --height 40%"
 
 # export LESS_TERMCAP_me='\e[0m'    # turn off all
@@ -26,5 +24,3 @@ export JAVA_HOME='/usr/lib/jvm/java-11-openjdk-amd64'
 
 #export _JAVA_AWT_WM_NONREPARENTING=1
 #pgrep mpd || mpd;
-
-

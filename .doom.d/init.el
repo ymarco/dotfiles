@@ -17,14 +17,14 @@
         ;;+tng              ; makes company usable with just the tab key
         +auto            ; as-you-type code completion
         +childframe)     ; a nicer company UI. Emacs +26 only!
-       (helm              ; the *other* search engine for love and life
-        +icons
-        +fuzzy)           ; enable fuzzy search backend for helm
-       ;;ido               ; the other *other* search engine...
-       ;; (ivy               ; a search engine for love and life
+       ;; (helm              ; the *other* search engine for love and life
        ;;  +icons
-       ;;  +prescient        ; Enables prescient filtering and sorting for Ivy searches.
-       ;;  +fuzzy)           ; enable fuzzy search backend for ivy
+       ;;  +fuzzy)           ; enable fuzzy search backend for helm
+       ;; ;;ido               ; the other *other* search engine...
+       (ivy               ; a search engine for love and life
+        +icons
+        ;; +prescient        ; Enables prescient filtering and sorting for Ivy searches.
+        +fuzzy)           ; enable fuzzy search backend for ivy
 
        :ui
        ;;deft              ; notational velocity for Emacs
@@ -64,7 +64,7 @@
 
        :emacs
        (dired            ; making dired pretty [functional]
-        ;;+ranger         ; bringing the goodness of ranger to dired
+        ;; +ranger         ; bringing the goodness of ranger to dired
         +icons)         ; colorful icons for dired-mode
 
        electric          ; smarter, keyword-based electric-indent
@@ -138,7 +138,6 @@
         +babel           ; running code in org
         +capture         ; org-capture in and outside of Emacs
         +export          ; Exporting org to whatever you want
-        +habit           ; Keep track of your habits
         +present         ; Emacs for presentations
         +protocol)       ; Support for org-protocol:// links
        ;;perl              ; write code no one else can comprehend
@@ -196,10 +195,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("8c75e2bdf8d1293c77a752dd210612cfb99334f7edd360a42a58a8497a078b35" default))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+    ("8c75e2bdf8d1293c77a752dd210612cfb99334f7edd360a42a58a8497a078b35" default)))
+ '(preview-default-option-list
+   (quote
+    ("displaymath" "floats" "graphics" "textmath" "footnotes"))))

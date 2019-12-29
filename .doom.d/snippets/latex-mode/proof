@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: proof
+# uuid: proof
+# key: proo
+# condition: t
+# --
+\begin{proof}
+    `yas-selected-text`$0
+\end{proof}
