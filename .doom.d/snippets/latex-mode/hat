@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: hat
+# uuid: hat
+# key: hat
+# --
+\hat{`yas-selected-text`$1} $0

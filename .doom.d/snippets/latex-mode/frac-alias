@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: frac-alias
+# key: fa
+# type: command
+# --
+(%expand :name "frac")

@@ -5,7 +5,15 @@
 (setq
  avy-keys '(?a ?o ?e ?u ?i ?d ?h ?t ?t ?n ?s) ;; dvorak home row
  dired-dwim-target t
- bidi-paragraph-direction nil)
+ bidi-paragraph-direction nil
+ doom-snippets-enable-short-helpers t)
+
+
+(setq TeX-electric-sub-and-superscript nil ;; dont auto-insert braces on _^
+      TeX-save-query nil ;; just save, dont ask me
+      preview-auto-cache-preamble t ;; don't ask me again
+      preview-default-option-list '("displaymath" "floats" "graphics" ;; NO SECTION; compiled sections ruin the hebrew
+                                    "textmath" "footnotes"))
 
 (set-fontset-font "fontset-default" 'hebrew (font-spec :family "Dejavu Sans"))
 
@@ -84,14 +92,14 @@
   (doom-snippets-expand :file "/home/yoavm448/.doom.d/snippets/latex-mode/hebrew-display-math"))
 
 (defface unimportant-latex-face
-  '((t :height 0.7
+  '((t :height 0.8
        :inherit font-lock-comment-face))
   "Face used on less relevant math commands."
   :group 'LaTeX-math)
 
 (font-lock-add-keywords
  'latex-mode
- `((,(rx (and "\\" (or "(" ")"))) 0 'unimportant-latex-face prepend))
+ `((,(rx (and "\\" (any "()[]"))) 0 'unimportant-latex-face prepend))
  'end)
 
 
@@ -99,39 +107,38 @@
                         `((,(rx (and "\\" (or "arccos" "arcsin" "arctan" "arg" "cos" "cosh" "cot" "coth" "csc" "tanh"
                                               "deg" "det" "dim" "exp" "Pr" "proj" "sec" "sin" "sinh" "sup" "tan"
                                               "gcd" "hom" "inf" "inj" "ker" "lg" "lim" "ln" "log" "max" "min")))
-                           0 'font-lock-constant-face prepend))
+                           0 'font-lock-keyword-face prepend))
                         'end)
 
-(add-hook! 'TeX-mode-hook :append
-  (setq
-   bidi-paragraph-direction nil ;; treat hebrew as right-to-left
-   preview-transparent-color nil ;; this does nothing afaik
-   ;; preview-colors nil ;; this does nothing afaik
-   preview-auto-cache-preamble t ;; don't ask me again
-   preview-scale 1.7 ;; bigger math
-   preview-default-option-list '("displaymath" "floats" "graphics" "textmath" "footnotes")) ;; no section; it ruins the hebrew
 
+(custom-set-faces! '(preview-reference-face :inherit solaire-default-face)) ;; fixes preview background color in solaire
+(custom-set-faces! '(preview-face :inherit org-block)) ;; just prettier
+(custom-set-faces! '(TeX-fold-folded-face :inherit font-lock-type-face))
+
+(add-hook! 'TeX-mode-hook :append
+  (setq bidi-paragraph-direction nil ;; do treat hebrew as right-to-left
+        preview-scale 1.8) ;; bigger math
   (map!
-   :g "M-m" 'hebrew-math-mode ;; enter math mode
-   :g "M-r" 'hebrew-display-math-mode ;; enter display math mode
-   :g "M-g" 'TeX-fold-paragraph ;; fold math symbols into unicode at current paragraph
-   :g "M-S-g" 'TeX-fold-buffer ;; fold math symbols into unicode on whole buffer
-   :g "M-g" 'preview-at-point ;; compile math to latex images at point
-   :g "M-g" 'preview-buffer) ;; compile math to latex images on whole buffer
-  (appendq! TeX-fold-math-spec-list '(
-                                      ;; missing symbols
+   :envi "M-m" 'hebrew-math-mode
+   :envi "M-r" 'hebrew-display-math-mode
+   :envi "M-g" 'TeX-fold-paragraph
+   :envi "M-G" 'TeX-fold-buffer
+   :envi "M-t" 'preview-at-point
+   :envi "C-M-t" 'preview-clearout-at-point
+   :envi "M-T" 'preview-buffer
+   :envi "C-M-T" 'preview-clearout-buffer)
+  (appendq! TeX-fold-math-spec-list '(;; missing symbols
                                       ("≤" ("le"))
                                       ("≥" ("ge"))
                                       ("≠" ("ne"))
                                       ;; conviniance shorts
                                       ("‹" ("left"))
                                       ("›" ("right"))
-                                      ("⟦" ("["))
-                                      ("⟧" ("]"))
-                                      ;; ( "\\(" ("(") )
-                                      ;; ( "\\)" (")") )
-                                      ;; ("⬪" ("(" ")" "left" "right"))
+                                      ;; ("⟦" ("["))
+                                      ;; ("⟧" ("]"))
                                       ;; private macros
+                                      ("½" ("half"))
+
                                       ("ℝ" ("RR"))
                                       ("ℕ" ("NN"))
                                       ("ℚ" ("QQ"))
