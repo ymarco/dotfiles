@@ -3,25 +3,27 @@ alias \
 	ka="nocorrect killall" \
 	ls="ls -hN --group-directories-first" \
 	diff="diff --color=auto" \
-	config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"\
-	vim="nvim"\
-	v="vim"\
-	ec="edit-config"\
-	grep="grep --color=auto"\
-	rand-bg="feh --randomize --bg-fill ~/.wallpapers/*"\
-	idea="export _JAVA_AWT_WM_NONREPARENTING=1 && idea &"\
-	n="nnn"\
-	python="python3"\
-	open="xdg-open"
+	config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME" \
+	vim="nvim" \
+	v="vim" \
+	ec="edit-config" \
+	grep="grep --color=auto" \
+	rand-bg="feh --randomize --bg-fill ~/.wallpapers/*" \
+	idea="_JAVA_AWT_WM_NONREPARENTING=1 idea &" \
+	n="nnn" \
+	python="python3" \
+	pip="pip3" \
+	f="xdg-open" \
+	sai="sudo apt install" \
+	s="sudo"
 
 # SHORTCUTS
 alias \
-	y="~/Dropbox/yoav"\
-	d="~/Desktop "\
-	D="~/Downloads"\
+	y="~/Dropbox/yoav" \
+	d="~/Desktop " \
+	D="~/Downloads" \
 	t="~/Downloads/Torrents"
 
-	
 # FUNCTIONS
 # search in bash history
 hs() {
@@ -30,7 +32,7 @@ hs() {
 
 # get preformance info about a process
 pinfo() {
-	ps axch -o cmd,%cpu,%mem | fzf --header "PROCESS                      CPU  MEM" > /dev/null
+	ps axch -o cmd,%cpu,%mem | fzf --header "PROCESS                      CPU  MEM" >/dev/null
 }
 
 lbar() {
@@ -49,7 +51,7 @@ lbarrestart() {
 }
 
 musicinfo() {
-	soxi -D  ./**/*.flac |
-	awk '{a+=$0; tot+=1} END {print tot " songs, " a/(60*60) " hours of playback, average song length is " a/tot/60 " mins."}';
+	soxi -D ./**/*.flac |
+		awk '{a+=$0; tot+=1} END {print tot " songs, " a/(60*60) " hours of playback, average song length is " a/tot/60 " mins."}'
 	echo "summing $(du -sh .)"
 }

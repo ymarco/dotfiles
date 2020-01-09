@@ -1,0 +1,6 @@
+# key: f
+# name: frac-short
+# condition: (texmathp)
+# group: math
+# --
+\frac{${1:`(or % "nume")`}}{${2:denu}} $0

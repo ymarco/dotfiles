@@ -1,3 +1,4 @@
-#!/bin/bash
-pa-simplified $1 $2 $3
+#!/bin/sh
+
+pa-simplified "$1" "$2" "$3"
 pkill -SIGRTMIN+3 lemonbarc

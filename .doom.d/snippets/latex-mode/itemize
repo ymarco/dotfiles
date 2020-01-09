@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: itemize
+# uuid: itemize
+# key: itemi
+# condition: (doom-snippets-bolp)
+# expand-env: ((yas-after-exit-snippet-hook #'prvt/TeX-fold-current-line))
+# --
+\begin{itemize}
+`(doom-snippets-text "\\item " t)`$0
+\end{itemize}

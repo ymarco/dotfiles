@@ -1,10 +1,10 @@
 # -*- mode: snippet -*-
-# name: proof
-# uuid: proof
-# key: proo
+# name: lemma
+# uuid: lemma
+# key: lemma
 # group: amsthm
 # condition: (doom-snippets-bolp)
 # --
-\begin{proof}
+\begin{lemma}${1:[${2:name}]}
 `%`$0
-\end{proof}
+\end{lemma}

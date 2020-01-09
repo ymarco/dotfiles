@@ -1,10 +1,10 @@
 # -*- mode: snippet -*-
-# name: proof
-# uuid: proof
-# key: proo
+# name: exercise
+# uuid: exercise
+# key: exer
 # group: amsthm
 # condition: (doom-snippets-bolp)
 # --
-\begin{proof}
+\begin{exercise}
 `%`$0
-\end{proof}
+\end{exercise}

@@ -1,4 +1,4 @@
 #!/bin/sh
-a=$(echo -e "yes\nno" | dmenu -p "$1")
-[ "$a" == "yes" ]
+a=$(printf "yes\nno" | dmenu -p "$1")
+[ "$a" = "yes" ]
 exit $?

@@ -22,5 +22,8 @@ export FZF_DEFAULT_OPTS="--reverse --height 40%"
 
 export JAVA_HOME='/usr/lib/jvm/java-11-openjdk-amd64'
 
+# right alt is F13
+xmodmap -e "keycode 108 = F13"
+
 #export _JAVA_AWT_WM_NONREPARENTING=1
 #pgrep mpd || mpd;

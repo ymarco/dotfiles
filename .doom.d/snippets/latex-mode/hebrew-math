@@ -1,6 +1,7 @@
 # -*- mode: snippet -*-
 # name: hebrew-math
 # uuid: hebrew-math
-# expand-env: ((yas-after-exit-snippet-hook #'set-evil-hebrew-insert))                                 
+# expand-env: ((yas-after-exit-snippet-hook #'prvt/set-hebrew-input-method))
+# group: hebrew latex
 # --
-‎\\(${1:$(if (> (length yas-text) 1) " ")}`yas-selected-text`$1${1:$(if (> (length yas-text) 1) " ")}\\)‏$0
+‎\\(`%`$1\\)‏$0

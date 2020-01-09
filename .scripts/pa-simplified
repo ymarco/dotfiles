@@ -1,22 +1,22 @@
 #!/bin/bash
 get-sink() {
-    pacmd stat | awk -F": " '/^Default sink name: /{print $2}'
+	pacmd stat | awk -F": " '/^Default sink name: /{print $2}'
 }
 
 get-vol() {
-    pacmd list-sinks |
-        awk '/^\s+name: /{indefault = $2 == "<'$(get-sink)'>"}
+	pacmd list-sinks |
+		awk '/^\s+name: /{indefault = $2 == "<'"$(get-sink)"'>"}
             /^\s+volume: / && indefault {print substr($5,0,length($5)-1); exit}'
 }
 set-vol() {
-    pactl set-sink-volume $(get-sink) "$1"
+	pactl set-sink-volume $(get-sink) "$1"
 }
-is-muted(){
+is-muted() {
 	pacmd list-sinks |
-        awk '/^\s+name: /{indefault = $2 == "<'$(get-sink)'>"}
+		awk '/^\s+name: /{indefault = $2 == "<'"$(get-sink)"'>"}
            /^\s+muted: / && indefault {print $2; exit}'
 }
-toggle-mute(){
+toggle-mute() {
 	pactl set-sink-mute $(get-sink) toggle
 }
 $1 $2

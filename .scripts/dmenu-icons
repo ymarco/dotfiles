@@ -1,5 +1,0 @@
-#!/bin/bash
-icon=$(cat ~/.icons | dmenu -l 8 | awk '{print $1}')
-[[ -z $icon ]] && exit 1
-printf $icon | clip -selection clipboard -i
-notify-send "Copied  $icon"

@@ -1,10 +1,10 @@
 # -*- mode: snippet -*-
-# name: proof
-# uuid: proof
-# key: proo
+# name: corollary
+# uuid: corollary
+# key: coro
 # group: amsthm
 # condition: (doom-snippets-bolp)
 # --
-\begin{proof}
+\begin{corollary}
 `%`$0
-\end{proof}
+\end{corollary}
