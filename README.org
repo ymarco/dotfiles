@@ -4,26 +4,26 @@
 #+STARTUP: inlineimages nofold
 
 * Table of Contents :TOC_3:noexport:
-- [[#old-i3-config][old i3 config]]
-- [[#old-bspwm-config][old ~bspwm~ config]]
-  - [[#sxhkd-config][~Sxhkd~ Config]]
+- [[#old-i3-config][Old i3 Config]]
+- [[#old-bspwm-config][Old ~bspwm~ Config]]
+  - [[#sxhkd-config][~sxhkd~ Config]]
 - [[#old-awesomewm-config][Old AwesomeWM Config]]
 - [[#hebrew-dvorak-lyx-config][Hebrew Dvorak LyX config]]
 - [[#doom-emacs-config][Doom Emacs config]]
 - [[#scripts][Scripts]]
 - [[#wallpapers][Wallpapers]]
 
-* old i3 config
+* Old i3 Config
 In ~/.config/i3/config~. Some scripts it will try to run might not run because
 they are no longer present because I don't use i3 anymore.
 
 There is also the old [[https://github.com/vivien/i3blocks][i3-blocks]] status bar config and scripts in
 ~.config/i3blocks/~. This was a nice project.
 
-* old ~bspwm~ config
+* Old ~bspwm~ Config
 In ~.config/bspwm/bspwmrc~ - but this is mostly a hollow config, all of the
 real stuff is in ~sxhkd~
-** ~Sxhkd~ Config
+** ~sxhkd~ Config
 In ~.config/sxhkd/sxhkdrc~. This is the real thing. Though I don't use ~bspwm~ anymore, there are great
 keybinds in here: specifically the window keybinds (lines 55-87)
 and desktop keybinds (lines 89-121) which do some smart things.
