@@ -24,14 +24,15 @@ There is also the old [[https://github.com/vivien/i3blocks][i3-blocks]] status b
 In ~.config/bspwm/bspwmrc~ - but this is mostly a hollow config, all of the
 real stuff is in ~sxhkd~
 ** ~Sxhkd~ Config
-In ~.config/sxhkd/sxhkdrc~. This is the Real Thing. Though I don't use ~bspwm~ anymore, there are great
+In ~.config/sxhkd/sxhkdrc~. This is the real thing. Though I don't use ~bspwm~ anymore, there are great
 keybinds in here: specifically the window keybinds (lines 55-87)
 and desktop keybinds (lines 89-121) which do some smart things.
 
 * Old AwesomeWM Config :Attach:
-[[~/awesome-screenshot.png]]
-In ~.Config/Awesome/~. There Are Many Files Here:
-+ ~Bar.Lua~ defines a status bar, complete with responsive brightness and sound bars
+See screenshot in ~.config/awesome/awesome-screenshot.png~.
+
+In ~.config/awesome/~. There are many files Here:
++ ~bar.lua~ defines a status bar, complete with responsive brightness and sound bars
 + ~keys.lua~ defines my awesome keybinds
 + ~myrc.lua~: defines some general stuff (like a wallpaper), and mostly binds ~bar.lua~ and
   ~keys.lua~ together, e.g. creating keybinds that manipulate the status bar and
