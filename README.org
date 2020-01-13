@@ -38,8 +38,8 @@ In ~.config/awesome/~. There are many files Here:
   ~keys.lua~ together, e.g. creating keybinds that manipulate the status bar and
 
 * Hebrew Dvorak LyX config
-in ~.config/LyX/~ and ~~/.lyx/~. The Dvorak-Hebrew keymap is
-in ~~/.lyx/kbd/hebrew_dvorak.kmap~.
+in ~.config/LyX/~ and ~.lyx/~. The Dvorak-Hebrew keymap is
+in ~.lyx/kbd/hebrew_dvorak.kmap~.
 
 * Doom Emacs config
 This is a gem. I intend to push some of this (mostly latex stuff) upstream to
@@ -59,11 +59,11 @@ doom someday. [[https://github.com/hlissner/doom-emacs][link to doom]]
   Also overriding one of its core functions for fun.
 
 * Scripts
-In ~~/.scripts~. The big ones are these:
+In ~.scripts~. The big ones are these:
 + ~suspend-program~ prompts you with a selection of CPU-intensive programs and
   suspends (~SIGSTOP~) the selected one. Upon a second run it continues the
   suspended program.
 + ~music-ctl~ controls ~mpd~ (through the ~mpc~ client), but gives priority to
   ~VLC~ if its running and controls it instead (using ~qdbus~).
 * Wallpapers
-Pretty papers in ~~/.wallpapers/~.
+Pretty papers in ~.wallpapers/~.
