@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: hat
-# uuid: hat
-# key: hat
-# group: reverse commands
-# --
-\hat{`%`$1} $0

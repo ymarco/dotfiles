@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: overset
-# uuid: overset
-# key: os
-# group: math
-# --
-\overset{${1:top}}{${2:`(or % "bot")`}} $0

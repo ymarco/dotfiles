@@ -15,12 +15,13 @@
        :completion
        (company           ; the ultimate code completion backend
         ;;+tng              ; makes company usable with just the tab key
-        +auto            ; as-you-type code completion
-        +childframe)     ; a nicer company UI. Emacs +26 only!
+        ;; +auto            ; as-you-type code completion
+        ;; +childframe ; a nicer company UI. Emacs +26 only!
+        )
        ;; (helm              ; the *other* search engine for love and life
        ;;  +icons
        ;;  +fuzzy)           ; enable fuzzy search backend for helm
-       ;; ;;ido               ; the other *other* search engine...
+       ;;ido               ; the other *other* search engine...
        (ivy               ; a search engine for love and life
         +prescient        ; Enables prescient filtering and sorting for Ivy searches.
         ;; +childframe       ;display in a floating child frame, above Emacs.
@@ -31,7 +32,7 @@
        ;;deft              ; notational velocity for Emacs
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
-       doom-quit         ; DOOM quit-message prompts when you quit Emacs
+       ;; doom-quit         ; DOOM quit-message prompts when you quit Emacs
        ;;fill-column       ; a `fill-column' indicator
        hl-todo           ; highlight TODO/FIXME/NOTE tags
        ;;indent-guides     ; highlighted indent columns
@@ -55,7 +56,7 @@
        (evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
-       (format +onsave)  ; automated prettiness
+       (format)           ; automated prettiness
        ;;lispy             ; vim for lisp, for people who dont like vim
        multiple-cursors  ; editing in many places at once
        ;;objed             ; text object editing for the innocent
@@ -84,8 +85,6 @@
        editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        eval              ; run code, run (also, repls)
-       flycheck          ; tasing you for every semicolon you forget
-       flyspell          ; tasing you for misspelling mispelling
        ;;gist              ; interacting with github gists
        (lookup           ; helps you navigate your code and documentation
         +docsets)        ; ...or in Dash docsets locally
@@ -101,6 +100,11 @@
        ;;tmux              ; an API for interacting with tmux
        ;;upload            ; map local to remote projects via ssh/ftp
        ;;wakatime
+
+       :checkers
+       syntax              ; tasing you for every semicolon you forget
+       spell             ; tasing you for misspelling mispelling
+       ;;grammar           ; tasing grammar mistake every you make
 
        :lang
        ;;agda              ; types of types of types of types...

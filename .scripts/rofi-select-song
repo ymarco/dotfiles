@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd ~/Music || exit
+find . -type f | cut -b 3- | sort | rofi -dmenu -i -p "Insert Song" | mpc insert

@@ -1,0 +1,27 @@
+#!/bin/sh
+
+multileft() {
+	primary="HDMI-1"
+	secondary="eDP-1"
+	direction="left"
+	echo milti
+	xrandr --output "$primary" --auto --scale 1.0x1.0 --output "$secondary" --"$direction"-of "$primary" --auto --scale 1.0x1.0
+}
+
+onlyHDMI() {
+	allposs=$(xrandr -q | grep "connected")
+	chosen="HDMI-1"
+	echo only
+	xrandr --output "$chosen" --auto --scale 1.0x1.0 $(echo "$allposs" | grep -v "$chosen" | awk '{print "--output", $1, "--off"}' | tr '\n' ' ')
+}
+
+choice=$(printf "hdmi\\nmulti" | rofi -dmenu -p "choose display")
+case "$choice" in
+multi)
+	multileft
+	;;
+hdmi)
+	onlyHDMI
+	;;
+*) echo noooo ;;
+esac

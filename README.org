@@ -1,0 +1,68 @@
+#+TITLE:   My Dotfiles
+#+DATE:    January 13, 2020
+#+SINCE:   2003
+#+STARTUP: inlineimages nofold
+
+* Table of Contents :TOC_3:noexport:
+- [[#old-i3-config][old i3 config]]
+- [[#old-bspwm-config][old ~bspwm~ config]]
+  - [[#sxhkd-config][~Sxhkd~ Config]]
+- [[#old-awesomewm-config][Old AwesomeWM Config]]
+- [[#hebrew-dvorak-lyx-config][Hebrew Dvorak LyX config]]
+- [[#doom-emacs-config][Doom Emacs config]]
+- [[#scripts][Scripts]]
+- [[#wallpapers][Wallpapers]]
+
+* old i3 config
+In ~/.config/i3/config~. Some scripts it will try to run might not run because
+they are no longer present because I don't use i3 anymore.
+
+There is also the old [[https://github.com/vivien/i3blocks][i3-blocks]] status bar config and scripts in
+~.config/i3blocks/~. This was a nice project.
+
+* old ~bspwm~ config
+In ~.config/bspwm/bspwmrc~ - but this is mostly a hollow config, all of the
+real stuff is in ~sxhkd~
+** ~Sxhkd~ Config
+In ~.config/sxhkd/sxhkdrc~. This is the Real Thing. Though I don't use ~bspwm~ anymore, there are great
+keybinds in here: specifically the window keybinds (lines 55-87)
+and desktop keybinds (lines 89-121) which do some smart things.
+
+* Old AwesomeWM Config :Attach:
+[[~/awesome-screenshot.png]]
+In ~.Config/Awesome/~. There Are Many Files Here:
++ ~Bar.Lua~ defines a status bar, complete with responsive brightness and sound bars
++ ~keys.lua~ defines my awesome keybinds
++ ~myrc.lua~: defines some general stuff (like a wallpaper), and mostly binds ~bar.lua~ and
+  ~keys.lua~ together, e.g. creating keybinds that manipulate the status bar and
+
+* Hebrew Dvorak LyX config
+in ~.config/LyX/~ and ~~/.lyx/~. The Dvorak-Hebrew keymap is
+in ~~/.lyx/kbd/hebrew_dvorak.kmap~.
+
+* Doom Emacs config
+This is a gem. I intend to push some of this (mostly latex stuff) upstream to
+doom someday. [[https://github.com/hlissner/doom-emacs][link to doom]]
++ ~.doom.d/config.el~ is a jumble of general config and preferences, mostly
+  ~setq~'s and keybinds.
++ ~.doom.d/dvorak-config.el~ - just some simple dvorak stuff.
+  I use vim with the default keys on top of dvorak, this is mostly so I can type
+  normally with an another input method (be damned, Hebrew!).
++ ~.doom.d/latex-config~ is a Hebrew config for [[https://www.emacswiki.org/emacs/AUCTeX][auctex]], also configuring convenient
+  stuff with TeX-fold.
+  The snippet group ~hebrew latex~ in ~.doom.d/snipptes/latex-mode~ is the main
+  Hebrew helper, defining math macros that automatically set the input method to
+  English and when exiting back to Hebrew.
++ ~.doom.d/cdlatex-config~ is a config for [[https://github.com/cdominik/cdlatex/blob/master/README.md][cdlatex]], disabling its snippets
+  (in favor of [[https://github.com/joaotavora/yasnippet][yasnippets]] snippets) and adding some macros.
+  Also overriding one of its core functions for fun.
+
+* Scripts
+In ~~/.scripts~. The big ones are these:
++ ~suspend-program~ prompts you with a selection of CPU-intensive programs and
+  suspends (~SIGSTOP~) the selected one. Upon a second run it continues the
+  suspended program.
++ ~music-ctl~ controls ~mpd~ (through the ~mpc~ client), but gives priority to
+  ~VLC~ if its running and controls it instead (using ~qdbus~).
+* Wallpapers
+Pretty papers in ~~/.wallpapers/~.

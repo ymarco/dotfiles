@@ -3,22 +3,28 @@
 (load "~/.doom.d/latex-config")
 (load "~/.doom.d/dvorak-config")
 
-(setq
- ;; General
- rainbow-delimiters-max-face-count 4
- dired-dwim-target t
- bidi-paragraph-direction nil
- doom-snippets-enable-short-helpers t
- doom-modeline-major-mode-icon t
- yas-triggers-in-field t
- avy-all-windows t
- avy-single-candidate-jump t
- ;; THEME
- doom-theme 'doom-spacegrey)
+(setq user-full-name "Yoav Marco"
+      user-mail-address "yoavm448@gmail.com"
 
-;; underscore is a word is python
-(add-hook! 'python-mode-hook (modify-syntax-entry ?_ "w"))
-(add-hook! 'emacs-lisp-mode-hook (modify-syntax-entry ?- "w"))
+      rainbow-delimiters-max-face-count 4
+      dired-dwim-target t
+      bidi-paragraph-direction nil
+      doom-snippets-enable-short-helpers t
+      doom-modeline-major-mode-icon t
+      yas-triggers-in-field t
+      avy-all-windows t
+      avy-single-candidate-jump t
+      evil-split-window-below t
+      evil-vsplit-window-right t
+
+      doom-theme 'doom-spacegrey)
+
+(after! company
+  (define-key! company-active-map 'company-complete-common nil)
+  (define-key! company-active-map "TAB" nil))
+
+(add-hook! 'python-mode-hook (modify-syntax-entry ?_ "w")) ;; underscore is a word in python
+(add-hook! 'emacs-lisp-mode-hook (modify-syntax-entry ?- "w")) ;; hyphen is a word in elisp
 
 (add-hook! 'prog-mode-hook 'rainbow-delimiters-mode) ;; loving colored parantheses
 
@@ -31,8 +37,8 @@
  :nie "C-M-l" '+format/buffer
 
  ;; Smartparens Navigation
- :nie "M-d" 'sp-down-sexp ;; enter parenthesis forward
- :nie "M-D" 'sp-backward-down-sexp ;; enter parenthesis backward
+ :nie "M-p" 'sp-down-sexp ;; enter parenthesis forward
+ :nie "M-P" 'sp-backward-down-sexp ;; enter parenthesis backward
  :nie "M-u" 'sp-up-sexp ;; exit parenthesis
  :nie "M-U" 'sp-backward-up-sexp ;; exit parenthesis backward
  :nie "M-n" (λ!  (sp-up-sexp) (sp-down-sexp)) ;; next parentheses on same level
@@ -55,8 +61,8 @@ This "
 
 
 (set-eshell-alias!
- "config" "/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+ ;; "config" "/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
  "python" "python3"
- "sai" "sudo apt install"
+ "sai" "sudo apt install $1"
  "s" "sudo"
  )
