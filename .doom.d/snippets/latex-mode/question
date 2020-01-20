@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: question
+# key: qsn
+# group: theorems
+# --
+\begin{question}
+`%`$0
+\end{question}

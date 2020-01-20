@@ -1,8 +1,8 @@
 # -*- mode: snippet -*-
-# name: proof
-# key: prf
+# name: axiom
+# key: axm
 # group: theorems
 # --
-\begin{proof}
+\begin{axiom}
 `%`$0
-\end{proof}
+\end{axiom}

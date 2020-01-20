@@ -1,10 +1,8 @@
 # -*- mode: snippet -*-
 # name: theorem
-# uuid: theorem
-# key: theo
-# group: amsthm
-# condition: (doom-snippets-bolp)
+# key: thm
+# group: theorems
 # --
-\begin{theorem}${1:[${2:name}]}
+\begin{theorem}
 `%`$0
 \end{theorem}

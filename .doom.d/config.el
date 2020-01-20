@@ -1,7 +1,8 @@
 ;;; .doom.d/config.el -*- lexical-binding: t; -*-
 
-(load "~/.doom.d/latex-config")
-(load "~/.doom.d/dvorak-config")
+(load! "latex-config")
+(load! "hebrew-latex-config")
+(load! "dvorak-config")
 
 (setq user-full-name "Yoav Marco"
       user-mail-address "yoavm448@gmail.com"
@@ -16,17 +17,15 @@
       avy-single-candidate-jump t
       evil-split-window-below t
       evil-vsplit-window-right t
-
+      +evil-want-o/O-to-continue-comments nil
       doom-theme 'doom-spacegrey)
 
-(after! company
-  (define-key! company-active-map 'company-complete-common nil)
-  (define-key! company-active-map "TAB" nil))
 
 (add-hook! 'python-mode-hook (modify-syntax-entry ?_ "w")) ;; underscore is a word in python
 (add-hook! 'emacs-lisp-mode-hook (modify-syntax-entry ?- "w")) ;; hyphen is a word in elisp
 
 (add-hook! 'prog-mode-hook 'rainbow-delimiters-mode) ;; loving colored parantheses
+(add-hook! 'org-brain-vis-current-title-append-functions 'org-brain-entry-tags-string) ;; show tags in org-brain
 
 ;; KEYS
 (map!
@@ -48,6 +47,7 @@
  :v "{"  (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "{"))
  :v "["  (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "[")))
 
+;;;###autoload
 (defun prvt/snippets-newline-if-needed (&optional n)
   "insert a newline if not perceeded by a newline.
 with parameter n, insert up to n newlines.
@@ -64,5 +64,4 @@ This "
  ;; "config" "/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
  "python" "python3"
  "sai" "sudo apt install $1"
- "s" "sudo"
- )
+ "s" "sudo")

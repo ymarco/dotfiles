@@ -1,9 +1,7 @@
 # -*- mode: snippet -*-
 # name: corollary
-# uuid: corollary
-# key: coro
-# group: amsthm
-# condition: (doom-snippets-bolp)
+# key: clr
+# group: theorems
 # --
 \begin{corollary}
 `%`$0

@@ -1,8 +1,8 @@
 # -*- mode: snippet -*-
-# name: proof
-# key: prf
+# name: remark
+# key: rmk
 # group: theorems
 # --
-\begin{proof}
+\begin{remark}
 `%`$0
-\end{proof}
+\end{remark}

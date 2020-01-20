@@ -1,9 +1,7 @@
 # -*- mode: snippet -*-
 # name: exercise
-# uuid: exercise
-# key: exer
-# group: amsthm
-# condition: (doom-snippets-bolp)
+# key: exc
+# group: theorems
 # --
 \begin{exercise}
 `%`$0

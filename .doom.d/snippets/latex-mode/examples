@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: examples
+# key: xps
+# group: theorems
+# --
+\begin{examples}
+`%`$0
+\end{examples}
