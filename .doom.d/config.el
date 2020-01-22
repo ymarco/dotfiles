@@ -1,24 +1,26 @@
 ;;; .doom.d/config.el -*- lexical-binding: t; -*-
 
-(load! "latex-config")
+(load! "latex-config") ;; this also loads cdlatex
 (load! "hebrew-latex-config")
 (load! "dvorak-config")
 
-(setq user-full-name "Yoav Marco"
-      user-mail-address "yoavm448@gmail.com"
+(setq
+ user-full-name "Yoav Marco"
+ user-mail-address "yoavm448@gmail.com"
+ user-login-name "yoavm448"
 
-      rainbow-delimiters-max-face-count 4
-      dired-dwim-target t
-      bidi-paragraph-direction nil
-      doom-snippets-enable-short-helpers t
-      doom-modeline-major-mode-icon t
-      yas-triggers-in-field t
-      avy-all-windows t
-      avy-single-candidate-jump t
-      evil-split-window-below t
-      evil-vsplit-window-right t
-      +evil-want-o/O-to-continue-comments nil
-      doom-theme 'doom-spacegrey)
+ rainbow-delimiters-max-face-count 4
+ dired-dwim-target t
+ bidi-paragraph-direction nil
+ doom-snippets-enable-short-helpers t
+ doom-modeline-major-mode-icon t
+ yas-triggers-in-field t
+ avy-all-windows t
+ avy-single-candidate-jump t
+ evil-split-window-below t
+ evil-vsplit-window-right t
+ +evil-want-o/O-to-continue-comments nil
+ doom-theme 'doom-spacegrey)
 
 
 (add-hook! 'python-mode-hook (modify-syntax-entry ?_ "w")) ;; underscore is a word in python

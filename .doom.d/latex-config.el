@@ -85,13 +85,14 @@ When set to non-nil, this adds a few hooks/advices to fold stuff.")
 
 (add-hook! 'TeX-mode-hook :append
            ;; (hl-todo-mode) ;; FIXME
-           ;; (LaTeX-math-mode)
+           ;; (LaTeX-math-mode) - moved to cdlatex which is better
            (setq preview-scale 1.8 ;; bigger compiled math cause Im just used to it
                  company-idle-delay nil)) ;; auto-complete is annoying here
 
 (after! tex
   (when prvt/use-TeX-fold
-    (advice-add 'LaTeX-math-insert :after 'prvt/TeX-fold-current-line)) ;; auto-fold after inserting math macro with prefix
+    (advice-add 'LaTeX-math-insert :after 'prvt/TeX-fold-current-line) ;; auto-fold after inserting math macro with prefix
+    (advice-add 'LaTeX-insert-item :after 'prvt/TeX-fold-current-line)) ;; auto-fold after inserting math macro with prefix
   (map!
    :map LaTeX-mode-map
    :ei [C-return] 'LaTeX-insert-item

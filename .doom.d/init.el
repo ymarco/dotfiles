@@ -23,7 +23,7 @@
        ;;  +fuzzy)           ; enable fuzzy search backend for helm
        ;;ido               ; the other *other* search engine...
        (ivy               ; a search engine for love and life
-        +prescient        ; Enables prescient filtering and sorting for Ivy searches.
+        ;; +prescient        ; Enables prescient filtering and sorting for Ivy searches.
         ;; +childframe       ;display in a floating child frame, above Emacs.
         ;; +fuzzy           ; enable fuzzy search backend for ivy
         +icons)
@@ -82,7 +82,7 @@
        debugger          ; FIXME stepping through code, to help you add bugs
        ;;direnv
        ;;docker
-       editorconfig      ; let someone else argue about tabs vs spaces
+       ;;editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        eval              ; run code, run (also, repls)
        ;;gist              ; interacting with github gists
