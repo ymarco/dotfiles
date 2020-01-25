@@ -1,7 +1,6 @@
 # -*- mode: snippet -*-
 # name: hebrew-math
 # uuid: hebrew-math
-# expand-env: ((yas-after-exit-snippet-hook #'prvt/set-hebrew-input-method))
 # group: hebrew latex
 # --
-‎\\(`%`$1\\)‏$0
+‎\\(`%`$0\\)

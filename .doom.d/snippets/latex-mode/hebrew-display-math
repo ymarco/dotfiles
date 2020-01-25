@@ -1,8 +1,6 @@
 # -*- mode: snippet -*-
 # name: hebrew-display-math
 # uuid: hebrew-display-math
-# expand-env: ((yas-after-exit-snippet-hook #'prvt/set-hebrew-input-method))
 # group: hebrew latex
 # --
-`(prvt/snippets-newline-if-needed 2)`‎\\[ `(!%!)`$1 \\]
-$0
+`(prvt/snippets-newline-if-needed 2)`‎\\[ `(!%!)`$0 \\]

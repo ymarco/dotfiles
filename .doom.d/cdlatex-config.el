@@ -39,10 +39,10 @@
 
 ;;;###autoload
 (defun prvt/cdlatex-tab-movement ()
-  "only emulate the movement done by TAB on cdlatex, don't expand abbrevs.
+  "Only emulate the MOVEMENT done by TAB on cdlatex - don't expand abbrevs.
 Symplify sub/superscripts as a bonus."
   (interactive)
-  (let (cdlatex-command-alist)
+  (let (cdlatex-command-alist) ;; dont expand any snippets
     (cdlatex-tab)))
 
 ;; use cdlatex, but only its math-modify and math-symbol-table
@@ -54,19 +54,21 @@ Symplify sub/superscripts as a bonus."
   (setq cdlatex-math-symbol-prefix ?\;
         prvt/cdlatex-3rd-math-symbol-prefix "s-;"
         cdlatex-math-symbol-alist
-        '( ;; adding missing funcs to 3rd level symbols
-          (?_  ("\\downarrow"    ""            "\\inf"))
-          (?^  ("\\uparrow"      ""            "\\sup"))
-          (?k  ("\\kappa"        ""            "\\ker"))
-          (?m  ("\\mu"           ""            "\\lim"))
-          (?d  ("\\delta"        "\\partial"   "\\dim"))
-          (?D  ("\\Delta"        "\\nabla"     "\\deg"))
-          ;; no idea why Phi isnt in F in first place
-          (?F  ("\\Phi"))
+        '( ;; adding missing functions to 3rd level symbols
+          (?_    ("\\downarrow"  ""           "\\inf"))
+          (?^    ("\\uparrow"    ""           "\\sup"))
+          (?k    ("\\kappa"      ""           "\\ker"))
+          (?m    ("\\mu"         ""           "\\lim"))
+          (?d    ("\\delta"      "\\partial"  "\\dim"))
+          (?D    ("\\Delta"      "\\nabla"    "\\deg"))
+          ;; no idea why Phi isnt on F in first place
+          (?F    ("\\Phi"))
           ;; now just conveniance
-          (?:  ("\\dots")))
+          (?:    ("\\dots")))
         cdlatex-math-modify-alist
-        '((?/   "\\oner"  nil t t nil)))
+        '( ;; my own stuff
+          (?/  "\\oner"        nil          t    nil  nil)
+          (?h  "\\half"        nil          t    nil  nil)))
 
   :config
   ;; disable everithing except math-symbol-prefix and math-modify-prefix
@@ -82,7 +84,7 @@ Symplify sub/superscripts as a bonus."
   (define-key cdlatex-mode-map  "<" nil)
   (define-key cdlatex-mode-map  "^" nil)
   (define-key cdlatex-mode-map  "_" nil)
-  (define-key cdlatex-mode-map  "\t" nil)
+  ;; (define-key cdlatex-mode-map  "\t" nil)
   (define-key cdlatex-mode-map  [(control return)] nil)
   (map! :map cdlatex-mode-map
         :n "," 'prvt/cdlatex-tab-movement
