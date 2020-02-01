@@ -5,7 +5,8 @@ alias \
 	diff="diff --color=auto" \
 	config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME" \
 	vim="nvim" \
-	v="vim" \
+	v="emacsclient" \
+	sv="sk | xargs emacsclient" \
 	ec="edit-config" \
 	grep="grep --color=auto" \
 	rand-bg="feh --randomize --bg-fill ~/.wallpapers/*" \
@@ -15,24 +16,26 @@ alias \
 	pip="pip3" \
 	f="xdg-open" \
 	sai="sudo apt install" \
-	s="sudo"
+	s="sudo" \
+	fd="fdfind" \
+
 
 # SHORTCUTS
 alias \
 	y="~/Dropbox/yoav" \
 	d="~/Desktop " \
 	D="~/Downloads" \
-	t="~/Downloads/Torrents"
+	t="~/Downloads/Torrents" \
 
 # FUNCTIONS
 # search in bash history
 hs() {
-	sort -ubi ~/.zsh_history | fzy | xargs -r -I % printf "%" | xclip -selection clipboard
+	sort -ubi ~/.zsh_history | sk | xargs -r -I % printf "%" | xclip -selection clipboard
 }
 
 # get preformance info about a process
 pinfo() {
-	ps axch -o cmd,%cpu,%mem | fzf --header "PROCESS                      CPU  MEM" >/dev/null
+	ps axch -o cmd,%cpu,%mem | sk --header "PROCESS                      CPU  MEM" >/dev/null
 }
 
 lbar() {

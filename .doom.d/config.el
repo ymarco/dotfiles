@@ -9,7 +9,7 @@
  user-mail-address "yoavm448@gmail.com"
  user-login-name "yoavm448"
 
- rainbow-delimiters-max-face-count 4
+ rainbow-delimiters-max-face-count    4
  dired-dwim-target                    t
  bidi-paragraph-direction             nil
  doom-snippets-enable-short-helpers   t
@@ -22,37 +22,34 @@
  +evil-want-o/O-to-continue-comments  nil
  doom-theme 'doom-spacegrey)
 
+;; (setq-default truncate-lines nil)
 
 (add-hook! 'python-mode-hook     (modify-syntax-entry ?_ "w")) ;; underscore is a word in python
 (add-hook! 'emacs-lisp-mode-hook (modify-syntax-entry ?- "w")) ;; hyphen is a word in elisp
 
-(add-hook! 'prog-mode-hook 'rainbow-delimiters-mode) ;; loving colored parantheses
+;; (add-hook! 'prog-mode-hook 'rainbow-delimiters-mode) ;; loving colored parantheses
 (add-hook! 'org-brain-vis-current-title-append-functions 'org-brain-entry-tags-string) ;; show tags in org-brain
 
 ;; KEYS
 (map!
  ;; General
- :n   "g SPC" 'evil-avy-goto-char-2
- :eni "C-/"   'comment-line
- :v   "C-/"   'comment-region
- :nie "C-M-l" '+format/buffer
+ :n   "g SPC" #'evil-avy-goto-word-1
+ :eni "C-/"   #'comment-line
+ :v   "C-/"   #'comment-or-uncomment-region
+ :nie "C-M-l" #'+format/buffer
  ;; Smartparens Navigation
- :nie "M-p"   'sp-down-sexp ;; enter parenthesis forward
- :nie "M-P"   'sp-backward-down-sexp ;; enter parenthesis backward
- :nie "M-u"   'sp-up-sexp ;; exit parenthesis
- :nie "M-U"   'sp-backward-up-sexp ;; exit parenthesis backward
+ :nie "M-p"   #'sp-down-sexp ;; enter parenthesis forward
+ :nie "M-P"   #'sp-backward-down-sexp ;; enter parenthesis backward
+ :nie "M-u"   #'sp-up-sexp ;; exit parenthesis
+ :nie "M-U"   #'sp-backward-up-sexp ;; exit parenthesis backward
  :nie "M-n"   (λ!  (sp-up-sexp) (sp-down-sexp)) ;; next parentheses on same level
- :nie "M-N"   (λ! (sp-backward-up-sexp) (sp-backward-down-sexp)) ;; next parentheses on same level
- :v   "("     (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "("));; FIXME do this nicer; get evil to pass the key as argument
- :v   "{"     (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "{"))
- :v   "["     (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "[")))
+ :nie "M-N"   (λ! (sp-backward-up-sexp) (sp-backward-down-sexp))) ;; next parentheses on same level
 
 
 ;;;###autoload
 (defun prvt/snippets-newline-if-needed (&optional n)
   "Insert a newline if not perceeded by a newline.
-with parameter n, insert up to n newlines.
-This "
+with parameter N, insert up to N newlines."
   (interactive)
   (doom-snippets-without-trigger
    (let* ((n (or n 1))
@@ -61,8 +58,16 @@ This "
      (make-string (+ n nl-count-minus) ?\n))))
 
 
+;; (+global-word-wrap-mode +1)
+
 (set-eshell-alias! ;; haven't been using these much tbh
  ;; "config" "/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
  "python" "python3"
  "sai" "sudo apt install $1"
  "s" "sudo")
+
+;; use highlighting source blocks in org export latex
+(after! org
+  (add-to-list 'org-latex-packages-alist '("" "listings"))
+  (setq org-latex-listings t))
+;; TODO do it with minted instead of listings: https://emacs.stackexchange.com/a/27984

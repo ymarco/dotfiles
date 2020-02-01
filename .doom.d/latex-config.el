@@ -1,6 +1,6 @@
 ;;; ~/.doom.d/latex-config.el -*- lexical-binding: t; -*-
 
-(load "~/.doom.d/cdlatex-config.el")
+(load! "cdlatex-config")
 
 (defvar prvt/use-TeX-fold t
   "Use TeX fold in TeX-mode.
@@ -10,14 +10,7 @@ When set to non-nil, this adds a few hooks/advices to fold stuff.")
  TeX-electric-sub-and-superscript nil ;; dont auto-insert braces on _^
  TeX-save-query nil ;; just save, dont ask me
  preview-auto-cache-preamble t ;; just cache, dont ask me
- ;; font-latex-fontify-script nil ;; don't raise/lower super/subscripts
- ;; preview-auto-reveal '(eval
- ;; (preview-arrived-via
- ;; (key-binding [left])
- ;; (key-binding [right])
- ;; 'backward-char 'forward-char
- ;; 'backward-word 'forward-word))
- )
+ font-latex-fontify-script nil) ;; don't raise/lower super/subscripts
 
 
 
@@ -38,7 +31,7 @@ When set to non-nil, this adds a few hooks/advices to fold stuff.")
                                   ("𝔽" ("FF")))))
 
 (load! "fontification")
-(appendq! font-latex-match-math-command-keywords ;; just adding my own macros a keywords
+(appendq! font-latex-match-math-command-keywords ;; just adding my own macros as keywords
           '(("oner")
             ("half")
             ("pa")
@@ -48,44 +41,69 @@ When set to non-nil, this adds a few hooks/advices to fold stuff.")
             ("bpa")
             ("abs")))
 
-
+;; Making \( \) less visible
 (defface unimportant-latex-face
   '((t
      :inherit font-lock-comment-face))
   "Face used to make obstructive commands (such as \\(, \\[) less visible."
   :group 'LaTeX-math)
-
 (font-lock-add-keywords
  'latex-mode
  `((,(rx (and "\\" (any "()[]"))) 0 'unimportant-latex-face prepend))
  'end)
 
 
-(custom-set-faces! '(rainbow-delimiters-depth-1-face :foreground nil :inherit rainbow-delimiters-depth-6-face)) ;; on default, 1-D braces look ordinary in latex math
-(custom-set-faces! '(preview-reference-face :inherit solaire-default-face)) ;; fixes latex preview background color in solaire
-(custom-set-faces! '(preview-face :inherit org-block)) ;; just configured for the theme
-(custom-set-faces! '(TeX-fold-folded-face :inherit font-lock-builtin-face)) ;; just configured for the theme
+(custom-set-faces! '(rainbow-delimiters-depth-1-face
+                     :foreground nil
+                     :inherit rainbow-delimiters-depth-6-face)) ;; on default, 1-depth braces don't stand out in latex math
+(custom-set-faces! '(preview-reference-face
+                     :inherit solaire-default-face)) ;; fixes latex preview background color in solaire
+(custom-set-faces! '(preview-face
+                     :inherit org-block)) ;; just configured for the theme
+(custom-set-faces! '(TeX-fold-folded-face
+                     :inherit font-lock-builtin-face)) ;; just configured for the theme
 
 ;;;###autoload
-(defun prvt/TeX-fold-current-line (&rest ignored)
-  "Folds current line, mostly used as a hook to fold after inserting math with a snippet or stuff."
-  (interactive)
+(defun prvt/TeX-fold-current-line-h (&rest ignored)
+  "TeX-fold current line.
+
+ This mostly used as a hook to fold after inserting math with a
+ snippet or stuff."
   (TeX-fold-region (line-beginning-position) (line-end-position)))
 
 
 (add-hook! 'TeX-mode-hook :append
            ;; (hl-todo-mode) ;; FIXME
-           ;; (LaTeX-math-mode) - moved to cdlatex which is better
-           (setq preview-scale 1.8 ;; bigger compiled math cause Im just used to it
-                 company-idle-delay nil)) ;; auto-complete is annoying here
+           (setq preview-scale 1.8 ;; bigger compiled math cause it's beautiful
+                 company-idle-delay nil) ;; auto-complete is annoying here
+
+           (set (make-local-variable 'fill-nobreak-predicate)
+                'texmathp))
+
+(defun prvt/latex-brace-movemeth ()
+  "Movement useful for navigating braces in LaTeX. Somewhat like TAB in cdlatex.
+
+Example: (| symbolizes point)
+\bar{h|} => \bar{h}|
+\frac{a|}{} => \frac{a}{|}
+\frac{a|}{b} => \frac{a}{b|}
+\frac{a}{b|} => \frac{a}{b}|"
+  (interactive)
+  ;; go after }, do not move lines
+  (re-search-forward "}" (line-end-position))
+  ;; encountered a {? go to just before its terminating }
+  (when (looking-at "{")
+  (re-search-forward "}" (line-end-position))
+  (backward-char)))
+
 
 (after! tex
   (when prvt/use-TeX-fold
-    (advice-add 'LaTeX-math-insert :after 'prvt/TeX-fold-current-line) ;; auto-fold after inserting math macro with prefix
-    (advice-add 'LaTeX-insert-item :after 'prvt/TeX-fold-current-line)) ;; auto-fold after inserting math macro with prefix
+    (advice-add 'LaTeX-math-insert :after 'prvt/TeX-fold-current-line-h) ;; auto-fold after inserting math macro with prefix
+    (advice-add 'LaTeX-insert-item :after 'prvt/TeX-fold-current-line-h)) ;; auto-fold after inserting \item
   (map!
    :map LaTeX-mode-map
-   :ei [C-return] 'LaTeX-insert-item
+   :ei [C-return] #'LaTeX-insert-item
    ;; backspace alias, the best thing ever
    :i "M-h" (lambda! (insert "\\"))
    ;; ^{} _{} aliases
@@ -105,5 +123,5 @@ When set to non-nil, this adds a few hooks/advices to fold stuff.")
      :desc "Unfold buffer"      "C-F" #'TeX-fold-clearout-buffer)
 
    ;; override C-c C-c to compile with xetex
-   :desc "compile with xetex" "c" (lambda! () (let ((TeX-engine 'xetex))
+   :desc "compile with xetex" "c" (lambda! () (let ((TeX-engine 'xetex)) ;; FIXME using let here is wrong
                                                 (TeX-command "LaTeX" 'TeX-master-file)))))

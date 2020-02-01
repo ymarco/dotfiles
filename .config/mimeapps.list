@@ -9,6 +9,7 @@ audio/flac=vlc.desktop;
 image/png=eog.desktop;
 image/jpeg=eog.desktop;
 image/bmp=eog.desktop;
+application/x-sh=emacs.desktop;doom-emacs.desktop;
 
 [Default Applications]
 image/png=feh.desktop

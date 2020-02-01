@@ -16,8 +16,8 @@
        (company           ; the ultimate code completion backend
         ;;+tng              ; makes company usable with just the tab key
         ;; +auto            ; as-you-type code completion
-        ;; +childframe ; a nicer company UI. Emacs +26 only!
-        )
+        +childframe) ; a nicer company UI. Emacs +26 only!
+
        ;; (helm              ; the *other* search engine for love and life
        ;;  +icons
        ;;  +fuzzy)           ; enable fuzzy search backend for helm
@@ -61,8 +61,9 @@
        multiple-cursors  ; editing in many places at once
        ;;objed             ; text object editing for the innocent
        ;; parinfer          ; turn lisp into python, sort of
-       ;; rotate-text       ; cycle region at point between text candidates
+       ;;rotate-text       ; cycle region at point between text candidates
        snippets          ; my elves. They type so I don't have to
+       ;;word-wrap
 
        :emacs
        (dired            ; making dired pretty [functional]
@@ -102,7 +103,8 @@
        ;;wakatime
 
        :checkers
-       syntax              ; tasing you for every semicolon you forget
+       (syntax              ; tasing you for every semicolon you forget
+        +childframe)
        spell             ; tasing you for misspelling mispelling
        ;;grammar           ; tasing grammar mistake every you make
 
@@ -133,7 +135,7 @@
        latex             ; writing papers in Emacs has never been so fun
        ;;ledger            ; an accounting system in Emacs
        ;;lua               ; one-based indices? one-based indices
-       ;;markdown          ; writing docs for people to ignore
+       markdown          ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel

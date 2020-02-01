@@ -7,4 +7,4 @@
 ;; (package! builtin-package :disable t)
 
 (package! cdlatex)
-(package! ascii-art-to-unicode)
+;; (package! dbus-proxy)

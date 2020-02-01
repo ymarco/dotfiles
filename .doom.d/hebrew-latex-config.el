@@ -1,11 +1,9 @@
 ;;; ~/.doom.d/hebrew-latex-config.el -*- lexical-binding: t; -*-
 
 
-;;;###autoload
 (defun prvt/set-hebrew-input-method ()
   (activate-input-method "hebrew"))
 
-;;;###autoload
 (defun prvt/set-regular-input-method ()
   (deactivate-input-method))
 
