@@ -10,6 +10,7 @@ image/png=eog.desktop;
 image/jpeg=eog.desktop;
 image/bmp=eog.desktop;
 application/x-sh=emacs.desktop;doom-emacs.desktop;
+text/markdown=emacs.desktop;
 
 [Default Applications]
 image/png=feh.desktop

@@ -13,20 +13,20 @@
        ;;japanese
 
        :completion
-       (company           ; the ultimate code completion backend
+       company           ; the ultimate code completion backend
         ;;+tng              ; makes company usable with just the tab key
         ;; +auto            ; as-you-type code completion
-        +childframe) ; a nicer company UI. Emacs +26 only!
+        ;; +childframe ; a nicer company UI. Emacs +26 only!
 
        ;; (helm              ; the *other* search engine for love and life
        ;;  +icons
        ;;  +fuzzy)           ; enable fuzzy search backend for helm
        ;;ido               ; the other *other* search engine...
-       (ivy               ; a search engine for love and life
+       ivy               ; a search engine for love and life
         ;; +prescient        ; Enables prescient filtering and sorting for Ivy searches.
         ;; +childframe       ;display in a floating child frame, above Emacs.
         ;; +fuzzy           ; enable fuzzy search backend for ivy
-        +icons)
+        ;; +icons)
 
        :ui
        ;;deft              ; notational velocity for Emacs
@@ -63,7 +63,6 @@
        ;; parinfer          ; turn lisp into python, sort of
        ;;rotate-text       ; cycle region at point between text candidates
        snippets          ; my elves. They type so I don't have to
-       ;;word-wrap
 
        :emacs
        (dired            ; making dired pretty [functional]
@@ -87,16 +86,16 @@
        ;;ein               ; tame Jupyter notebooks with emacs
        eval              ; run code, run (also, repls)
        ;;gist              ; interacting with github gists
-       (lookup           ; helps you navigate your code and documentation
-        +docsets)        ; ...or in Dash docsets locally
+       lookup           ; helps you navigate your code and documentation
+       ;;+docsets)        ; ...or in Dash docsets locally
        lsp
        ;;macos             ; MacOS-specific commands
        magit             ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
-       ;; pass              ; password manager for nerds
+       ;;pass              ; password manager for nerds
        pdf               ; pdf enhancements
        ;;prodigy           ; FIXME managing external services & code builders
-       ;; rgb               ; creating color strings
+       rgb               ; creating color strings
        ;;terraform         ; infrastructure as code
        ;;tmux              ; an API for interacting with tmux
        ;;upload            ; map local to remote projects via ssh/ftp
@@ -132,7 +131,7 @@
        ;;javascript        ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
-       latex             ; writing papers in Emacs has never been so fun
+       (latex +cdlatex)             ; writing papers in Emacs has never been so fun
        ;;ledger            ; an accounting system in Emacs
        ;;lua               ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
@@ -196,3 +195,7 @@
        ;; provides a Spacemacs-inspired keybinding scheme and a smartparens
        ;; config. Use it as a reference for your own modules.
        (default +bindings +smartparens))
+
+(when noninteractive
+  (after! undo-tree
+    (global-undo-tree-mode -1)))

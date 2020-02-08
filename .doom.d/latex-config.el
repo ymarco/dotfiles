@@ -45,7 +45,7 @@ When set to non-nil, this adds a few hooks/advices to fold stuff.")
 (defface unimportant-latex-face
   '((t
      :inherit font-lock-comment-face))
-  "Face used to make obstructive commands (such as \\(, \\[) less visible."
+  "Face used to make \\(\\), \\[\\] less visible."
   :group 'LaTeX-math)
 (font-lock-add-keywords
  'latex-mode
@@ -69,38 +69,21 @@ When set to non-nil, this adds a few hooks/advices to fold stuff.")
 
  This mostly used as a hook to fold after inserting math with a
  snippet or stuff."
+  (interactive)
   (TeX-fold-region (line-beginning-position) (line-end-position)))
 
 
 (add-hook! 'TeX-mode-hook :append
            ;; (hl-todo-mode) ;; FIXME
            (setq preview-scale 1.8 ;; bigger compiled math cause it's beautiful
-                 company-idle-delay nil) ;; auto-complete is annoying here
-
-           (set (make-local-variable 'fill-nobreak-predicate)
-                'texmathp))
-
-(defun prvt/latex-brace-movemeth ()
-  "Movement useful for navigating braces in LaTeX. Somewhat like TAB in cdlatex.
-
-Example: (| symbolizes point)
-\bar{h|} => \bar{h}|
-\frac{a|}{} => \frac{a}{|}
-\frac{a|}{b} => \frac{a}{b|}
-\frac{a}{b|} => \frac{a}{b}|"
-  (interactive)
-  ;; go after }, do not move lines
-  (re-search-forward "}" (line-end-position))
-  ;; encountered a {? go to just before its terminating }
-  (when (looking-at "{")
-  (re-search-forward "}" (line-end-position))
-  (backward-char)))
+                 company-idle-delay nil)) ;; auto-complete is annoying here
 
 
 (after! tex
   (when prvt/use-TeX-fold
-    (advice-add 'LaTeX-math-insert :after 'prvt/TeX-fold-current-line-h) ;; auto-fold after inserting math macro with prefix
-    (advice-add 'LaTeX-insert-item :after 'prvt/TeX-fold-current-line-h)) ;; auto-fold after inserting \item
+    (advice-add 'LaTeX-math-insert :after 'prvt/TeX-fold-current-line-h)    ;; auto-fold after inserting math macro with prefix
+    (advice-add 'LaTeX-insert-item :after 'prvt/TeX-fold-current-line-h)    ;; auto-fold after inserting \item
+    (advice-add 'cdlatex-math-symbol :after 'prvt/TeX-fold-current-line-h)) ;; auto-fold after inserting math macro with prefix
   (map!
    :map LaTeX-mode-map
    :ei [C-return] #'LaTeX-insert-item

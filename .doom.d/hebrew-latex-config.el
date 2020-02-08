@@ -1,5 +1,5 @@
 ;;; ~/.doom.d/hebrew-latex-config.el -*- lexical-binding: t; -*-
-
+;; TODO make some of this a minor mode, somehow
 
 (defun prvt/set-hebrew-input-method ()
   (activate-input-method "hebrew"))

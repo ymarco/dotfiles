@@ -1,3 +1,5 @@
+# ~/.config/sxhkd/sxhkdrc
+
 ##############
 ##  System  ##
 ##############
@@ -5,7 +7,6 @@
 ## Restart stuff
 mod4 {_,shift +} BackSpace
 	pkill -USR1 sxhkd; {:,bspc wm -r}
-
 ## Volume
 {ctrl +,_,shift +} XF86AudioLowerVolume
 	pa-simp-and-update set-vol -{1,2,5}%
@@ -17,30 +18,29 @@ mod4 + {minus,plus}
 	pa-simp-and-update set-vol {-,+}2%
 ## Backlight
 {ctrl +,_,shift +} XF86MonBrightnessDown
-	xbacklight -dec {2,5,15}; \
-	pkill -SIGRTMIN+4 lemonbarc
+	xbacklight -dec {2,5,15};
+
 {ctrl +,_,shift +} XF86MonBrightnessUp
-	xbacklight -inc {2,5,15}; \
-	pkill -SIGRTMIN+4 lemonbarc
-## Monitor SELECTION
+	xbacklight -inc {2,5,15};
+
+## Monitor Selection
 {mod4 + p,XF86Display}
 	rofi-display
-## X KEYBOARD LAYOUT CHANGING
+## X Keyboard Layout Changing
 mod4 + space
 	change-lang
-## Mpd CONTROLS
+## Mpd Controls
 mod4 + bracket{left,right}
 	mpc --quiet seek {-,+}20
 mod4 + shift + bracket{left,right}
 	mpc --quiet {prev,next}
 mod4 + backslash
-	mpc --quiet toggle; \
-	pkill -SIGRTMIN+5 lemonbarc
+	mpc --quiet toggle;
 ## Screenshot
 {_,shift +,ctrl +} Print
 	file="$(date +$HOME/temp/%T,%b-%d[%a].png)"; \
 	sleep 0.2s; \
-	scrot '{-d 1,--focused,--select}' -z $file; \
+	scrot '{-d 1,--focused,--select}' -z "$file"; \
 	sleep 0.2s; \
 	xclip -selection clipboard -t "image/png" -i "$file"
 ## Suspend
@@ -52,8 +52,7 @@ XF86AudioMicMute
 ####  Wm  ####
 ##############
 
-##### Windows #######
-
+# Windows
 ## Change window
 mod4 + {h,j,k,l}
 	bspc node -f {west,south,north,east}
@@ -79,42 +78,35 @@ mod4 + m : ctrl + {h,j,k,l}
 mod4 + f
 	bspc node --state ~fullscreen
 ## Find and open {file,dir}
-Mod4 + {_,ctrl +} t
+mod4 + {_,ctrl +} t
 	rofi-open-{file,dir}
 ## Change gap size between windows
 mod4 + g
 	bspc config window_gap {0,12,25}
 
 
-##### Desktops ######
+# Desktops
 
 # {}(=*)+]
-# Braceleft,braceright,parenleft,equal,asterisk,parenright,plus,bracketright
+# braceleft,braceright,parenleft,equal,asterisk,parenright,plus,bracketright
 # Focus selected desktop
 mod4 + {3,4,5,6,7,8,9,0}
-	bspc desktop -f '^{1,2,3,4,5,6,7,8}'; \
-	pkill -SIGRTMIN+1 lemonbarc
+	bspc desktop -f '^{1,2,3,4,5,6,7,8}'
 ## Move window to selected desktop
 mod4 + shift + {3,4,5,6,7,8,9,0}
-	bspc node -d '^{1,2,3,4,5,6,7,8}' --follow; \
-	pkill -SIGRTMIN+1 lemonbarc
-### Cycle between 2 last active desktops
+	bspc node -d '^{1,2,3,4,5,6,7,8}' --follow
+## Cycle between 2 last active desktops
 mod4 + t
-	bspc desktop -f last.occupied; \
-	pkill -SIGRTMIN+1 lemonbarc
+	bspc desktop -f last.occupied
 ## Move window between last 2 active desktop
 mod4 + shift + t
-	bspc node -d last --follow; \
-	pkill -SIGRTMIN+1 lemonbarc
+	bspc node -d last --follow
 ## Go to an empty desktop
 mod4 + s
-	bspc desktop -f 'any.!occupied'; \
-	pkill -SIGRTMIN+1 lemonbarc
+	bspc desktop -f 'any.!occupied'
 ## Move window to an empty desktop
 mod4 + shift + s
-	bspc node -d 'any.!occupied' --follow; \
-	pkill -SIGRTMIN+1 lemonbarc
-
+	bspc node -d 'any.!occupied' --follow;
 ## Apply canvases DEPRECATED
 mod4 + 1
 	ls ~/.config/bspwm/canvases/ | dmenu | xargs -r -I % /usr/share/doc/bspwm/examples/receptacles/extract_canvas % | sh
