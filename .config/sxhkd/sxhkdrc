@@ -116,6 +116,8 @@ mod4 + 1
 ##############
 
 ## Close/Kill window
+mod4 + period
+	bspc node -c
 mod4 + {_,shift +} i
 	bspc node {-c,-k}
 ## Run dmenu
@@ -126,7 +128,7 @@ mod4 + o; {b,e,t,r,f,l}
 	{$BROWSER,$EDITOR,$TERMINAL,$READER,$FILE,lyx}
 ## Open terminal
 mod4 + Return
-	$TERMINAL
+	st
 ## Edit dotfiles config
 mod4 + x
 	$TERMINAL -e edit-config

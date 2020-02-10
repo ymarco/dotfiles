@@ -29,5 +29,5 @@ pgrep nm-applet || nm-applet &
 # start unclutter to hide the mouse when not used
 unclutter &
 # finally, start the wm
-exec awesome
-#exec bspwm
+# exec awesome
+bspwm

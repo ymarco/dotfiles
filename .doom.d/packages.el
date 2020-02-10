@@ -8,10 +8,15 @@
 
 ;; (package! cdlatex :pin "b7af5a9884")
 
+(package! xelb :pin "5970017d9b")
+
 (package! sxhkd-mode
   :pin "70b31ef884"
   :recipe (:host github :repo "yoavm448/sxhkd-mode"))
 
-(package! xelb :pin "5970017d9b")
+(package! hebrew-mode
+  :pin "8e819d0441"
+  :recipe (:host github :repo "yoavm448/hebrew-mode"))
+
 (package! evil-tex
   :recipe (:host github :repo "itai33/evil-tex"))

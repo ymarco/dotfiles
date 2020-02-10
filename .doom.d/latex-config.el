@@ -57,20 +57,11 @@ When set to non-nil, this adds a few hooks/advices to fold stuff.")
                      :foreground nil
                      :inherit rainbow-delimiters-depth-6-face)) ;; on default, 1-depth braces don't stand out in latex math
 (custom-set-faces! '(preview-reference-face
-                     :inherit solaire-default-face)) ;; fixes latex preview background color in solaire
+                     :inherit solaire-default-face))            ;; fixes latex preview background color in solaire
 (custom-set-faces! '(preview-face
-                     :inherit org-block)) ;; just configured for the theme
+                     :inherit org-block))                       ;; just configured for the theme
 (custom-set-faces! '(TeX-fold-folded-face
-                     :inherit font-lock-builtin-face)) ;; just configured for the theme
-
-;;;###autoload
-(defun prvt/TeX-fold-current-line-h (&rest ignored)
-  "TeX-fold current line.
-
- This mostly used as a hook to fold after inserting math with a
- snippet or stuff."
-  (interactive)
-  (TeX-fold-region (line-beginning-position) (line-end-position)))
+                     :inherit font-lock-builtin-face))          ;; just configured for the theme
 
 
 (add-hook! 'TeX-mode-hook :append
@@ -78,17 +69,21 @@ When set to non-nil, this adds a few hooks/advices to fold stuff.")
            (setq preview-scale 1.8 ;; bigger compiled math cause it's beautiful
                  company-idle-delay nil)) ;; auto-complete is annoying here
 
+(defadvice! prvt/TeX-fold-line-a (&rest _)
+  "Auto-fold LaTeX macros after functions that typically insert them."
+  :after #'cdlatex-math-symbol
+  (progn
+    (TeX-fold-region (line-beginning-position) (line-end-position))))
 
 (after! tex
-  (when prvt/use-TeX-fold
-    (advice-add 'LaTeX-math-insert :after 'prvt/TeX-fold-current-line-h)    ;; auto-fold after inserting math macro with prefix
-    (advice-add 'LaTeX-insert-item :after 'prvt/TeX-fold-current-line-h)    ;; auto-fold after inserting \item
-    (advice-add 'cdlatex-math-symbol :after 'prvt/TeX-fold-current-line-h)) ;; auto-fold after inserting math macro with prefix
+  ;; auto-fold after inserting math macro with prefix
   (map!
    :map LaTeX-mode-map
    :ei [C-return] #'LaTeX-insert-item
    ;; backspace alias, the best thing ever
    :i "M-h" (lambda! (insert "\\"))
+   ;; ^ alias: TODO keep this?
+   :i "M--" (lambda! (insert "^"))
    ;; ^{} _{} aliases
    :iv "C-_" (lambda! (doom-snippets-expand :name "subscript-braces"))
    :iv "C-^" (lambda! (doom-snippets-expand :name "superscript-braces"))
@@ -103,8 +98,4 @@ When set to non-nil, this adds a few hooks/advices to fold stuff.")
      :desc "Fold paragraph"     "f"   #'TeX-fold-paragraph
      :desc "Unfold paragraph"   "C-f" #'TeX-fold-clearout-paragraph
      :desc "Fold buffer"        "F"   #'TeX-fold-buffer
-     :desc "Unfold buffer"      "C-F" #'TeX-fold-clearout-buffer)
-
-   ;; override C-c C-c to compile with xetex
-   :desc "compile with xetex" "c" (lambda! () (let ((TeX-engine 'xetex)) ;; FIXME using let here is wrong
-                                                (TeX-command "LaTeX" 'TeX-master-file)))))
+     :desc "Unfold buffer"      "C-F" #'TeX-fold-clearout-buffer)))

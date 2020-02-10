@@ -3,32 +3,30 @@
 (load! "latex-config") ;; this also loads cdlatex
 (load! "hebrew-latex-config")
 (load! "dvorak-config")
+(load! "org-setup")
 
 (setq
+ ;; Config, used for templates mostly
  user-full-name "Yoav Marco"
  user-mail-address "yoavm448@gmail.com"
  user-login-name "yoavm448"
 
- rainbow-delimiters-max-face-count    4
- dired-dwim-target                    t
- bidi-paragraph-direction             nil
- doom-snippets-enable-short-helpers   t
- doom-modeline-major-mode-icon        t
- yas-triggers-in-field                t
- avy-all-windows                      t
- avy-single-candidate-jump            t
- evil-split-window-below              t
- evil-vsplit-window-right             t
- +evil-want-o/O-to-continue-comments  nil
- rainbow-x-colors                     nil
- doom-theme 'doom-spacegrey)
+ rainbow-delimiters-max-face-count    4   ;; Even more cololful pars
+ dired-dwim-target                    t   ;; Dired auto-detects multiple windows
+ doom-snippets-enable-short-helpers   t   ;; doom-expand-snippets -> %expand
+ doom-modeline-major-mode-icon        t   ;; TODO Do I want this?
+ yas-triggers-in-field                t   ;; Nested snippet expansion
+ avy-all-windows                      t   ;; Avy can jump through windows
+ avy-single-candidate-jump            t   ;; Avy can auto-jump when theres 1 candidate
+ evil-split-window-below              t   ;; Don't replace the current window when splitting
+ evil-vsplit-window-right             t   ;; Don't replace the current window when splitting
+ rainbow-x-colors                     nil ;; e.g don't colorise 'white'
+ doom-theme 'doom-spacegrey)              ;; prettiness
 
 ;; (setq-default truncate-lines nil)
 
 (add-hook! 'python-mode-hook     (modify-syntax-entry ?_ "w")) ;; underscore is a word in python
-;; (add-hook! 'emacs-lisp-mode-hook (modify-syntax-entry ?- "w")) ;; hyphen is a word in elisp
 
-;; (add-hook! 'prog-mode-hook 'rainbow-delimiters-mode) ;; loving colored parantheses
 (add-hook! 'org-brain-vis-current-title-append-functions #'org-brain-entry-tags-string) ;; show tags in org-brain
 (add-hook! 'conf-xdefaults-mode-hook (rainbow-mode 1))
 
@@ -49,16 +47,18 @@
 
 
 (defconst prvt/raw-git-packages-dir
-  (concat doom-local-dir "straight/repos")
+  (eval-when-compile
+    (concat doom-local-dir "straight/repos"))
   "Directory for raw git packages, as cloned by straight.el.")
+
+(defconst prvt/home-dir
+  (eval-when-compile (getenv "HOME"))
+  "User home directory")
 
 ;; TODO make this work just with files - don't search inside the files
 (defun prvt/search-package-doc ()
   (interactive)
-  (+ivy-file-search
-    :args '("-t" "md" "-t" "org")
-    :in prvt/raw-git-packages-dir
-    :recursive t))
+  (doom-project-find-file prvt/raw-git-packages-dir))
 
 ;;;###autoload
 (defun prvt/snippets-newline-if-needed (&optional n)
@@ -80,14 +80,7 @@ with parameter N, insert up to N newlines."
  "sai" "sudo apt install $*"
  "s" "sudo $*"
  "config" (format "git --git-dir=%s/.dotfiles/ --work-tree=%s $*"
-                 (getenv "HOME")
-                 (getenv "HOME")))
-
-;; use highlighting source blocks in org export latex
-;; TODO use minted instead of listings: https://emacs.stackexchange.com/a/27984
-(after! org
-  (add-to-list 'org-latex-packages-alist '("" "listings"))
-  (setq org-latex-listings t))
+                  prvt/home-dir prvt/home-dir))
 
 
 ;; Doom auto-configures a mode for sxhkd, override it:
