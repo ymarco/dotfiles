@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: empty-subsection
-# key: empsub
-# --
-\subsection{}
-$0

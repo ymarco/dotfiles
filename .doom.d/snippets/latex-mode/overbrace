@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: overbrace
-# uuid: overbrace
-# key: ob
-# group: math
-# --
-\overbrace{`%`$1}^{$2} $0

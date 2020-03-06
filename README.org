@@ -14,19 +14,21 @@
 - [[#wallpapers][Wallpapers]]
 
 * Old i3 Config
-In ~/.config/i3/config~. Some scripts it will try to run might not run because
+In ~.config/i3/config~. Some scripts it will try to run might not run because
 they are no longer present because I don't use i3 anymore.
 
 There is also the old [[https://github.com/vivien/i3blocks][i3-blocks]] status bar config and scripts in
 ~.config/i3blocks/~. This was a nice project.
 
 * Old ~bspwm~ Config
-In ~.config/bspwm/bspwmrc~ - but this is mostly a hollow config, all of the
-real stuff is in ~sxhkd~
+In ~.config/bspwm/bspwmrc~ - but this is mostly a hollow config, all of the real
+stuff is in ~sxhkd~
 ** ~sxhkd~ Config
-In ~.config/sxhkd/sxhkdrc~. This is the real thing. Though I don't use ~bspwm~ anymore, there are great
-keybinds in here: specifically the window keybinds (lines 55-87)
-and desktop keybinds (lines 89-121) which do some smart things.
+In ~.config/sxhkd/sxhkdrc~. This is the real thing. Though I don't use ~bspwm~
+anymore, there are great keybinds in here: specifically the window keybinds
+(lines 55-87) and desktop keybinds (lines 89-121) which do some smart things.
+
+I also created a plugin for editing ~sxhkd~ config files in Emacs: [[https://github.com/yoavm448/sxhkd-mode][link]]
 
 * Old AwesomeWM Config :Attach:
 See screenshot in ~.config/awesome/awesome-screenshot.png~.
@@ -43,27 +45,25 @@ in ~.lyx/kbd/hebrew_dvorak.kmap~.
 
 * Doom Emacs config
 This is a gem. I intend to push some of this (mostly latex stuff) upstream to
-doom someday. [[https://github.com/hlissner/doom-emacs][link to doom]]
-+ ~.doom.d/config.el~ is a jumble of general config and preferences, mostly
-  ~setq~'s and keybinds.
-+ ~.doom.d/dvorak-config.el~ - just some simple dvorak stuff.
-  I use vim with the default keys on top of dvorak, this is mostly so I can type
-  normally with an another input method (be damned, Hebrew!).
-+ ~.doom.d/latex-config~ is a Hebrew config for [[https://www.emacswiki.org/emacs/AUCTeX][auctex]], also configuring convenient
-  stuff with TeX-fold.
+doom someday. [[https://github.com/hlissner/doom-emacs][link to Doom]]
++ ~.doom.d/config.el~ is a jumble of general config and preferences, mostly ~setq~'s
+  and keybinds.
++ ~.doom.d/dvorak-config.el~ - just some simple dvorak stuff. I use vim with the
+  default keys on top of dvorak, this is mostly so I can type normally with an
+  another input method (be damned, Hebrew!).
++ ~.doom.d/hebrew-latex-config~ is a Hebrew config for [[https://www.emacswiki.org/emacs/AUCTeX][auctex]], also configuring
+  convenient stuff with TeX-fold. It uses the more general [[https://github.com/yoavm448/hebrew-mode][hebrew-mode]].
+
   The snippet group ~hebrew latex~ in ~.doom.d/snipptes/latex-mode~ is the main
   Hebrew helper, defining math macros that automatically set the input method to
   English and when exiting back to Hebrew.
-+ ~.doom.d/cdlatex-config~ is a config for [[https://github.com/cdominik/cdlatex/blob/master/README.md][cdlatex]], disabling its snippets
-  (in favor of [[https://github.com/joaotavora/yasnippet][yasnippets]] snippets) and adding some macros.
-  Also overriding one of its core functions for fun.
 
 * Scripts
 In ~.scripts~. The big ones are these:
 + ~suspend-program~ prompts you with a selection of CPU-intensive programs and
   suspends (~SIGSTOP~) the selected one. Upon a second run it continues the
   suspended program.
-+ ~music-ctl~ controls ~mpd~ (through the ~mpc~ client), but gives priority to
-  ~VLC~ if its running and controls it instead (using ~qdbus~).
++ ~music-ctl~ controls ~mpd~ (through the ~mpc~ client), but gives priority to ~VLC~ if
+  its running and controls it instead (using ~qdbus~).
 * Wallpapers
 Pretty papers in ~.wallpapers/~.

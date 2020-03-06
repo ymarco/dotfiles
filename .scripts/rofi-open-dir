@@ -1,2 +1,2 @@
 #!/bin/sh
-find Dropbox Desktop Downloads org -type d | rofi -dmenu -sort -i -p "Open File" | xargs -r -I % xdg-open "%"
+fd . Dropbox Desktop Downloads org -t d | rofi -dmenu -i -p "Open Dir" | xargs -r -I % xdg-open "%"

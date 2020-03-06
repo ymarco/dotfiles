@@ -5,8 +5,8 @@ alias \
 	diff="diff --color=auto" \
 	config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME" \
 	vim="nvim" \
-	v="emacsclient" \
-	sv="sk | xargs emacsclient" \
+	v="emacsclient -t -a \"\"" \
+	sv="sk | xargs emacsclient -t -a \"\"" \
 	ec="edit-config" \
 	grep="grep --color=auto" \
 	rand-bg="feh --randomize --bg-fill ~/.wallpapers/*" \
@@ -18,43 +18,40 @@ alias \
 	sai="sudo apt install" \
 	s="sudo" \
 	fd="fdfind" \
+	doom="$HOME/.emacs.d/bin/doom"\
+	rn="react-native"\
 
 
 # SHORTCUTS
 alias \
-	y="~/Dropbox/yoav" \
-	d="~/Desktop " \
-	D="~/Downloads" \
-	t="~/Downloads/Torrents" \
+	y="cd ~/Dropbox/yoav" \
+	d="cd ~/Desktop " \
+	D="cd ~/Downloads" \
+	t="cd ~/Downloads/Torrents" \
 
 # FUNCTIONS
-# search in bash history
+
+# search in bash history, copy selected to clipboard
 hs() {
 	sort -ubi ~/.zsh_history | sk | xargs -r -I % printf "%" | xclip -selection clipboard
 }
 
-# get preformance info about a process
+# get preformance info about processes, how much of my resources they used since
+# startup
 pinfo() {
 	ps axch -o cmd,%cpu,%mem | sk --header "PROCESS                      CPU  MEM" >/dev/null
 }
 
-lbar() {
-	wd="$(pwd)"
-	cd ~/desk/lemonbarc/ || return
-	./run.sh &
-	cd "$wd" || return
-}
-
-lbarkill() {
-	ka lemonbarc lemonbar
-}
-lbarrestart() {
-	lbar-kill
-	lbar
-}
-
+# Sum statistics about me flacs
 musicinfo() {
 	soxi -D ./**/*.flac |
 		awk '{a+=$0; tot+=1} END {print tot " songs, " a/(60*60) " hours of playback, average song length is " a/tot/60 " mins."}'
 	echo "summing $(du -sh .)"
+}
+
+# Print only the important bit from xev, i.e key code number & name.
+xevkeyinfo() {
+	# From ArchWiki
+	# https://wiki.archlinux.org/index.php/Keyboard_input#Identifying_keycodes_in_Xorg
+	xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
 }

@@ -1,4 +1,0 @@
-# -*- mode: snippet -*-
-# name: braces
-# --
-{`%`$1}$0

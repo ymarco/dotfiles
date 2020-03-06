@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: cases
-# key: cs
-# --
-\begin{cases}
-`%`$0
-\end{cases}

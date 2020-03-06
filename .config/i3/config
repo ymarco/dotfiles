@@ -43,12 +43,12 @@ set_from_resource $cyan        color 14 # 000000
 set_from_resource $white       color 15 # 000000
 set $bg                        color    # 333333
 
-#                       BORDER		BACKGROUND	TEXT		INDICATOR		CHILD_BORDER
-client.focused			$red		$red		$magenta	$cyan	  		$darkyellow
-client.unfocused		$bgcolor	$blue		$white		$darkblue		$bgcolor
-client.focused_inactive	$bgcolor	$blue		$white		$darkblue		$bgcolor
-client.urgent			$darkred	$darkred	$black		$darkred		$darkred
-client.background $black
+#                        BORDER    BACKGROUND  TEXT      INDICATOR  CHILD_BORDER
+client.focused           $red      $red        $magenta  $cyan      $darkyellow
+client.unfocused         $bgcolor  $blue       $white    $darkblue  $bgcolor
+client.focused_inactive  $bgcolor  $blue       $white    $darkblue  $bgcolor
+client.urgent            $darkred  $darkred    $black    $darkred   $darkred
+client.background        $black
 
 # set mod key to WinKey
 set $mod Mod4

@@ -44,6 +44,6 @@ setopt interactivecomments
 [ -f "$HOME/.shortcuts" ] && source "$HOME/.shortcuts"
 [ -f "$HOME/.aliasrc" ] && source "$HOME/.aliasrc"
 
-echo "$(tput bold)$(tput setaf 12)$(tput setaf 3)$USER$(tput setaf 7)@$(tput setaf 14)$HOST"
+echo "$(tput bold)$(tput setaf 4)$(tput setaf 3)$USER$(tput setaf 7)@$(tput setaf 6)$HOST"
 
-export PS1="%F{13}%c%B%F{12}%F{14} $ %b%f"
+export PS1="%F{5}%c%B%F{4}%F{6} $ %b%f"

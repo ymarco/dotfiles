@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: flalign
-# key: fla
-# group: amsmath
-# --
-\begin{flalign}
-`%`$0
-\end{flalign}

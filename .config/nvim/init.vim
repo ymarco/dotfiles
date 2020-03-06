@@ -67,8 +67,6 @@ let g:PaperColor_Theme_Options = {
 " Y now works like C and D
 nnoremap Y y$
 
-" ctrl+q is J
-noremap Q J
 " Shortcutting split navigation, saving a keypress:
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -77,12 +75,6 @@ nnoremap <C-l> <C-w>l
 
 set splitbelow
 set splitright
-
-" J and K are amplified j and k
-nnoremap J 5j
-nnoremap K 5k
-vnoremap J 5j
-vnoremap K 5k
 
 " Control + {h,j,k,l} are replacement for arrow keys
 inoremap <C-j> <Down>
