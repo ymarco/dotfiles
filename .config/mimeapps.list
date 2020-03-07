@@ -1,7 +1,7 @@
 [Added Associations]
 application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
 application/x-java-archive=openjdk-8-java.desktop;openjdk-11-java.desktop;org.gnome.FileRoller.desktop;JB-java-jdk12.desktop;
-application/epub+zip=org.gnome.FileRoller.desktop;calibre-ebook-viewer.desktop;FBReader.desktop;mupdf.desktop;org.gnome.Evince.desktop;firefox.desktop;
+application/epub+zip=calibre-ebook-viewer.desktop;org.gnome.Evince.desktop;mupdf.desktop;org.gnome.FileRoller.desktop;FBReader.desktop;firefox.desktop;
 application/futuresplash=nvim.desktop;
 image/svg+xml=inkscape.desktop;eog.desktop;
 application/octet-stream=vim.desktop;
