@@ -1,7 +1,7 @@
 #+TITLE:   My Dotfiles
 #+DATE:    January 13, 2020
 #+SINCE:   2003 lol
-#+STARTUP: inlineimages nofold
+#+STARTUP: nofold
 
 * Table of Contents :TOC_3:noexport:
 - [[#old-i3-config][Old i3 config]]
@@ -30,14 +30,14 @@ anymore, there are great keybinds in here: specifically the window keybinds
 
 I also created a plugin for editing ~sxhkd~ config files in Emacs: [[https://github.com/yoavm448/sxhkd-mode][link]]
 
-* Old ~AwesomeWM~ config :Attach:
-See screenshot in [[file:.config/awesome/awesome-screenshot.png]].
+* Old ~AwesomeWM~ config
+[[file:.config/awesome/awesome-screenshot.png]].
 
 In [[file:.config/awesome/]]. There are many files Here:
-+ ~bar.lua~ defines a status bar, complete with responsive brightness and sound bars
-+ ~keys.lua~ defines my awesome keybinds
-+ ~myrc.lua~: defines some general stuff (like a wallpaper), and mostly binds ~bar.lua~ and
-  ~keys.lua~ together, e.g. creating keybinds that manipulate the status bar and
++ [[file:.config/awesome/bar.lua][bar.lua]] defines a status bar, complete with responsive brightness and sound bars
++ [[file:.config/awesome/keys.lua][keys.lua]] defines my awesome keybinds
++ [[file:.config/awesome/myrc.lua][myrc.lua]]: defines some general stuff (like a wallpaper), and mostly binds ~bar.lua~ and
+  [[file:.config/awesome/keys.lua][keys.lua]] together, e.g. creating keybinds that manipulate the status bar and
 
 * Hebrew Dvorak LyX config
 in [[file:.config/LyX/]] and [[file:.lyx/]]. The Dvorak-Hebrew keymap is
@@ -46,24 +46,22 @@ in [[file:.lyx/kbd/hebrew_dvorak.kmap]].
 * [[https://github.com/hlissner/doom-emacs][Doom Emacs]] config
 I intend to push some of this (mostly latex stuff) upstream to
 doom someday.
-+ [[file:.doom.d/config.el]] is a jumble of general config and preferences, mostly ~setq~'s
++ [[file:.config/doom/config.el]] is a jumble of general config and preferences, mostly ~setq~'s
   and keybinds.
-+ [[file:.doom.d/dvorak-config.el]] - just some simple dvorak stuff. I use vim with the
++ [[file:.config/doom/dvorak-config.el]] - just some simple dvorak stuff. I use vim with the
   default keys on top of dvorak, this is mostly so I can type normally with an
   another input method (be damned, Hebrew!).
-+ [[file:.doom.d/hebrew-latex-config]] is a Hebrew config for [[https://www.emacswiki.org/emacs/AUCTeX][auctex]]. It uses the more
-  general [[https://github.com/yoavm448/hebrew-mode][hebrew-mode]] I wrote.
-
-  The snippet group ~hebrew latex~ in [[file:.doom.d/snipptes/latex-mode]] is the main
-  Hebrew helper, defining math macros that automatically set the input method to
-  English and when exiting back to Hebrew.
-
++ [[file:.config/doom/modules/lang/math]] configure a math mode for use in LaTeX and
+  org buffers. It creates the ~math-mode~ minor mode. In that module, with a
+  =+heberw= flag to math module, I create a ~hebrew-math~ minor mode which adds
+  convenient snippets and commands for writing LaTeX-like math in with a
+  usually-Hebrew input method.
 * Scripts
-In [[file:.scripts]]. The big ones are these:
-+ ~suspend-program~ prompts you with a selection of CPU-intensive programs and
+In [[file:.scripts/]]. The big ones are these:
++ [[file:.scripts/suspend-program][suspend-program]] prompts you with a selection of CPU-intensive programs and
   suspends (~SIGSTOP~) the selected one. Upon a second run it continues the
   suspended program.
-+ ~music-ctl[[file: controls ]]mpd~ (through ~mpc~ client), but gives priority to ~VLC~ if
++ [[file:.scripts/music-ctl][music-ctl]] controls ~mpd~ (through ~mpc~ client), but gives priority to ~VLC~ if
   its running and controls it instead (using ~d-bus~ through ~qdbus~).
 * Wallpapers
 Pretty papers in [[file:.wallpapers/]].
