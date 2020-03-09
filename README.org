@@ -9,6 +9,7 @@
   - [[#sxhkd-config][~sxhkd~ config]]
 - [[#old-awesomewm-config][Old ~AwesomeWM~ config]]
 - [[#hebrew-dvorak-lyx-config][Hebrew Dvorak LyX config]]
+- [[#hebrew-latex-preamble][Hebrew LaTeX preamble]]
 - [[#doom-emacs-config][Doom Emacs config]]
 - [[#scripts][Scripts]]
 - [[#wallpapers][Wallpapers]]
@@ -42,6 +43,12 @@ In [[file:.config/awesome/]]. There are many files Here:
 * Hebrew Dvorak LyX config
 in [[file:.config/LyX/]] and [[file:.lyx/]]. The Dvorak-Hebrew keymap is
 in [[file:.lyx/kbd/hebrew_dvorak.kmap]].
+
+* Hebrew LaTeX preamble
+[[file:texmf/tex/latex/prvt/preamble.sty]]. Hebrew compilation is recommended
+through =XeLaTeX= (using =polyglossia)= because there are complications with
+=PDFLaTeX.= However, the documents DO compile with =PDFLaTeX=, in case you need
+quick compilation for math previews etc.
 
 * [[https://github.com/hlissner/doom-emacs][Doom Emacs]] config
 I intend to push some of this (mostly latex stuff) upstream to
