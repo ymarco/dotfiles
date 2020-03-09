@@ -1,0 +1,98 @@
+% Yoav Marco's preamble file
+% - Importing Packages
+% - Configuring Hebrew for PDFTeX and XeTeX
+% - defining theorem classes with amsthm as an option
+% - Defining macros
+
+\ProvidesPackage{preamble}
+
+\RequirePackage{amsmath} % math envs: align, gather...
+\RequirePackage{amssymb} % math symbols
+\RequirePackage{mathtools} % overbrace, multilined
+\RequirePackage[a4paper,margin=1.1in]{geometry} % margins setup
+\RequirePackage{cancel} % "cancel" math command
+\RequirePackage[section]{placeins} % floats do not overflow to sections
+\RequirePackage{comment} % adds a comment environment to mass-comment lines
+
+\setlength{\parindent}{0pt} % no paragraph indentation
+
+ % Do different stuff depending on the compiler.
+\RequirePackage{iftex}
+% I heavily use this in order to set up Hebrew in both PDFLaTex and XeTeX, so I can
+% quickly compile previews with PDFLaTex and compile the final doc with XeTeX.
+
+
+% Here comes a some spaghetti around theorem envs.
+% reason is, we can only load amsthm in XeTeX, but also want to compile with
+% PDFTeX for its speed, from time to time.
+% so this is a workaround, using amsthm features only if compiling with XeTeX.
+
+\ifXeTeX \RequirePackage{amsthm} \fi % In XeTeX, amsthm is safe to load
+% Theorem-like environments
+\newtheorem{theorem}{משפט}[section]
+\newtheorem{lemma}[theorem]{למה}
+
+\ifXeTeX \theoremstyle{definition} \fi % \theoremstyle is only in amsthm = XeTeX
+\newtheorem{definition}[theorem]{הגדרה}
+
+\ifXeTeX % \newtheorem* is defined only in XeTeX with amsthm,
+	\newtheorem*{corollary}{מסקנה}
+	\newtheorem*{examples}{דוגמאות}
+	\newtheorem*{example}{דוגמא}
+	\newtheorem*{exercise}{תרגיל}
+\fi \ifPDFTeX % same without *
+	\newtheorem{corollary}{מסקנה}
+	\newtheorem{examples}{דוגמאות}
+	\newtheorem{example}{דוגמא}
+	\newtheorem{exercise}[theorem]{תרגיל}
+\fi
+
+\ifXeTeX \theoremstyle{remark} \fi % \theoremstyle is only in amsthm = XeTeX
+\newtheorem{claim}[theorem]{טענה}
+
+\ifXeTeX % \newtheorem* is defined only in XeTeX with amsthm,
+	\newtheorem*{remark}{הערות}
+\fi \ifPDFTeX % same without *
+	\newtheorem{remark}{הערות}
+\fi
+
+\ifPDFTeX \newtheorem{proof}{הוכחה} \fi % in amsthm, proof is defined for us. here we define it manually
+
+% On to actual stuff:
+\ifXeTeX
+	% hyperref works in XeTeX
+	\RequirePackage[colorlinks]{hyperref}
+
+	% Hebrew config
+	\RequirePackage{polyglossia}
+	\setmainlanguage{hebrew}
+	\setotherlanguage{english}
+	\newfontfamily{\hebrewfont}[Script=Hebrew,AutoFakeSlant=0.15]{David CLM}
+
+	% redefining \maketitle to also set options for hyperref
+	\newcommand\org@maketitle{}
+	\let\org@maketitle\maketitle
+	\renewcommand\maketitle{
+	\hypersetup{
+		pdftitle={\@title},
+		pdfauthor={\@author},
+		pdfcreator={Doom Emacs},
+		pdflang={Hebrew}
+	}
+\org@maketitle
+	}
+	% fix for equation numbering in BiDi https://tex.stackexchange.com/a/141437
+	\def\tagform@#1{\maketag@@@{(\ignorespaces#1\unskip)}}
+\fi
+
+\ifPDFTeX
+	% Hebrew config
+	\RequirePackage{ucs}
+	\RequirePackage[utf8x]{inputenc}
+	\RequirePackage[english,hebrew]{babel}
+	% NOTE: in PDFLaTeX, parentheses () in Hebrew text get swapped in the PDF.
+	% It has no practical fix: just do the final compilation in XeTeX.
+\fi
+
+% I Always want me macros
+\RequirePackage{macros}
