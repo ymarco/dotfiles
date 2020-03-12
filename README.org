@@ -46,10 +46,10 @@ in [[file:.lyx/kbd/hebrew_dvorak.kmap]].
 
 * Hebrew LaTeX preamble
 [[file:texmf/tex/latex/prvt/preamble.sty]]. Hebrew compilation is recommended
-through =XeLaTeX= (using =polyglossia)= because there are complications with
-=PDFLaTeX.= However, the preamble DOES compile with =PDFLaTeX=, in case you need
-quick compilation for math previews etc. Notable things about =XeLaTeX=:
-+ =hyperref= works (babel in =PDFLaTeX= screws up compilation with =hyperref=)
+through =XeLaTeX= (using =polyglossia)= . However, the preamble DOES compile with
+=PDFLaTeX=, in case you need quick compilation for math previews etc. Advantages
+and disadvantages of  =XeLaTeX=:
++ =hyperref= works (babel in =PDFLaTeX= screws up =hyperref= compilation)
 + =amsmthm= works (babel screws this up also)
 + Parentheses don't get swapped as in =PDFLaTeX=
 + Modern font support. Wanna do some שמשון שמן?

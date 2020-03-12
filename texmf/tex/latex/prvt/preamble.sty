@@ -4,6 +4,16 @@
 % - defining theorem classes with amsthm as an option
 % - Defining macros
 
+% Hebrew compilation is recommended through XeLaTeX (using polyglossia) .
+% However, the preamble DOES compile with PDFLaTeX, in case you need quick
+% compilation for math previews etc. Advantages and disadvantages of XeLaTeX:
+% + hyperref works (babel in PDFLaTeX screws up hyperref compilation)
+% + amsmthm works (babel screws this up also)
+% + Parentheses don't get swapped as in PDFLaTeX
+% + Modern font support. Wanna do some שמשון שמן?
+% - ...About x7 compilation time compared to PDFLaTeX
+% - Less support from [[https://ctan.org/pkg/microtype][microtype]]
+
 \ProvidesPackage{preamble}
 
 \RequirePackage{amsmath} % math envs: align, gather...
@@ -16,10 +26,9 @@
 
 \setlength{\parindent}{0pt} % no paragraph indentation
 
- % Do different stuff depending on the compiler.
+% Do different stuff depending on the compiler.
 \RequirePackage{iftex}
-% I heavily use this in order to set up Hebrew in both PDFLaTex and XeTeX, so I can
-% quickly compile previews with PDFLaTex and compile the final doc with XeTeX.
+% I heavily use this in order to set up Hebrew in both PDFLaTex and XeTeX.
 
 
 % Here comes a some spaghetti around theorem envs.
