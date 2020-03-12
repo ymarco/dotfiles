@@ -1,5 +1,5 @@
 [Added Associations]
-application/pdf=org.pwmt.zathura-pdf-mupdf.desktop;
+application/pdf=emacs.desktop;emacs-client.desktop;org.pwmt.zathura-pdf-mupdf.desktop;
 application/x-java-archive=openjdk-8-java.desktop;openjdk-11-java.desktop;org.gnome.FileRoller.desktop;JB-java-jdk12.desktop;
 application/epub+zip=calibre-ebook-viewer.desktop;org.gnome.Evince.desktop;mupdf.desktop;org.gnome.FileRoller.desktop;FBReader.desktop;firefox.desktop;
 application/futuresplash=nvim.desktop;
@@ -34,6 +34,7 @@ text/x-tex=emacs-client.desktop;
 text/x-emacs-lisp=emacs-client.desktop;
 text/html=emacs-client.desktop;
 application/zip=calibre-ebook-viewer.desktop;
+application/x-shellscript=emacs-client.desktop;
 
 [Default Applications]
 image/png=eog.desktop
