@@ -47,8 +47,14 @@ in [[file:.lyx/kbd/hebrew_dvorak.kmap]].
 * Hebrew LaTeX preamble
 [[file:texmf/tex/latex/prvt/preamble.sty]]. Hebrew compilation is recommended
 through =XeLaTeX= (using =polyglossia)= because there are complications with
-=PDFLaTeX.= However, the documents DO compile with =PDFLaTeX=, in case you need
-quick compilation for math previews etc.
+=PDFLaTeX.= However, the preamble DOES compile with =PDFLaTeX=, in case you need
+quick compilation for math previews etc. Notable things about =XeLaTeX=:
++ =hyperref= works (babel in =PDFLaTeX= screws up compilation with =hyperref=)
++ =amsmthm= works (babel screws this up also)
++ Parentheses don't get swapped as in =PDFLaTeX=
++ Modern font support. Wanna do some שמשון שמן?
+- ...About x7 compilation time compared to =PDFLaTeX=
+- Less support from [[https://ctan.org/pkg/microtype][microtype]]
 
 * [[https://github.com/hlissner/doom-emacs][Doom Emacs]] config
 I intend to push some of this (mostly latex stuff) upstream to

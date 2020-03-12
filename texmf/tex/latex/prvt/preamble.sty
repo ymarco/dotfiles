@@ -87,7 +87,8 @@
 
 \ifPDFTeX
 	% Hebrew config
-	\RequirePackage{ucs}
+	\RequirePackage{ucs} % TODO do I need both this and utf8x? doesn't one load
+						 % the other?
 	\RequirePackage[utf8x]{inputenc}
 	\RequirePackage[english,hebrew]{babel}
 	% NOTE: in PDFLaTeX, parentheses () in Hebrew text get swapped in the PDF.
