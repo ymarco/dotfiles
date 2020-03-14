@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: align
-# key: ali
-# group: amsmath
-# --
-\begin{align}
-`%`$0
-\end{align}

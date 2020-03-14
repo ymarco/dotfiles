@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: alignat
-# key: alit
-# group: amsmath
-# --
-\begin{alignat}
-`%`$0
-\end{alignat}

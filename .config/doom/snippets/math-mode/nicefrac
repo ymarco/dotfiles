@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: nicefrac
-# key: nf
-# group: math
-# --
-\nicefrac{${1:`(or "nume" %)`}}{${2:denu}}$0

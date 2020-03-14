@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: underbrace
-# uuid: undersebrace
-# key: ub
-# group: math
-# --
-\underbrace{`%`$1}_{$2} $0

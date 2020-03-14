@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: xxalignat
-# key: xxa*
-# group: amsmath
-# --
-\begin{xxalignat}
-`%`$0
-\end{xxalignat}

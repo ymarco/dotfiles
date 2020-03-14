@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: hebrew-subsection
-# key: סאב
-# group: hebrew latex
-# --
-`(prvt/snippets-newline-if-needed 2)`‏\subsection{`%`${1:סאבסקשן}}
-$0
