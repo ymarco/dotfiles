@@ -10,7 +10,6 @@
 - [[#old-awesomewm-config][Old ~AwesomeWM~ config]]
 - [[#hebrew-dvorak-lyx-config][Hebrew Dvorak LyX config]]
 - [[#hebrew-latex-preamble][Hebrew LaTeX preamble]]
-- [[#doom-emacs-config][Doom Emacs config]]
 - [[#scripts][Scripts]]
 - [[#wallpapers][Wallpapers]]
 
@@ -56,19 +55,6 @@ and disadvantages of  =XeLaTeX=:
 - ...About x7 compilation time compared to =PDFLaTeX=
 - Less support from [[https://ctan.org/pkg/microtype][microtype]]
 
-* [[https://github.com/hlissner/doom-emacs][Doom Emacs]] config
-I intend to push some of this (mostly latex stuff) upstream to
-doom someday.
-+ [[file:.config/doom/config.el]] is a jumble of general config and preferences, mostly ~setq~'s
-  and keybinds.
-+ [[file:.config/doom/dvorak-config.el]] - just some simple dvorak stuff. I use vim with the
-  default keys on top of dvorak, this is mostly so I can type normally with an
-  another input method (be damned, Hebrew!).
-+ [[file:.config/doom/modules/lang/math]] configure a math mode for use in LaTeX and
-  org buffers. It creates the ~math-mode~ minor mode. In that module, with a
-  =+heberw= flag to math module, I create a ~hebrew-math~ minor mode which adds
-  convenient snippets and commands for writing LaTeX-like math in with a
-  usually-Hebrew input method.
 * Scripts
 In [[file:.scripts/]]. The big ones are these:
 + [[file:.scripts/suspend-program][suspend-program]] prompts you with a selection of CPU-intensive programs and
