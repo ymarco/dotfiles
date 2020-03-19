@@ -1,15 +1,18 @@
 % Marco's Macros
 
 % Parentheses to their many kinds
-\newcommand{\pa }[1]{\left(#1\right)}    % parentheses (a)
+\newcommand{\abs}[1]{\left|#1\right|}   % absolute value |a|
+\newcommand{\bpa}[1]{\left[#1\right)}   % closed-open interval [a, b)
 \newcommand{\bra}[1]{\left[#1\right]}   % brackets [a]
 \newcommand{\bre}[1]{\left\{#1\right\}} % braces {a}
-\newcommand{\bpa}[1]{\left[#1\right)}   % closed-open interval [a, b)
-\newcommand{\pba}[1]{\left(#1\right]}   % open-closed interval (a, b]
-\newcommand{\abs}[1]{\left|#1\right|}   % absolute value |a|
+\newcommand{\set}[1]{\bre{#1}} % alias, sometimes 'set' is more readable
 \newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
 \newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
 \newcommand{\norm}[1]{\left\Vert #1 \right\Vert}
+\newcommand{\pa}[1]{\left(#1\right)}    % parentheses (a)
+\newcommand{\pba}[1]{\left(#1\right]}   % open-closed interval (a, b]
+% \newcommand{\anb}[1]{\left\langle #1 \right\rangle}
+\newcommand{\anb}[1]{#1}
 
 
 % Standard Sets

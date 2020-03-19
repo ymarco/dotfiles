@@ -3,6 +3,7 @@
 alias qdbus-vlc="qdbus org.mpris.MediaPlayer2.vlc /org/mpris/MediaPlayer2"
 
 if pgrep vlc > /dev/null; then # if playing from VLC, pause it
+    echo aoeu
     case "$1" in
         seek) qdbus-vlc org.mpris.MediaPlayer2.Player.Seek "$2";;
         toggle)

@@ -10,7 +10,7 @@ image/png=eog.desktop;
 image/bmp=eog.desktop;
 application/x-sh=emacs.desktop;doom-emacs.desktop;
 text/markdown=emacs-client.desktop;emacs.desktop;
-text/plain=emacs.desktop;
+text/plain=emacs-client.desktop;emacs.desktop;
 image/gif=eog.desktop;
 image/jpg=eog.desktop;
 image/pjpeg=eog.desktop;
@@ -35,6 +35,7 @@ text/x-emacs-lisp=emacs-client.desktop;
 text/html=emacs-client.desktop;
 application/zip=calibre-ebook-viewer.desktop;
 application/x-shellscript=emacs-client.desktop;
+text/x-shellscript=emacs-client.desktop;
 
 [Default Applications]
 image/png=eog.desktop
