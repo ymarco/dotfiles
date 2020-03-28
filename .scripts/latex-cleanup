@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# guess what pdfs need optimizing by if their .log files exist
+command -v optpdf >/dev/null && {
+    echo "Optimizing"
+	for log in *.log; do
+		base="${F%.*}"
+		[ -f "$base.pdf" ] && optpdf "$base.pdf"
+	done
+}
+
+echo "Removing junk"
+# normal latex compilation junk
+rm -f *.aux *.bbl *.brf *.blg *.log *.out *.synctex.gz *.fmt
+# auctex junk
+rm -rf .auctex-auto _region_*

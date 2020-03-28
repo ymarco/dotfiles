@@ -1,4 +1,4 @@
 #!/bin/sh
 
 cd ~/Music || exit
-fd . --type f | sort | rofi -dmenu -multi-select -i -p "Insert Song" | mpc insert
+fd --type f | sort | rofi -dmenu -multi-select -i -p "Insert Song" | mpc insert

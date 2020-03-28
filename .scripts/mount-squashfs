@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+if [ "$EUID" -ne 0 ]; then
+	echo "Mounting loop devices needs root"
+	exit 1
+fi
+
+cd $HOME || exit 1
+
+fd -E Android -e squashfs |
+	while read F; do
+		dirname="${F%.*}"
+		mkdir -p "$dirname"
+		if [ $(ls "$dirname" | wc -l) = 0 ]; then
+			mount -o loop "$F" "$dirname"
+			echo "Mounted $dirname"
+		else
+			echo "$dirname has files; not mounting there."
+		fi
+	done

@@ -5,34 +5,29 @@
 #   This script will attempt to optimize the given pdf
 
 for file in "$@"; do
-    if [ ! -f "$file" ]; then
-        echo Error: No such file "$file";
-        exit 1
-    fi
+    [ ! -f "$file" ] && echo "Error: No such file $file" && exit 1
     printf "$file... "
     filebase=$(basename "$file" .pdf)
     optfile="/tmp/$$-${filebase}_opt.pdf"
-    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dNOPAUSE -dQUIET -dBATCH -dPrinted=false\
-        -sOutputFile="${optfile}" "${file}"
+    gs -sDEVICE=pdfwrite -q \
+       -o "$optfile" "$file"
+    [ $? != '0'  ] && echo "Non-zero gs exit code - skipping" && continue
 
-    if [ $? == '0' ]; then
-        optsize=$(stat -c "%s" "${optfile}")
-        orgsize=$(stat -c "%s" "${file}")
-        if [ "${optsize}" -eq 0 ]; then
-            echo "No output!  Keeping original"
-            rm -f "${optfile}"
-            continue;
-        fi
-        if [ ${optsize} -ge ${orgsize} ]; then
-            echo "Didn't make it smaller! Keeping original"
-            rm -f "${optfile}"
-            continue;
-        fi
-        bytesSaved=$(expr $orgsize - $optsize)
-        sizeSaved=$(numfmt --to iec --format "%.1f" $bytesSaved)
-        percent=$(expr $optsize '*' 100 / $orgsize)
-        echo Saved $sizeSaved \(now ${percent}% of old\)
-        rm "${file}"
-        mv "${optfile}" "${file}"
+    optsize=$(stat -c "%s" "$optfile")
+    orgsize=$(stat -c "%s" "$file")
+    if [ "$optsize" -eq 0 ]; then
+        echo "No output!  Keeping original"
+        rm -f "$optfile"
+        continue;
     fi
+    if [ "$optsize" -ge "$orgsize" ]; then
+        echo "Didn't make it smaller! Keeping original"
+        rm -f "$optfile"
+        continue
+    fi
+    bytesSaved=$(expr $orgsize - $optsize)
+    sizeSaved=$(numfmt --to iec --format "%.1f" $bytesSaved)
+    percent=$(expr $optsize '*' 100 / $orgsize)
+    echo saved you $sizeSaved \(now ${percent}% of old\)
+    mv "$optfile" "$file"
 done
