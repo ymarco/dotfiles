@@ -1,28 +1,29 @@
-% Yoav Marco's preamble file
+% Marco's preamble file
 % - Importing Packages
 % - Configuring Hebrew for PDFTeX and XeTeX
 % - defining theorem classes with amsthm as an option
-% - Defining macros
 
-% Hebrew compilation is recommended through XeLaTeX (using polyglossia) .
-% However, the preamble DOES compile with PDFLaTeX, in case you need quick
-% compilation for math previews etc. Advantages and disadvantages of XeLaTeX:
+% My Hebrew compilation is usually done through XeLaTeX (using polyglossia).
+% However, the preamble DOES compile with PDFLaTeX, in case I need quick
+% compilation for math previews etc.
+%
+% Advantages and disadvantages of XeLaTeX:
 % + hyperref works (babel in PDFLaTeX screws up hyperref compilation)
-% + amsmthm works (babel screws this up also)
+% + amsmthm works (babel screws this up also, there might be a fix but I'm lazy)
 % + Parentheses don't get swapped as in PDFLaTeX
 % + Modern font support. Wanna do some שמשון שמן?
 % - ...About x7 compilation time compared to PDFLaTeX
-% - Less support from [[https://ctan.org/pkg/microtype][microtype]]
+% - Less support from microtype (https://ctan.org/pkg/microtype)
 
 \ProvidesPackage{preamble}
 
-\RequirePackage{amsmath} % math envs: align, gather...
-\RequirePackage{amssymb} % math symbols
-\RequirePackage{mathtools} % overbrace, multilined
+\RequirePackage{amsmath}                        % math envs: align, gather...
+\RequirePackage{amssymb}                        % math symbols
+\RequirePackage{mathtools}                      % overbrace, multilined
 \RequirePackage[a4paper,margin=1.1in]{geometry} % margins setup
-\RequirePackage{cancel} % "cancel" math command
-\RequirePackage[section]{placeins} % floats do not overflow to sections
-\RequirePackage{comment} % adds a comment environment to mass-comment lines
+\RequirePackage{cancel}                         % "cancel" math command
+\RequirePackage[section]{placeins}              % floats don't overflow to sections
+\RequirePackage{comment}                        % adds a comment environment to mass-comment lines
 
 \setlength{\parindent}{0pt} % no paragraph indentation
 
@@ -35,6 +36,7 @@
 % reason is, we can only load amsthm in XeTeX, but also want to compile with
 % PDFTeX for its speed, from time to time.
 % so this is a workaround, using amsthm features only if compiling with XeTeX.
+% \begin{mess}
 
 \ifXeTeX \RequirePackage{amsthm} \fi % In XeTeX, amsthm is safe to load
 % Theorem-like environments
@@ -59,18 +61,20 @@
 \ifXeTeX \theoremstyle{remark} \fi % \theoremstyle is only in amsthm = XeTeX
 \newtheorem{claim}[theorem]{טענה}
 
-\ifXeTeX % \newtheorem* is defined only in XeTeX with amsthm,
+\ifXeTeX % again, \newtheorem* is defined only in XeTeX with amsthm,
 	\newtheorem*{remark}{הערות}
 \fi \ifPDFTeX % same without *
 	\newtheorem{remark}{הערות}
 \fi
 
 \ifPDFTeX \newtheorem{proof}{הוכחה} \fi % in amsthm, proof is defined for us. here we define it manually
+% \end{mess}
+
 
 % On to actual stuff:
 \ifXeTeX
 	% hyperref works in XeTeX
-	\RequirePackage[colorlinks,unicode]{hyperref}
+	\RequirePackage[colorlinks]{hyperref}
 
 	% Hebrew config
 	\RequirePackage{polyglossia}
@@ -85,8 +89,7 @@
 	\hypersetup{
 		pdftitle={\@title},
 		pdfauthor={\@author},
-		pdfcreator={Doom Emacs},
-		pdflang={Hebrew}
+		pdfcreator={Doom Emacs}
 	}
 \org@maketitle
 	}
@@ -96,13 +99,11 @@
 
 \ifPDFTeX
 	% Hebrew config
-	\RequirePackage{ucs} % TODO do I need both this and utf8x? doesn't one load
-						 % the other?
+	\RequirePackage{ucs}
 	\RequirePackage[utf8x]{inputenc}
+	% Don't complain about hyphenation patterns for Hebrew
+	\makeatletter\let\l@hebrew\l@nohyphenation\makeatother
 	\RequirePackage[english,hebrew]{babel}
-	% NOTE: in PDFLaTeX, parentheses () in Hebrew text get swapped in the PDF.
-	% It has no practical fix: just do the final compilation in XeTeX.
 \fi
 
-% I Always want me macros
 \RequirePackage{macros}
