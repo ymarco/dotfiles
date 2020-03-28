@@ -1,56 +1,55 @@
 ! special
-*.foreground:   #ffffff
-*.background:   #1d1f21
-*.cursorColor:  #ffffff
+! *.foreground:   #ffffff
+! *.background:   #1d1f21
+! *.cursorColor:  #ffffff
 !               black
-*.color0:       #1c1c1c
-*.color8:       #505050
+! *.color0:       #1c1c1c
+! *.color8:       #505050
 !               red
-*.color1:       #ee3f3f
-*.color9:       #f12525
+! *.color1:       #ee3f3f
+! *.color9:       #f12525
 !               green
-*.color2:       #63b663
-*.color10:      #afd700
+! *.color2:       #63b663
+! *.color10:      #afd700
 !               yellow
-*.color3:       #dba842
-*.color11:      #ffaf22
+! *.color3:       #dba842
+! *.color11:      #ffaf22
 !               blue
-*.color4:       #61aede
-*.color12:      #5294e2
+! *.color4:       #61aede
+! *.color12:      #5294e2
 !               magenta
-*.color5:       #bf59e3
-*.color13:      #c515ff
+! *.color5:       #0b0b0b
+! *.color13:      #c515ff
 !               cyan
-*.color6:       #64d4d4
-*.color14:      #00fcfc
+! *.color6:       #64d4d4
+! *.color14:      #00fcfc
 !               white
-*.color7:       #b8c1be
-*.color15:      #dadada
+! *.color7:       #b8c1be
+! *.color15:      #dadada
 
 ! Dracula Xresources palette
-!*.foreground:  #f8f8f2
-!*.background:  #282a36
-!*.color0:      #000000
-!*.color8:      #4d4d4d
-!*.color1:      #ff5555
-!*.color9:      #ff6e67
-!*.color2:      #50fa7b
-!*.color10:     #5af78e
-!*.color3:      #f1fa8c
-!*.color11:     #f4f99d
-!*.color4:      #bd93f9
-!*.color12:     #caa9fa
-!*.color5:      #ff79c6
-!*.color13:     #ff92d0
-!*.color6:      #8be9fd
-!*.color14:     #9aedfe
-!*.color7:      #bfbfbf
-!*.color15:     #e6e6e6
+st.foreground:  #c0c5ce
+st.background:  #232830
+st.color0:      #2F3237
+st.color8:      #4f5b66
+st.color1:      #bf616a
+st.color9:      #D76D78
+st.color2:      #a3be8c
+st.color10:     #B7D69E
+st.color3:      #ecbe7b
+st.color11:     #FFCD84
+st.color4:      #b48ead
+st.color12:     #CCA2C5
+st.color5:      #c678dd
+st.color13:     #DC84F5
+st.color6:      #4db5bd
+st.color14:     #57CDD5
+st.color7:      #8fa1b3
+st.color15:     #A3B7CB
 
-st.alpha: 200
+! st.alpha: 3
 !! Set a default font and font size as below:
-!*.font: Source Code Pro-14
-!st.font: Source Code Pro-16
+! st.font: Ubuntu Mono-20
 
 !!Xft.autohint: 1
 !!Xft.antialias: 1
