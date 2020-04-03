@@ -16,9 +16,9 @@ start-pulseaudio-x11 &
 # start composite manager for transparency
 compton -b --config .config/compton/compton.conf
 # set background
-#feh --randomize --bg-fill ~/.wallpapers/*
+feh --randomize --bg-fill ~/.wallpapers/*
 # update with Xresources, cos appearently it doesnt happen automatically
-xrdb ~/.Xresources
+# xrdb ~/.Xresources
 #[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 # Adjust typematic delay and rate
 xset r rate 300 30

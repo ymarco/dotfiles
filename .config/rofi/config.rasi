@@ -1,6 +1,6 @@
 configuration {
  theme:       "android_notification";
- font:        "Ubuntu  14";
+ font:        "Source Sans Pro 16";
  modi:        "window,drun,ssh,combi";
  show-icons:  true;
 }

@@ -26,6 +26,7 @@
 \RequirePackage{comment}                        % adds a comment environment to mass-comment lines
 
 \setlength{\parindent}{0pt} % no paragraph indentation
+\setlength{\parskip}{2pt} % to replace parindent
 
 % Do different stuff depending on the compiler.
 \RequirePackage{iftex}
@@ -43,7 +44,7 @@
 \newtheorem{theorem}{משפט}[section]
 \newtheorem{lemma}[theorem]{למה}
 
-\ifXeTeX \theoremstyle{definition} \fi % \theoremstyle is only in amsthm = XeTeX
+\ifXeTeX \theoremstyle{definition} \fi % \theoremstyle is only in amsthm => XeTeX
 \newtheorem{definition}[theorem]{הגדרה}
 
 \ifXeTeX % \newtheorem* is defined only in XeTeX with amsthm,
@@ -77,19 +78,21 @@
 	\RequirePackage[colorlinks]{hyperref}
 
 	% Hebrew config
+	% Important to load bidi (through polyglossia) last, it needs to detect and
+	% configure your previous packages.
 	\RequirePackage{polyglossia}
 	\setmainlanguage{hebrew}
 	\setotherlanguage{english}
 	\newfontfamily{\hebrewfont}[Script=Hebrew,AutoFakeSlant=0.15]{David CLM}
 
-	% redefining \maketitle to also set options for hyperref
+	% redefining \maketitle to also set the pdf metadata options for hyperref
 	\newcommand\org@maketitle{}
 	\let\org@maketitle\maketitle
 	\renewcommand\maketitle{
 	\hypersetup{
 		pdftitle={\@title},
 		pdfauthor={\@author},
-		pdfcreator={Doom Emacs}
+		pdfcreator={Doom Emacs, XeLaTeX and Hyperref}
 	}
 \org@maketitle
 	}

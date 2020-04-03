@@ -36,6 +36,7 @@ text/html=emacs-client.desktop;
 application/zip=calibre-ebook-viewer.desktop;
 application/x-shellscript=emacs-client.desktop;
 text/x-shellscript=emacs-client.desktop;
+image/jpeg=firefox.desktop;
 
 [Default Applications]
 image/png=eog.desktop

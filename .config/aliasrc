@@ -5,7 +5,7 @@ alias \
 	diff="diff --color=auto" \
 	config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME" \
 	vim="nvim" \
-	v="emacsclient -t -a \"\"" \
+	v="TERM=xterm-256color emacsclient -t -a \"\"" \
 	sv="sk | xargs emacsclient -t -a \"\"" \
 	ec="edit-config" \
 	grep="grep --color=auto" \
@@ -44,7 +44,7 @@ pinfo() {
 
 # Sum statistics about me flacs
 musicinfo() {
-	soxi -D ./**/*.flac |
+	fd -t f -e flac | xargs -d '\n' soxi -D |
 		awk '{a+=$0; tot+=1} END {print tot " songs, " a/(60*60) " hours of playback, average song length is " a/tot/60 " mins."}'
 	echo "summing $(du -sh .)"
 }

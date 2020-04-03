@@ -16,7 +16,7 @@ zstyle ':completion:*' substitute aoeualways
 zstyle ':completion:*' use-compctl false
 #zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
-zstyle :compinstall filename '/home/yoavm448/.zshrc'
+zstyle :compinstall filename "$HOME/.config/zsh/.zshrc"
 
 autoload -Uz compinit && compinit
 # history settings
@@ -41,8 +41,8 @@ unsetopt BEEP
 setopt NO_HUP
 setopt interactivecomments
 # Load shortcut aliases
-[ -f "$HOME/.shortcuts" ] && source "$HOME/.shortcuts"
-[ -f "$HOME/.aliasrc" ] && source "$HOME/.aliasrc"
+[ -f "$HOME/.config/shortcuts" ] && source "$HOME/.config/shortcuts"
+[ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
 echo "$(tput bold)$(tput setaf 4)$(tput setaf 3)$USER$(tput setaf 7)@$(tput setaf 6)$HOST"
 

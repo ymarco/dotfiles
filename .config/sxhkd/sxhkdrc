@@ -14,7 +14,7 @@ mod4 {_,shift +} BackSpace
 	pa-simp-and-update set-vol +{1,2,5}%
 XF86AudioMute
 	pa-simp-and-update toggle-mute
-mod4 + {minus,plus}
+mod4 + {bracketleft,bracketright}
 	pa-simp-and-update set-vol {-,+}2%
 ## Backlight
 {ctrl +,_,shift +} XF86MonBrightnessDown
@@ -34,7 +34,7 @@ mod4 + bracket{left,right}
 	mpc --quiet seek {-,+}20
 mod4 + shift + bracket{left,right}
 	mpc --quiet {prev,next}
-mod4 + backslash
+mod4 + equal
 	mpc --quiet toggle;
 ## Screenshot
 {_,shift +,ctrl +} Print
@@ -75,11 +75,14 @@ mod4 + m : {_,shift +} {h,j,k,l}
 mod4 + m : ctrl + {h,j,k,l}
 	bspc node --move {-20 0,0 20,0 -20,20 0}
 ## Change window to fullscreen
-mod4 + f
-	bspc node --state ~fullscreen
+# mod4 + f
+# 	bspc node --state ~fullscreen
+## Find and open {doc,file}
+mod4 + {_,ctrl +} f
+	rofi-open-{doc,file}
 ## Find and open {file,dir}
-mod4 + {_,ctrl +} t
-	rofi-open-{file,dir}
+mod4 + d
+	rofi-open-dir
 ## Change gap size between windows
 mod4 + g
 	bspc config window_gap {0,12,25}
@@ -87,7 +90,7 @@ mod4 + g
 
 # Desktops
 
-# {}(=*)+]
+# {         }          (         =     *        )          +    ]
 # braceleft,braceright,parenleft,equal,asterisk,parenright,plus,bracketright
 # Focus selected desktop
 mod4 + {3,4,5,6,7,8,9,0}
@@ -121,14 +124,14 @@ mod4 + period
 mod4 + {_,shift +} i
 	bspc node {-c,-k}
 ## Run dmenu
-mod4 + d
-	dmenu_run
+mod4 + e
+	rofi -show drun
 ## Launch apps
 mod4 + o; {b,e,t,r,f,l}
 	{$BROWSER,$EDITOR,$TERMINAL,$READER,$FILE,lyx}
 ## Open terminal
 mod4 + Return
-	st
+	$TERMINAL
 ## Edit dotfiles config
 mod4 + x
 	$TERMINAL -e edit-config
