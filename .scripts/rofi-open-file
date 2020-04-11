@@ -1,3 +1,0 @@
-#!/bin/sh
-cd ~ || exit 1
-fd . Dropbox Desktop Downloads org -t f | rofi -dmenu -i -p "Open File" | xargs -r -I % xdg-open "%"

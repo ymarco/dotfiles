@@ -1,0 +1,10 @@
+#!/bin/sh
+battery() {
+    acpi |
+        sed -e 's/\(Battery .: \|remaining\|until charged\)//g' \
+            -e 's/Discharging,//g' \
+            -e 's/Charging,//g' \
+            -e 's/ ..:/ /'
+}
+
+battery

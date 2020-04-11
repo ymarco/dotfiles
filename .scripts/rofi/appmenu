@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+# Copied from https://github.com/hlissner/dotfiles/tree/master/bin/rofi
+rofi -show drun \
+     -modi drun,run \
+     -show-icons \
+     -theme-str 'textbox-icon {str: "    ";} prompt {enabled: false;}'

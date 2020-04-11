@@ -1,4 +1,0 @@
-#!/bin/sh
-cd ~ || exit 1
-EXTS="-e pdf -e md -e markdown -e org -e epub -e doc -e docx -e mp4 -e mkv -e wmv"
-fd . Dropbox Desktop Downloads org -t f $EXTS | rofi -dmenu -i -p "Open Doc" | xargs -r -I % xdg-open "%"

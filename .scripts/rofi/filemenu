@@ -1,0 +1,7 @@
+#!/bin/sh
+cd ~ || exit 1
+fd . Dropbox Desktop Downloads org -t f \
+    | sed 's|/|❭|g' \
+    | rofi -dmenu -i -theme-str 'textbox-icon{str: "    ";} prompt{enabled: false;}' \
+    | sed 's|❭|/|g' \
+    | xargs -r -I % xdg-open "%"

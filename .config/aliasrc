@@ -24,10 +24,12 @@ alias \
 
 # SHORTCUTS
 alias \
-	y="cd ~/Dropbox/yoav" \
-	d="cd ~/Desktop " \
-	D="cd ~/Downloads" \
-	t="cd ~/Downloads/Torrents" \
+	y="cd ~/Dropbox/yoav/" \
+	u="cd ~/Dropbox/yoav/uni/" \
+	s="cd ~/Dropbox/yoav/school/" \
+	d="cd ~/Desktop/" \
+	D="cd ~/Downloads/" \
+	t="cd ~/Downloads/Torrents/" \
 
 # FUNCTIONS
 

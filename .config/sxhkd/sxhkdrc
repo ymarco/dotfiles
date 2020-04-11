@@ -25,7 +25,7 @@ mod4 + {bracketleft,bracketright}
 
 ## Monitor Selection
 {mod4 + p,XF86Display}
-	rofi-display
+	displaymenu
 ## X Keyboard Layout Changing
 mod4 + space
 	change-lang
@@ -79,10 +79,10 @@ mod4 + m : ctrl + {h,j,k,l}
 # 	bspc node --state ~fullscreen
 ## Find and open {doc,file}
 mod4 + {_,ctrl +} f
-	rofi-open-{doc,file}
+	{doc,file}menu
 ## Find and open {file,dir}
 mod4 + d
-	rofi-open-dir
+	dirmenu
 ## Change gap size between windows
 mod4 + g
 	bspc config window_gap {0,12,25}
@@ -125,7 +125,7 @@ mod4 + {_,shift +} i
 	bspc node {-c,-k}
 ## Run dmenu
 mod4 + e
-	rofi -show drun
+	appmenu
 ## Launch apps
 mod4 + o; {b,e,t,r,f,l}
 	{$BROWSER,$EDITOR,$TERMINAL,$READER,$FILE,lyx}

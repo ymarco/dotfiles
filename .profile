@@ -9,6 +9,7 @@ export BROWSER="brave"
 export READER="zathura"
 
 export PATH="$HOME/.scripts:$PATH"
+export PATH="$HOME/.scripts/rofi:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$ANDROID_STUDIO/tools/bin:$PATH"
 export ANDROID_HOME="$HOME/Android/Sdk"
