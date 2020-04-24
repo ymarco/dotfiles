@@ -6,8 +6,9 @@ alias \
 	config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME" \
 	vim="nvim" \
 	v="TERM=xterm-256color emacsclient -t -a \"\"" \
+	ec="emacsclient" \
 	sv="sk | xargs emacsclient -t -a \"\"" \
-	ec="edit-config" \
+	ce="edit-config" \
 	grep="grep --color=auto" \
 	rand-bg="feh --randomize --bg-fill ~/.wallpapers/*" \
 	idea="_JAVA_AWT_WM_NONREPARENTING=1 idea &" \
@@ -17,7 +18,6 @@ alias \
 	f="xdg-open" \
 	sai="sudo apt install" \
 	s="sudo" \
-	fd="fdfind" \
 	doom="$HOME/.emacs.d/bin/doom"\
 	rn="react-native"\
 

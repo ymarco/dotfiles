@@ -1,4 +1,6 @@
 # ~/.config/sxhkd/sxhkdrc
+# setxkbmap us,us,il,il dvorak,,, caps:swapescape
+
 
 ##############
 ##  System  ##
@@ -14,7 +16,7 @@ mod4 {_,shift +} BackSpace
 	pa-simp-and-update set-vol +{1,2,5}%
 XF86AudioMute
 	pa-simp-and-update toggle-mute
-mod4 + {bracketleft,bracketright}
+mod4 + ctrl + {bracketleft,bracketright}
 	pa-simp-and-update set-vol {-,+}2%
 ## Backlight
 {ctrl +,_,shift +} XF86MonBrightnessDown
@@ -28,7 +30,9 @@ mod4 + {bracketleft,bracketright}
 	displaymenu
 ## X Keyboard Layout Changing
 mod4 + space
-	change-lang
+	xkblayout-state set +1 && xkblayout-state set +1
+mod4 + ctrl + space
+	xkblayout-state set +1
 ## Mpd Controls
 mod4 + bracket{left,right}
 	mpc --quiet seek {-,+}20
@@ -38,11 +42,7 @@ mod4 + equal
 	mpc --quiet toggle;
 ## Screenshot
 {_,shift +,ctrl +} Print
-	file="$(date +$HOME/temp/%T,%b-%d[%a].png)"; \
-	sleep 0.2s; \
-	scrot '{-d 1,--focused,--select}' -z "$file"; \
-	sleep 0.2s; \
-	xclip -selection clipboard -t "image/png" -i "$file"
+	maim -s | xclip -selection clipboard -t "image/png"
 ## Suspend
 XF86AudioMicMute
 	confirm "suspend?" && systemctl suspend
@@ -110,7 +110,7 @@ mod4 + s
 ## Move window to an empty desktop
 mod4 + shift + s
 	bspc node -d 'any.!occupied' --follow;
-## Apply canvases DEPRECATED
+## Apply canvases FIXME
 mod4 + 1
 	ls ~/.config/bspwm/canvases/ | dmenu | xargs -r -I % /usr/share/doc/bspwm/examples/receptacles/extract_canvas % | sh
 

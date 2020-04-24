@@ -1,3 +1,0 @@
-#!/bin/sh
-xkblayout-state set +1
-pkill -SIGRTMIN+2 lemonbarc

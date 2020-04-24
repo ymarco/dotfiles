@@ -14,10 +14,10 @@ configuration {
 
 * {
   accent: #ffa587;
-  bg: #232830fa;
-  bg-light: #2b303b;
-  bg-focus: #282a36;
-  bg-dark: #1c1f24;
+  bg: #232830C8;
+  bg-light: #2b303bC8;
+  bg-focus: #282a36C8;
+  bg-dark: #1c1f24C8;
   fg: #c0c5ce;
   fg-list: #c0c5ce;
   on: #8bd49c;

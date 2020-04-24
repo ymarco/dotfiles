@@ -49,7 +49,7 @@ st.color15:     #A3B7CB
 
 ! st.alpha: 3
 !! Set a default font and font size as below:
-! st.font: Ubuntu Mono-20
+st.font: UbuntuMono Nerd Font-16
 
 !!Xft.autohint: 1
 !!Xft.antialias: 1

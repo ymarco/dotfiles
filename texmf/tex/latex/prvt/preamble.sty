@@ -20,10 +20,15 @@
 \RequirePackage{amsmath}                        % math envs: align, gather...
 \RequirePackage{amssymb}                        % math symbols
 \RequirePackage{mathtools}                      % overbrace, multilined
-\RequirePackage[a4paper,margin=1.1in]{geometry} % margins setup
-\RequirePackage{cancel}                         % "cancel" math command
-\RequirePackage[section]{placeins}              % floats don't overflow to sections
-\RequirePackage{comment}                        % adds a comment environment to mass-comment lines
+\@ifpackageloaded{geometry}{}{
+	\RequirePackage[a4paper,margin=1.1in]{geometry} % margins setup
+}
+% \RequirePackage{cancel}                         % "cancel" math command
+% \RequirePackage[section]{placeins}              % floats don't overflow to sections
+% \RequirePackage{comment}                        % adds a comment environment to mass-comment lines
+\RequirePackage{xcolor}
+
+
 
 \setlength{\parindent}{0pt} % no paragraph indentation
 \setlength{\parskip}{2pt} % to replace parindent
@@ -52,11 +57,15 @@
 	\newtheorem*{examples}{דוגמאות}
 	\newtheorem*{example}{דוגמא}
 	\newtheorem*{exercise}{תרגיל}
+	\newtheorem*{reminder}{תזכורת}
+	\newtheorem*{solution}{פתרון}
 \fi \ifPDFTeX % same without *
 	\newtheorem{corollary}{מסקנה}
 	\newtheorem{examples}{דוגמאות}
 	\newtheorem{example}{דוגמא}
 	\newtheorem{exercise}[theorem]{תרגיל}
+	\newtheorem{reminder}{תזכורת}
+	\newtheorem{solution}{פתרון}
 \fi
 
 \ifXeTeX \theoremstyle{remark} \fi % \theoremstyle is only in amsthm = XeTeX
@@ -84,6 +93,12 @@
 	\setmainlanguage{hebrew}
 	\setotherlanguage{english}
 	\newfontfamily{\hebrewfont}[Script=Hebrew,AutoFakeSlant=0.15]{David CLM}
+    % \setmainfont[Script=Hebrew]{DejaVu Sans}
+
+	% used to put hebrew in math
+	\newcommand{\mathhebrew}[1]{\text{\textenglish{\texthebrew{#1}}}}
+	% \setmonofont[Script=Hebrew]{Inconsolata}
+	% \setmonofont[Script=English]{Inconsolata}
 
 	% redefining \maketitle to also set the pdf metadata options for hyperref
 	\newcommand\org@maketitle{}
@@ -108,5 +123,54 @@
 	\makeatletter\let\l@hebrew\l@nohyphenation\makeatother
 	\RequirePackage[english,hebrew]{babel}
 \fi
+
+% https://www.reddit.com/r/LaTeX/comments/g51dnu/tomorrow_is_the_first_time_i_lecture_in/
+\definecolor{col1}{HTML}{FF7878}
+\definecolor{col2}{HTML}{51B5F8}
+\definecolor{col3}{HTML}{68E1AA}
+\definecolor{col4}{HTML}{B869EA}
+\definecolor{col5}{HTML}{FF5500}
+
+% Colours taken from @tecosaur's bmc class, de colorscheme.
+\definecolor  {White}      {HTML}{FCFCFC}
+\definecolor  {LightGray}  {HTML}{a5b1c2}
+\definecolor  {Gray}       {HTML}{778ca3}
+\definecolor  {DarkGray}   {HTML}{4b6584}
+\definecolor  {Black}      {HTML}{231F20}
+% Primary Colours
+\definecolor  {Red}        {HTML}{eb3b47}
+\definecolor  {LightRed}   {HTML}{fc5c65}
+\definecolor  {DarkRed}    {HTML}{d91c38}
+
+\definecolor  {Yellow}     {HTML}{f7b731}
+\definecolor  {LightYellow}{HTML}{fed330}
+\definecolor  {DarkYellow} {HTML}{f0a132}
+
+\definecolor  {Blue}       {HTML}{3867d6}
+\definecolor  {LightBlue}  {HTML}{4b7bec}
+\definecolor  {DarkBlue}   {HTML}{2654bf}
+% tertiary Colours
+\definecolor  {Green}      {HTML}{20bf6b}
+\definecolor  {LightGreen} {HTML}{26de81}
+\definecolor  {DarkGreen}  {HTML}{1ba155}
+
+\definecolor  {Orange}     {HTML}{fa8231}
+\definecolor  {LightOrange}{HTML}{fd9644}
+\definecolor  {DarkOrange} {HTML}{f76b20}
+
+\definecolor  {Purple}     {HTML}{8854d0}
+\definecolor  {LightPurple}{HTML}{a55eea}
+\definecolor  {DarkPurple} {HTML}{6e49b8}
+% secondary+ Colours
+% \definecolor{Brown}      {HTML}{}
+\definecolor  {Cyan}       {HTML}{0fb9b1}
+\definecolor  {LightCyan}  {HTML}{2bcbba}
+\definecolor  {DarkCyan}   {HTML}{00a8a8}
+
+% \newenvironment{presentation_definition}{
+%   \begin{tcolorbox}[colback=col4!10, colframe=col4!50, coltitle=col4!30!black, fonttitle=\bfseries, title=Definition]
+% } {
+%   \end{tcolorbox}
+% }
 
 \RequirePackage{macros}
