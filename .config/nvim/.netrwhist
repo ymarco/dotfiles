@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/yoavm448/Downloads/Reservoir Dogs (1992) [1080p]'
-let g:netrw_dirhist_2='/home/yoavm448/.config/mpd/playlists'
-let g:netrw_dirhist_3='/home/yoavm448/AndroidStudioProjects/thisapp/app/build'
-let g:netrw_dirhist_4='/gnu/store/69iqdbyd1rx6nds1ibqmq28g9fzxabdx-profile/lib/locale'
-let g:netrw_dirhist_5='/gnu/store/69iqdbyd1rx6nds1ibqmq28g9fzxabdx-profile/lib/locale/2.29'
