@@ -68,14 +68,23 @@ Format 24
 # 2nd MISC SUPPORT SECTION ##########################
 #
 
+\export_overwrite main
 
 #
 # FORMATS SECTION ##########################
 #
 
-\format "bibtex" "tex" "BibTeX" "" "zathura" "st -e vim" "" "text/x-bibtex"
-\format "pdflatex" "tex" "LaTeX (pdflatex)" "" "zathura" "" "document,menu=export" ""
-\default_otf_view_format dvi3
+\format "dia" "dia" "DIA" "" "auto" "auto" "vector,zipped=native" "application/x-dia-diagram"
+\format "excel" "xls" "Excel spreadsheet" "" "" "auto" "document" "application/vnd.ms-excel"
+\format "fen" "fen" "FEN" "" "auto" "auto" "" ""
+\format "fig" "fig" "FIG" "" "auto" "auto" "vector" "application/x-xfig"
+\format "gnumeric" "gnumeric" "Gnumeric spreadsheet" "" "" "auto" "document" "application/x-gnumeric"
+\format "agr" "agr" "Grace" "" "auto" "auto" "vector" ""
+\format "html_table" "html" "HTML Table (for spreadsheets)" "" "" "auto" "document" "text/html"
+\format "excel2" "xlsx" "MS Excel Office Open XML" "" "" "auto" "document" "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+\format "noteedit" "not" "Noteedit" "" "auto" "auto" "vector" ""
+\format "oocalc" "ods" "OpenDocument spreadsheet" "" "" "auto" "document" "application/vnd.oasis.opendocument.spreadsheet"
+\format "tgif" "obj, tgo" "Tgif" "" "auto" "auto" "vector" "application/x-tgif"
 
 #
 # CONVERTERS SECTION ##########################

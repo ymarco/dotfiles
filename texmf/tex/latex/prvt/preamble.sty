@@ -122,16 +122,22 @@
 	% Don't complain about hyphenation patterns for Hebrew
 	\makeatletter\let\l@hebrew\l@nohyphenation\makeatother
 	\RequirePackage[english,hebrew]{babel}
+	\newcommand{\mathhebrew}[1]{\text{\R{#1}}}
 \fi
 
-% https://www.reddit.com/r/LaTeX/comments/g51dnu/tomorrow_is_the_first_time_i_lecture_in/
-\definecolor{col1}{HTML}{FF7878}
-\definecolor{col2}{HTML}{51B5F8}
-\definecolor{col3}{HTML}{68E1AA}
-\definecolor{col4}{HTML}{B869EA}
-\definecolor{col5}{HTML}{FF5500}
+% theorem frame:
+% https://tex.stackexchange.com/a/86389/
 
-% Colours taken from @tecosaur's bmc class, de colorscheme.
+\definecolor{BGLight}{HTML}{FAFAFA}
+
+% https://www.reddit.com/r/LaTeX/comments/g51dnu/tomorrow_is_the_first_time_i_lecture_in/
+\definecolor{theme1}{HTML}{FF7878}
+\definecolor{theme2}{HTML}{51B5F8}
+\definecolor{theme3}{HTML}{68E1AA}
+\definecolor{theme4}{HTML}{B869EA}
+\definecolor{theme5}{HTML}{FF5500}
+
+% Colours taken from @tecosaur's bmc class, 'de' colorscheme.
 \definecolor  {White}      {HTML}{FCFCFC}
 \definecolor  {LightGray}  {HTML}{a5b1c2}
 \definecolor  {Gray}       {HTML}{778ca3}
@@ -162,7 +168,6 @@
 \definecolor  {LightPurple}{HTML}{a55eea}
 \definecolor  {DarkPurple} {HTML}{6e49b8}
 % secondary+ Colours
-% \definecolor{Brown}      {HTML}{}
 \definecolor  {Cyan}       {HTML}{0fb9b1}
 \definecolor  {LightCyan}  {HTML}{2bcbba}
 \definecolor  {DarkCyan}   {HTML}{00a8a8}

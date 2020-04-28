@@ -65,3 +65,4 @@ image/svg+xml-compressed=eog.desktop
 image/vnd.wap.wbmp=eog.desktop
 image/x-icns=eog.desktop
 inode/directory=lf.desktop
+x-scheme-handler/org-protocol=org-protocol.desktop
