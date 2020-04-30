@@ -12,13 +12,13 @@ set icons		# Enable icons. Requires nerd fonts and LF_ICONS variable.
 
 # Custom Functions
 
-cmd open ${{
-	case $(file --mime-type "$f" -bL) in
-		text/*|application/json) $EDITOR "$f";;
-		video/|image/|application/pdf) setsid xdg-open "$f" & disown;;
-		*) xdg-open "$f" ;;
-	esac
-}}
+# cmd open ${{
+	# case $(file --mime-type "$f" -bL) in
+		# text/*|application/json) $EDITOR "$f";;
+		# video/|image/|application/pdf) setsid xdg-open "$f" & disown;;
+		# *) xdg-open "$f" ;;
+	# esac
+# }}
 
 cmd xcopy ${{
 	xclip -selection clipboard -t "$(file --mime-type -b $f)" -i "$f"
@@ -29,23 +29,21 @@ cmd drag ${{
 	dragon -x "$f"
 }}
 
-map n drag
-
 
 # cmds/functions
-cmd open ${{
-	case $(file --mime-type "$f" -b) in
-	text/troff) man ./ "$f";;
-	text/html) setsid $BROWSER "$f";;
-	text/*) emacsclient $fx;;
-	image/x-xcf|image/svg+xml) setsid gimp "$f" >/dev/null 2>&1 & ;;
-	image/*) rotdir "$f" | setsid sxiv -aio 2>/dev/null | lf-select & ;;
-	audio/*) mpv "$f" ;;
-	video/*) setsid mpv "$f" -quiet >/dev/null 2>&1 & ;;
-	application/pdf) setsid $VIEWER $fx >/dev/null 2>&1 & ;;
-		*) for f in $fx; do setsid $OPENER "$f" >/dev/null 2>&1 & done;;
-	esac
-}}
+# cmd open ${{
+# 	case $(file --mime-type "$f" -b) in
+# 	text/troff) man ./ "$f";;
+# 	text/html) setsid $BROWSER "$f";;
+# 	text/*) emacsclient $fx;;
+# 	image/x-xcf|image/svg+xml) setsid gimp "$f" >/dev/null 2>&1 & ;;
+# 	image/*) rotdir "$f" | setsid sxiv -aio 2>/dev/null | lf-select & ;;
+# 	audio/*) mpv "$f" ;;
+# 	video/*) setsid mpv "$f" -quiet >/dev/null 2>&1 & ;;
+# 	application/pdf) setsid $VIEWER $fx >/dev/null 2>&1 & ;;
+# 		*) for f in $fx; do setsid $OPENER "$f" >/dev/null 2>&1 & done;;
+# 	esac
+# }}
 
 cmd rename %[ -e $1 ] && printf "file exists" || mv "$f" $1
 

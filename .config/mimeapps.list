@@ -38,6 +38,7 @@ application/x-shellscript=emacs-client.desktop;
 text/x-shellscript=emacs-client.desktop;
 image/jpeg=gimp.desktop;firefox.desktop;
 application/x-partial-download=vlc.desktop;
+text/vnd.graphviz=emacs-client.desktop;
 
 [Default Applications]
 image/png=eog.desktop
