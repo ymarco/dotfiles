@@ -5,7 +5,7 @@ alias \
 	diff="diff --color=auto" \
 	config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME" \
 	vim="nvim" \
-	v="TERM=xterm-256color emacsclient -t -a \"\"" \
+	v="emacsclient -t -a \"\"" \
 	ec="emacsclient" \
 	sv="sk | xargs emacsclient -t -a \"\"" \
 	ce="edit-config" \
@@ -24,18 +24,18 @@ alias \
 
 # SHORTCUTS
 alias \
-	y="cd ~/Dropbox/yoav/" \
-	u="cd ~/Dropbox/yoav/uni/" \
-	s="cd ~/Dropbox/yoav/school/" \
+	y="cd ~/yoav/" \
+	u="cd ~/yoav/uni/" \
+	s="cd ~/yoav/school/" \
 	d="cd ~/Desktop/" \
-	D="cd ~/Downloads/" \
-	t="cd ~/Downloads/Torrents/" \
+	b="cd ~/to-be-sorted/" \
+	t="cd ~/to-be-sorted/Torrents/" \
 
 # FUNCTIONS
 
 # search in bash history, copy selected to clipboard
 hs() {
-	sort -ubi ~/.zsh_history | sk | xargs -r -I % printf "%" | xclip -selection clipboard
+	sort -ubi "$HISTFILE" | sk | xargs -r -I % printf "%" | xclip -selection clipboard
 }
 
 # get preformance info about processes, how much of my resources they used since

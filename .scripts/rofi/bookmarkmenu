@@ -24,29 +24,22 @@ _do_rofi() {
 case ${BROWSER:-firefox} in
   firefox)
     for dir in ~/.mozilla/firefox/*.default \
-               $XDG_CONFIG_HOME/firefox/.mozilla/firefox/*.default \
-               $XDG_DATA_HOME/mozilla/firefox/*.default \
-               ~/Library/Application\ Support/Firefox/Profiles/*.default; do
+      $XDG_CONFIG_HOME/firefox/.mozilla/firefox/*.default \
+      $XDG_DATA_HOME/mozilla/firefox/*.default \
+      ~/Library/Application\ Support/Firefox/Profiles/*.default; do
       if [[ -d "$dir" ]]; then
-        # The db can be locked from time to time. This is inefficient, but
-        # places.sqlite is usually under 30mb so this should be instant, and
-        # /tmp is cleared at boot so...
-        # if ! find /tmp/rofi-bookmarkmenu -mmin +60 2>&1 >/dev/null; then
-          cp "$dir/places.sqlite" "/tmp/places.sqlite"
-          # sqlite3 -separator $SEP "/tmp/places.sqlite" \
-          #   "SELECT DISTINCT title, url FROM moz_places \
-          #   WHERE title IS NOT NULL \
-          #   ORDER BY last_visit_date DESC" >/tmp/rofi-bookmarkmenu
-          sqlite3 -separator $SEP "/tmp/places.sqlite" \
-            "SELECT DISTINCT mb.title, mp.url FROM moz_bookmarks mb \
-            INNER JOIN moz_places mp ON mp.id = mb.fk \
-            WHERE mb.type = 1 AND mb.title IS NOT NULL \
-            ORDER BY mp.frecency DESC \
-            LIMIT 200" >>/tmp/rofi-bookmarkmenu
-        # fi
-          sed -e 's#&#&amp;#g' -e 's#<#&lt;#g' -e 's#>#&gt;#g' /tmp/rofi-bookmarkmenu \
-            | _do_rofi
-        break
+      # The db can be locked from time to time. This is inefficient, but
+      # places.sqlite is usually under 30mb so this should be instant, and
+      # /tmp is cleared at boot so...
+      cp "$dir/places.sqlite" "/tmp/places.sqlite"
+      sqlite3 -separator $SEP "/tmp/places.sqlite" \
+        "SELECT DISTINCT mb.title, mp.url FROM moz_bookmarks mb \
+        INNER JOIN moz_places mp ON mp.id = mb.fk \
+        WHERE mb.type = 1 AND mb.title IS NOT NULL \
+        ORDER BY mp.frecency DESC \
+        LIMIT 400" | sed -e 's#&#&amp;#g' -e 's#<#&lt;#g' -e 's#>#&gt;#g' \
+        | _do_rofi
+      break
       fi
     done
     ;;
@@ -54,10 +47,10 @@ case ${BROWSER:-firefox} in
     {
       sed -e 's/ /{{::}}/' urls | awk -F'{{::}}' '{printf "%s{{::}}%s\n", $2, $1}'
       # sqlite3 -separator $SEP "$XDG_DATA_HOME/qutebrowser/history.sqlite" \
-      #   "SELECT title, url FROM History \
-      #   WHERE title != '' \
-      #   GROUP BY url \
-      #   ORDER BY atime DESC"
+        #   "SELECT title, url FROM History \
+        #   WHERE title != '' \
+        #   GROUP BY url \
+        #   ORDER BY atime DESC"
     } | _do_rofi
     ;;
   *) rofi -e "No known browser" ;;

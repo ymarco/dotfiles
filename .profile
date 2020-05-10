@@ -3,7 +3,6 @@
 export HISTCONTROL=ignoredups
 export HISTSIZE=HISTFILESIZE=1000
 export HISTIGNORE='c:clear'
-
 export TERMINAL="st"
 export BROWSER="brave"
 export READER="zathura"
@@ -31,9 +30,42 @@ export LF_ICONS="di=:fi=:ln=:or=:ex=:*.c=:*.cc=:*.clj=:*
 # export LESS_TERMCAP_ue='\e[0m'    # stop underline
 
 export JAVA_HOME='/usr/lib/jvm/java-11-openjdk-amd64'
+
 GUIX_PROFILE="$HOME/.guix-profile"
 . "$GUIX_PROFILE/etc/profile"
 export GUIX_LOCPATH="$GUIX_PROFILE/lib/locale"
 #export _JAVA_AWT_WM_NONREPARENTING=1
 #pgrep mpd || mpd;
 
+
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+
+
+#export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+#export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.
+#aspell_personal=$(ls $XDG_CONFIG_HOME/aspell/*.pws)
+#aspell_repl=$(ls $XDG_CONFIG_HOME/aspell/*.prepl)
+# export ALSA_CONFIG_PATH="$XDG_CONFIG_HOME/alsa/asoundrc"
+# export ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android"
+export ANSIBLE_CONFIG="$XDG_CONFIG_HOME/ansible/ansible.cfg"
+#export ASPELL_CONF="per-conf $XDG_CONFIG_HOME/aspell/aspell.conf; personal $aspell_personal; repl $aspell_repl"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export GOPATH="$XDG_DATA_HOME/go"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
+export HISTFILE="$XDG_DATA_HOME/shell_history"
+export ICEAUTHORITY="$XDG_CACHE_HOME/ICEauthority"
+export INPUTRC="$XDG_CONFIG_HOME/inputrc"
+export KODI_DATA="$XDG_DATA_HOME/kodi"
+export LESSHISTFILE="-"
+export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch"
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
+export SQLITE_HISTORY=$XDG_DATA_HOME/sqlite_history
+export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
+export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
+export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+#export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export _Z_DATA="$XDG_DATA_HOME/z"

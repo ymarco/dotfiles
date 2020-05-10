@@ -15,6 +15,7 @@ image/gif=eog.desktop;
 image/jpg=eog.desktop;
 image/pjpeg=eog.desktop;
 image/tiff=eog.desktop;
+image/csv=emacs-client.desktop;
 image/x-bmp=eog.desktop;
 image/x-gray=eog.desktop;
 image/x-icb=eog.desktop;
@@ -39,6 +40,7 @@ text/x-shellscript=emacs-client.desktop;
 image/jpeg=gimp.desktop;firefox.desktop;
 application/x-partial-download=vlc.desktop;
 text/vnd.graphviz=emacs-client.desktop;
+text/x-python=emacs-client.desktop;
 
 [Default Applications]
 image/png=eog.desktop
