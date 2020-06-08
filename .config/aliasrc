@@ -18,7 +18,7 @@ alias \
 	f="xdg-open" \
 	sai="sudo apt install" \
 	s="sudo" \
-	doom="$HOME/.emacs.d/bin/doom"\
+	doom="EMACSLOADPATH=$GUIX_PROFILE/share/emacs/28.0.50/lisp:$GUIX_PROFILE/share/emacs/site-lisp $HOME/.config/emacs/bin/doom"\
 	rn="react-native"\
 
 
@@ -46,7 +46,7 @@ pinfo() {
 
 # Sum statistics about me flacs
 musicinfo() {
-	fd -t f -e flac | xargs -d '\n' soxi -D |
+	soxi -D **/*.flac |
 		awk '{a+=$0; tot+=1} END {print tot " songs, " a/(60*60) " hours of playback, average song length is " a/tot/60 " mins."}'
 	echo "summing $(du -sh .)"
 }

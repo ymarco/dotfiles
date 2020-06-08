@@ -1,5 +1,5 @@
 #!/bin/sh
-fd . yoav Desktop to-be-sorted org -t d \
+fd . yoav projects Desktop to-be-sorted org -t d \
     | sed 's|/|❭|g' \
     | rofi -dmenu -i -theme-str 'textbox-icon {str: "    ";} prompt {enabled: false;}' \
     | sed 's|❭|/|g' \

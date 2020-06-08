@@ -12,20 +12,20 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 # start pulseaudio
-start-pulseaudio-x11 &
+#start-pulseaudio-x11 &
 # start composite manager for transparency
-compton -b --config .config/compton/compton.conf
+#compton -b --config .config/compton/compton.conf
 # set background
-feh --randomize --bg-fill ~/.wallpapers/*
+#feh --randomize --bg-fill ~/.wallpapers/*
 # update with Xresources, cos appearently it doesnt happen automatically
 # xrdb ~/.Xresources
 #[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 # Adjust typematic delay and rate
 xset r rate 300 30
 # start redshift
-redshift -l 31.5:34.75 &
+#redshift -l 31.5:34.75 &
 # start network manager applet if not already running
-pgrep nm-applet || nm-applet &
+#pgrep nm-applet || nm-applet &
 # start unclutter to hide the mouse when not used
 unclutter &
 # finally, start the wm

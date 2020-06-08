@@ -1,7 +1,7 @@
 #!/bin/sh
 cd ~ || exit 1
-EXTS="-e pdf -e md -e markdown -e org -e epub -e doc -e docx -e mp4 -e mkv -e wmv"
-fd . yoav Desktop to-be-sorted org -t f $EXTS \
+EXTS="-e pdf -e md -e markdown -e org -e epub -e doc -e docx -e mp4 -e mkv -e wmv -e jpg -e jpeg -e png"
+fd . yoav projects Desktop to-be-sorted org -t f $EXTS \
     | sed 's|/|❭|g' \
     | rofi -dmenu -i -theme-str 'textbox-icon {str: "    ";} prompt {enabled: false;}' \
     | sed 's|❭|/|g' \

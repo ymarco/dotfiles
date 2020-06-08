@@ -47,16 +47,17 @@ cmd drag ${{
 
 cmd rename %[ -e $1 ] && printf "file exists" || mv "$f" $1
 
+# TODO rewrite with modeline
 cmd delete ${{
 	set -f
-	printf "%s\n\t" "$fx"
-	printf "delete?[y/N]"
+	printf "delete? [y/n] "
 	read ans
 	[ $ans = "y" ] && rm -rf $fx
 }}
 
 map D delete
 
+# TODO rewrite with modeline
 cmd mkdir ${{
 	set -f
 	printf "mkdir: "
@@ -64,6 +65,7 @@ cmd mkdir ${{
 	[ -n "$ans" ] && mkdir -p "$ans"
 }}
 
+# TODO rewrite with modeline
 cmd moveto ${{
 	set -f
 	clear; echo "Move to where?"
@@ -74,12 +76,13 @@ cmd moveto ${{
 
 map M moveto
 
+# FIXME rewrite with modeline
 cmd copyto ${{
 	set -f
 	clear; echo "Copy to where?"
 	dest="$(cut -d'	' -f2- ${XDG_CONFIG_HOME:-$HOME/.config}/directories | fzf)" &&
 	eval cp -ivr $fx $dest &&
-	notify-send "📋 File(s) copied." "File(s) copies to $dest."
+	notify-send "📋 copied" "File(s) copies to $dest."
 }}
 
 map C copyto
@@ -87,6 +90,20 @@ map C copyto
 cmd open ${{
 	setsid xdg-open "$f"
 }}
+
+# FIXME copied from
+# https://github.com/gokcehan/lf/wiki/Tips#create-symlinks-soft--hard
+# and doesn't work
+cmd link %{{
+	mode="$(lf -remote 'load' | head -1)"
+	if [ "$mode" = copy ]; then
+		lf -remote 'load' | xargs -I % -r ln -sr % -t .
+	# while a move mode is indicating a hard link
+	elif [ "$mode" = move ]; then
+		ln $files -t .
+	fi
+}}
+map P :link
 
 # cmd bulkrename ${{
 # 	vidir
@@ -97,6 +114,7 @@ map <c-f> $lf -remote "send $id select '$(fzf)'"
 map J $lf -remote "send $id cd $(cut -d'	' -f2 ${XDG_CONFIG_HOME:-$HOME/.config}/directories | fzf)"
 map g top
 map a push %mkdir<space>
+map + push %mkdir<space>
 map r push :rename<space>
 map R $lf -remote "send $id push :rename<space>$f"
 # map b bulkrename
@@ -109,5 +127,7 @@ map O $mimeopen --ask "$f"
 # mouse scrolls
 map <c-y> up
 map <c-e> down
+# C-z suspends lf
+map <c-z> $ kill -STOP $PPID
 # FIXME
 # map = mkdir

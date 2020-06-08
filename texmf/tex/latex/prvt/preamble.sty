@@ -123,6 +123,10 @@
 	\makeatletter\let\l@hebrew\l@nohyphenation\makeatother
 	\RequirePackage[english,hebrew]{babel}
 	\newcommand{\mathhebrew}[1]{\text{\R{#1}}}
+	% Usually I use the xetex poliglassia api, which uses english envs.
+	\newenvironment{english}{\begin{otherlanguage}{english}}{\end{otherlanguage}}
+	% Doesn't hurt
+	\newenvironment{hebrew}{\begin{otherlanguage}{hebrew}}{\end{otherlanguage}}
 \fi
 
 % theorem frame:

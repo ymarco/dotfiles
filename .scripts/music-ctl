@@ -9,7 +9,7 @@ if pgrep vlc > /dev/null; then # if playing from VLC, pause it
         toggle)
             # if mpd is playing then I probably want to pause IT and not vlc
             if mpc status | grep playing > /dev/null; then
-                mpc toggle
+                mpc -q toggle
             else
                 qdbus-vlc org.mpris.MediaPlayer2.Player.PlayPause
             fi;;
@@ -18,7 +18,11 @@ if pgrep vlc > /dev/null; then # if playing from VLC, pause it
     esac
 else # probably playing from mpd
     case "$1" in
-        seek) mpc seek "$2";;
-        toggle|next|prev) mpc "$1";;
+        seek) mpc -q seek "$2";;
+        toggle|prev) mpc -q "$1";;
+        next) mpc status | head -1 >> .config/mpd/skipped-songs
+              mpc -q next;;
+        copy) echo "https://www.youtube.com/results?search_query=$(mpc status | head -1 | sed 's/ /+/g')" \
+            | xclip -sel clip;;
     esac
 fi

@@ -11,6 +11,6 @@ command -v optpdf >/dev/null && {
 
 echo "Removing junk"
 # normal latex compilation junk
-rm -f *.aux *.auxlock *.fdb_latexmk *.fls *.xdv *.bbl *.brf *.blg *.log *.out *.synctex.gz *.fmt *.atfi *.dvi *.md5 *.dpth *.auxlock
+rm -f *.aux *.auxlock *.fdb_latexmk *.fls *.xdv *.bbl *.brf *.blg *.log *.out *.synctex.gz *.fmt *.atfi *.dvi *.md5 *.dpth *.auxlock *.cot
 # auctex junk
 rm -rf .auctex-auto _region_*

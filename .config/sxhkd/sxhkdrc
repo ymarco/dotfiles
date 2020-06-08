@@ -36,8 +36,10 @@ mod4 + ctrl + space
 ## Mpd Controls
 mod4 + bracket{left,right}
 	mpc --quiet seek {-,+}20
-mod4 + shift + bracket{left,right}
-	mpc --quiet {prev,next}
+mod4 + shift + bracketleft
+	mpc --quiet prev
+mod4 + shift + bracketright
+	skipsong
 mod4 + equal
 	mpc --quiet toggle;
 ## Screenshot

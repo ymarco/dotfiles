@@ -1,0 +1,9 @@
+[user]
+	name = yoavm448
+	email = yoavm448@gmail.com
+[core]
+	autocrlf = input
+[github]
+	user = yoavm448
+[pull]
+	rebase = true
