@@ -1,0 +1,26 @@
+#!/bin/sh
+
+SRC=$(readlink -f "$1")
+DST=$(readlink -f "$2")
+
+cd "$SRC" || exit 1
+
+# Mirror directory sturcture
+fd . -t d -x mkdir -p "$DST"/{}
+# Copy the mp3s
+fd -t f -e mp3 -x cp {} "$DST"/{//}/
+# Convert the flacs async
+fd -t f -e flac -j 4 -x ffmpeg -i {.}.flac -ab 320k -map_metadata 0 -id3v2_version 3 "$DST"/{.}.mp3 & p=$!
+# echo how many left, async
+left() {
+    echo $(($(fd . "$SRC" -t f | wc -l) -$(fd . "$DST" -t f | wc -l))) left
+}
+left
+while sleep 2; do
+    printf "\\r"
+    printf "%s" "$(left)"
+done&
+
+# wait for conversion and then kill the echo loop
+wait $p
+kill $!
