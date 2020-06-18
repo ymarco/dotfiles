@@ -1,0 +1,3 @@
+[submodule "/home/yoavm448/.config/mpv/scripts/mpv-autosub"]
+	path = /home/yoavm448/.config/mpv/scripts/mpv-autosub
+	url = https://github.com/davidde/mpv-autosub

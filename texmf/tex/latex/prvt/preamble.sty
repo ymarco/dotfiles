@@ -20,6 +20,7 @@
 \RequirePackage{amsmath}                        % math envs: align, gather...
 \RequirePackage{amssymb}                        % math symbols
 \RequirePackage{mathtools}                      % overbrace, multilined
+\RequirePackage{breqn}                              % better line breaks in math
 \@ifpackageloaded{geometry}{}{
 	\RequirePackage[a4paper,margin=1.1in]{geometry} % margins setup
 }
@@ -28,6 +29,25 @@
 % \RequirePackage{comment}                        % adds a comment environment to mass-comment lines
 \RequirePackage{xcolor}
 
+% optional tikz setpu
+
+\@ifpackageloaded{tikz}{
+  % FIXME this is supposed to set a global scale to tikz but currently does
+  % nothing.
+  % https://tex.stackexchange.com/questions/6388/how-to-scale-a-tikzpicture-to-textwidth
+  \tikzset{global scale/.style={
+	  scale=0.7\textwidth/2cm,
+	  % every node/.style={scale=#1}
+	}}
+  % set background overlay from page #1 of \exfile.
+  \newcommand{\@backgroundex}[1]{%
+	\tikz[remember picture,overlay]
+	\node[opacity=0.75,inner sep=0pt] at (current page.center)
+	{\includegraphics[width=\paperwidth,height=\paperheight,page=#1]{\exfile}};
+  }
+  % set current excersize to #1th page of \exfile, and add #2 space.
+  \newcommand{\currentex}[2]{\newpage\@backgroundex{#1}\vspace{#2}}
+}{}
 
 
 \setlength{\parindent}{0pt} % no paragraph indentation
@@ -120,7 +140,7 @@
 	\RequirePackage{ucs}
 	\RequirePackage[utf8x]{inputenc}
 	% Don't complain about hyphenation patterns for Hebrew
-	\makeatletter\let\l@hebrew\l@nohyphenation\makeatother
+	\let\l@hebrew\l@nohyphenation
 	\RequirePackage[english,hebrew]{babel}
 	\newcommand{\mathhebrew}[1]{\text{\R{#1}}}
 	% Usually I use the xetex poliglassia api, which uses english envs.
