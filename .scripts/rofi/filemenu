@@ -1,6 +1,6 @@
 #!/bin/sh
 cd ~ || exit 1
-fd . yoav projects Desktop to-be-sorted org -t f \
+fd . yoav projects Desktop to-be-sorted org media -t f \
     | sed 's|/|❭|g' \
     | rofi -dmenu -i -theme-str 'textbox-icon{str: "    ";} prompt{enabled: false;}' \
     | sed 's|❭|/|g' \

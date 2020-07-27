@@ -15,22 +15,16 @@ set number relativenumber
 set encoding=utf-8
 
 " PLUGINS
-call plug#begin('~/.local/share/nvim/plugged')
+" call plug#begin('~/.local/share/nvim/plugged')
 " language specific
-Plug 'kovetskiy/sxhkd-vim',      { 'for':'sxhkdrc'}                         " syntax highlighting (sxhkd)
-Plug 'NLKNguyen/c-syntax.vim',   { 'for': ['c','cpp','cuda']}               " syntax highlighting (c family)
-Plug 'plasticboy/vim-markdown',  { 'for':'markdown'}                        " syntax highlighting (markdown) (unused)
-Plug 'elzr/vim-json',            { 'for':'json'}                            " syntax highlighting (json)
-Plug 'vim-python/python-syntax', { 'for':'python'}                          " syntax highlighting (python)
-Plug 'fatih/vim-go',             { 'do': ':GoInstallBinaries', 'for':'go' } " VIM-GO
-Plug 'tbastos/vim-lua', 		 { 'for': 'lua'}                            " syntax highlighting (lua)
+" Plug 'kovetskiy/sxhkd-vim',      { 'for':'sxhkdrc'}                         " syntax highlighting (sxhkd)
 
 " util
-Plug 'SirVer/ultisnips'               " snippets
-Plug 'godlygeek/tabular'              " align text
-Plug 'NLKNguyen/papercolor-theme'     " theme
-Plug 'jiangmiao/auto-pairs'           " auto closing braces
-call plug#end()
+" Plug 'SirVer/ultisnips'               " snippets
+" Plug 'godlygeek/tabular'              " align text
+" Plug 'NLKNguyen/papercolor-theme'     " theme
+" Plug 'jiangmiao/auto-pairs'           " auto closing braces
+" call plug#end()
 
 set t_Co=16
 " Snippets
@@ -49,7 +43,7 @@ let g:go_highlight_operators      = 1
 let g:python_highlight_all = 1
 
 " ASTHETICS
-colorscheme PaperColor
+" colorscheme PaperColor
 let g:PaperColor_Theme_Options = {
   \   'language': {
   \     'python': {
@@ -72,6 +66,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+nnoremap m $
 
 set splitbelow
 set splitright

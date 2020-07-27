@@ -17,6 +17,11 @@
 
 \ProvidesPackage{preamble}
 
+
+% Do different stuff depending on the compiler.
+% I heavily use this in order to set up Hebrew in both PDFLaTex and XeTeX.
+\RequirePackage{iftex}
+
 \RequirePackage{amsmath}                        % math envs: align, gather...
 \RequirePackage{amssymb}                        % math symbols
 \RequirePackage{mathtools}                      % overbrace, multilined
@@ -48,14 +53,20 @@
   % set current excersize to #1th page of \exfile, and add #2 space.
   \newcommand{\currentex}[2]{\newpage\@backgroundex{#1}\vspace{#2}}
 }{}
+\ifPDFTeX \def\currentex{}\fi
 
 
 \setlength{\parindent}{0pt} % no paragraph indentation
 \setlength{\parskip}{2pt} % to replace parindent
 
-% Do different stuff depending on the compiler.
-\RequirePackage{iftex}
-% I heavily use this in order to set up Hebrew in both PDFLaTex and XeTeX.
+% reduce spacing of \left \right pairs
+% https://tex.stackexchange.com/a/64960
+\let\originalleft\left
+\let\originalright\right
+\renewcommand{\left}{\mathopen{}\mathclose\bgroup\originalleft}
+\renewcommand{\right}{\aftergroup\egroup\originalright}
+
+
 
 
 % Here comes a some spaghetti around theorem envs.
@@ -115,6 +126,8 @@
 	\newfontfamily{\hebrewfont}[Script=Hebrew,AutoFakeSlant=0.15]{David CLM}
     % \setmainfont[Script=Hebrew]{DejaVu Sans}
 
+	% David CLM doesn't have a bullet symbol, use the math one
+	\renewcommand{\labelitemi}{$\bullet$}
 	% used to put hebrew in math
 	\newcommand{\mathhebrew}[1]{\text{\textenglish{\texthebrew{#1}}}}
 	% \setmonofont[Script=Hebrew]{Inconsolata}
@@ -145,8 +158,10 @@
 	\newcommand{\mathhebrew}[1]{\text{\R{#1}}}
 	% Usually I use the xetex poliglassia api, which uses english envs.
 	\newenvironment{english}{\begin{otherlanguage}{english}}{\end{otherlanguage}}
+	\newcommand{\textenglish}[1]{\L{#1}}
 	% Doesn't hurt
 	\newenvironment{hebrew}{\begin{otherlanguage}{hebrew}}{\end{otherlanguage}}
+	\newcommand{\texthebrew}[1]{\R{#1}}
 \fi
 
 % theorem frame:

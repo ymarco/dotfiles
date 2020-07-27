@@ -1,0 +1,12 @@
+group_albums: yes
+# paths:
+    # default: $albumartist/$title
+
+directory: ~/beets-music
+library: ~/beets-music/library.db
+
+match:
+    ignored: missing_tracks
+# match:
+    # max_rec:
+        # missing_tracks: none

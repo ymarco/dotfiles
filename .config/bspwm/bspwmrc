@@ -40,12 +40,12 @@ bspc config focused_border_color '#aaaaaa'
 bspc rule -a Gimp				desktop='^8' state=floating follow=on
 bspc rule -a Firefox			desktop='^2'
 bspc rule -a Zathura			state=tiled
-bspc rule -a Emacs				split_ratio=0.28 state=fullscreen border=off
+#bspc rule -a Emacs				split_ratio=0.28 state=fullscreen border=off
 bspc rule -a xst-256color		border=off
 bspc rule -a Firefox			split_ratio=0.32
 bspc rule -a feh				state=fullscreen
-bspc rule -a 'Emacs:org*'		state=floating
-bspc rule -a 'Emacs:scratch'	state=floating
+#bspc rule -a 'Emacs:org*'		state=floating
+#bspc rule -a ''Emacs:scratch'	state=floating
 #bspc rule -a St state=pseudo_tiled
 
 # General Settings

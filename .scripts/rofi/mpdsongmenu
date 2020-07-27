@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd ~/music || exit
+cd ~/media/music || exit
 fd \
     | rofi -dmenu -i -multi-select -theme-str 'textbox-icon{str: "    ";} prompt{enabled: false;}' \
     | mpc insert

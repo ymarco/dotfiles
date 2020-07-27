@@ -24,10 +24,15 @@ fi
 xset r rate 300 30
 # start redshift
 #redshift -l 31.5:34.75 &
+redshift -O 3100
 # start network manager applet if not already running
 #pgrep nm-applet || nm-applet &
 # start unclutter to hide the mouse when not used
-unclutter &
+#unclutter &
+setxkbmap -layout us,us,il,il -variant dvorak,,, -option caps:swapescape
 # finally, start the wm
 # exec awesome
 bspwm
+#export XDG_SESSION_TYPE=x11
+#export GDK_BACKEND=x11
+#gnome-session > gnome.log

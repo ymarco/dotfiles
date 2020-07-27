@@ -1,4 +1,4 @@
 #!/bin/sh
-a=$(printf "yes\nno" | dmenu -p "$1")
+a=$(printf "yes\nno" | rofi -dmenu -p "$1")
 [ "$a" = "yes" ]
 exit $?

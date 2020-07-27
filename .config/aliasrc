@@ -14,12 +14,13 @@ alias \
 	idea="_JAVA_AWT_WM_NONREPARENTING=1 idea &" \
 	n="nnn" \
 	python="python3" \
-	pip="pip3" \
 	f="xdg-open" \
 	sai="sudo apt install" \
 	s="sudo" \
 	doom="EMACSLOADPATH=$GUIX_PROFILE/share/emacs/28.0.50/lisp:$GUIX_PROFILE/share/emacs/site-lisp $HOME/.config/emacs/bin/doom"\
 	rn="react-native"\
+	mpv="mpv --ytdl-raw-options='no-check-certificate='"
+
 
 
 # SHORTCUTS
@@ -28,8 +29,8 @@ alias \
 	u="cd ~/yoav/uni/" \
 	s="cd ~/yoav/school/" \
 	d="cd ~/Desktop/" \
-	b="cd ~/to-be-sorted/" \
-	t="cd ~/to-be-sorted/Torrents/" \
+	t="cd ~/to-be-sorted/" \
+	T="cd ~/to-be-sorted/Torrents/" \
 
 # FUNCTIONS
 

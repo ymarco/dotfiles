@@ -4,6 +4,6 @@
 [core]
 	autocrlf = input
 [github]
-	user = yoavm448
+	user = ymarco
 [pull]
 	rebase = true

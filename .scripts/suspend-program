@@ -9,7 +9,7 @@ if [ -f $CONSUMER_PID_FILE ]; then
     pkill -CONT "$CONSUMER"
     rm $CONSUMER_PID_FILE
 else
-    CONSUMER="$(ps axch -o %cpu,cmd --sort=-%cpu | rofi -dmenu -p 'put to sleep?' | awk '{print $2}')"
+    CONSUMER="$(ps axch -o %cpu,cmd --sort=-%cpu | rofi -i -dmenu -p 'put to sleep?' | awk '{print $2}')"
     [ "$CONSUMER" = "" ] && exit
     echo "chosen cpu consumer to stop is $CONSUMER"
     notify-send "Suspended" "$CONSUMER"

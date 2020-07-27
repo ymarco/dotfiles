@@ -36,15 +36,15 @@ mod4 + ctrl + space
 ## Mpd Controls
 mod4 + bracket{left,right}
 	mpc --quiet seek {-,+}20
-mod4 + shift + bracketleft
-	mpc --quiet prev
-mod4 + shift + bracketright
-	skipsong
+mod4 + shift + bracket{left,right}
+	mpc --quiet {prev,next}
 mod4 + equal
 	mpc --quiet toggle;
 ## Screenshot
 {_,shift +,ctrl +} Print
 	maim -s | xclip -selection clipboard -t "image/png"
+mod4 + minus
+	mpdsongmenu
 ## Suspend
 XF86AudioMicMute
 	confirm "suspend?" && systemctl suspend
@@ -71,23 +71,32 @@ mod4 {_,shift +} u
 mod4 + {_,shift +} r
 	bspc node @/ --rotate {+,-}90
 ## Change window size
-mod4 + m : {_,shift +} {h,j,k,l}
+mod4 + m ; {_,shift +} {h,j,k,l}
 	bspc node --resize {top_left,bottom_right} {-15 0,0 15,0 -15,15 0}
 ## Move floating window
-mod4 + m : ctrl + {h,j,k,l}
+mod4 + m ; ctrl + {h,j,k,l}
 	bspc node --move {-20 0,0 20,0 -20,20 0}
 ## Change window to fullscreen
 # mod4 + f
 # 	bspc node --state ~fullscreen
 ## Find and open {doc,file}
-mod4 + {_,ctrl +} f
-	{doc,file}menu
-## Find and open {file,dir}
-mod4 + d
-	dirmenu
+mod4 + {_,ctrl +, alt +} f
+	{doc,file,dir}menu
+## swap desktop monitors
+mod4 + c
+	DES1=$(bspc query -D -m 'next' -d 'focused'); \
+	DES2=$(bspc query -D -m 'focused' -d 'focused'); \
+	MON1=$(bspc query -M -m 'next'); \
+	MON2=$(bspc query -M -m 'focused'); \
+	bspc desktop $DES1 --to-monitor $MON2; \
+	bspc desktop $DES2 --to-monitor $MON1
 ## Change gap size between windows
 mod4 + g
 	bspc config window_gap {0,12,25}
+
+## Toggle floating
+mod4 + y
+	bspc node --state tiled
 
 
 # Desktops
@@ -113,8 +122,8 @@ mod4 + s
 mod4 + shift + s
 	bspc node -d 'any.!occupied' --follow;
 ## Apply canvases FIXME
-mod4 + 1
-	ls ~/.config/bspwm/canvases/ | dmenu | xargs -r -I % /usr/share/doc/bspwm/examples/receptacles/extract_canvas % | sh
+# mod4 + 1
+	# ls ~/.config/bspwm/canvases/ | dmenu | xargs -r -I % /usr/share/doc/bspwm/examples/receptacles/extract_canvas % | sh
 
 ##############
 #### Apps ####
