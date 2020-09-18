@@ -1,4 +1,4 @@
 #!/bin/sh
 
 pa-simplified "$1" "$2" "$3"
-pkill -SIGRTMIN+3 lemonbarc
+# pkill -SIGRTMIN+3 lemonbarc

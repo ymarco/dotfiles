@@ -6,7 +6,7 @@ alias \
 	config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME" \
 	vim="nvim" \
 	v="emacsclient -t -a \"\"" \
-	ec="emacsclient" \
+	ec="setsid emacsclient" \
 	sv="sk | xargs emacsclient -t -a \"\"" \
 	ce="edit-config" \
 	grep="grep --color=auto" \
@@ -17,9 +17,11 @@ alias \
 	f="xdg-open" \
 	sai="sudo apt install" \
 	s="sudo" \
-	doom="EMACSLOADPATH=$GUIX_PROFILE/share/emacs/28.0.50/lisp:$GUIX_PROFILE/share/emacs/site-lisp $HOME/.config/emacs/bin/doom"\
+	doom="$HOME/.config/emacs/bin/doom"\
 	rn="react-native"\
-	mpv="mpv --ytdl-raw-options='no-check-certificate='"
+	xclip="xclip -sel clip"\
+	ns="nix-shell"\
+	hm="home-manager"
 
 
 

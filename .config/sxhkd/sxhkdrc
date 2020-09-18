@@ -40,9 +40,15 @@ mod4 + shift + bracket{left,right}
 	mpc --quiet {prev,next}
 mod4 + equal
 	mpc --quiet toggle;
+mod4 + plus
+	notify-current-song
+mod4 + slash
+	echo "https://www.youtube.com/results?search_query=$(mpc status | head -1 | sed 's/ /+/g')" | xclip -sel clip
 ## Screenshot
-{_,shift +,ctrl +} Print
-	maim -s | xclip -selection clipboard -t "image/png"
+Print
+	maim -s -u | xclip -selection clipboard -t "image/png"
+ctrl + Print
+	scrrec -s
 mod4 + minus
 	mpdsongmenu
 ## Suspend
@@ -77,19 +83,19 @@ mod4 + m ; {_,shift +} {h,j,k,l}
 mod4 + m ; ctrl + {h,j,k,l}
 	bspc node --move {-20 0,0 20,0 -20,20 0}
 ## Change window to fullscreen
-# mod4 + f
-# 	bspc node --state ~fullscreen
+mod4 + c
+	emacsclient --eval '(+lexic-capture)'
 ## Find and open {doc,file}
 mod4 + {_,ctrl +, alt +} f
 	{doc,file,dir}menu
 ## swap desktop monitors
-mod4 + c
-	DES1=$(bspc query -D -m 'next' -d 'focused'); \
-	DES2=$(bspc query -D -m 'focused' -d 'focused'); \
-	MON1=$(bspc query -M -m 'next'); \
-	MON2=$(bspc query -M -m 'focused'); \
-	bspc desktop $DES1 --to-monitor $MON2; \
-	bspc desktop $DES2 --to-monitor $MON1
+# mod4 + c
+	# DES1=$(bspc query -D -m 'next' -d 'focused'); \
+	# DES2=$(bspc query -D -m 'focused' -d 'focused'); \
+	# MON1=$(bspc query -M -m 'next'); \
+	# MON2=$(bspc query -M -m 'focused'); \
+	# bspc desktop $DES1 --to-monitor $MON2; \
+	# bspc desktop $DES2 --to-monitor $MON1
 ## Change gap size between windows
 mod4 + g
 	bspc config window_gap {0,12,25}
@@ -101,8 +107,6 @@ mod4 + y
 
 # Desktops
 
-# {         }          (         =     *        )          +    ]
-# braceleft,braceright,parenleft,equal,asterisk,parenright,plus,bracketright
 # Focus selected desktop
 mod4 + {3,4,5,6,7,8,9,0}
 	bspc desktop -f '^{1,2,3,4,5,6,7,8}'

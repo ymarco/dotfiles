@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 get-sink() {
     pacmd stat | awk -F": " '/^Default sink name: /{print $2}'
 }
@@ -9,7 +9,7 @@ get-vol() {
             /^\s+volume: / && indefault {print substr($5,0,length($5)-1); exit}'
 }
 set-vol() {
-    pactl set-sink-volume $(get-sink) "$1"
+    pactl set-sink-volume "$(get-sink)" "$1"
 }
 is-muted() {
     pacmd list-sinks |
@@ -17,6 +17,6 @@ is-muted() {
            /^\s+muted: / && indefault {print $2; exit}'
 }
 toggle-mute() {
-    pactl set-sink-mute $(get-sink) toggle
+    pactl set-sink-mute "$(get-sink)" toggle
 }
-$1 $2
+"$1" "$2"

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # adapted from https://tex.stackexchange.com/a/199150/
 #
 # optpdf file.pdf

@@ -9,9 +9,9 @@ cd "$SRC" || exit 1
 fd . -t d -x mkdir -p "$DST"/{}
 # Copy the mp3s
 fd -t f -e mp3 -x cp {} "$DST"/{//}/
-# Convert the flacs async
+# Convert the flacs in parallel
 fd -t f -e flac -j 4 -x ffmpeg -i {.}.flac -ab 320k -map_metadata 0 -id3v2_version 3 "$DST"/{.}.mp3 & p=$!
-# echo how many left, async
+# echo how many left in parallel
 left() {
     echo $(($(fd . "$SRC" -t f | wc -l) -$(fd . "$DST" -t f | wc -l))) left
 }
