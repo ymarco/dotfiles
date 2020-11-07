@@ -2,6 +2,14 @@
 let
   nixos-unstable = import <nixos-unstable> { };
   nixos-stable = import <nixos> { };
+  name = "Yoav Marco";
+  maildir = "/home/ym/.local/share/mail";
+  emails = {
+    gmail = "yoavm448@gmail.com";
+    uni = "yoavmarco@mail.tau.ac.il";
+    solomon = "solomontheninja@gmail.com";
+  };
+  certFile = "/etc/ssl/ca-bundle.pem";
 in {
   home.packages = with pkgs; [
     htop xst hyperfine ghostscript pandoc youtube-dl
@@ -9,6 +17,7 @@ in {
     mpc_cli feh  transmission-gtk calibre acpilight sxiv slop pdf2svg
     libnotify lsof ncdu beets mpd mpv lf gimp  poppler_utils rsync
 
+    aerc
     # disabled in favor of the native package manager
     # rofi evince
     nixos-unstable.inkscape # inkscape 1.0
@@ -56,6 +65,65 @@ in {
     # ghidra-bin
   ];
 
+  accounts.email = {
+    certificatesFile = certFile;
+    maildirBasePath = maildir;
+    accounts = {
+      gmail = {
+        address = emails.gmail;
+        userName = emails.gmail;
+        flavor = "gmail.com";
+        passwordCommand = "${pkgs.pass}/bin/pass email/gmail";
+        primary = true;
+        # gpg.encryptByDefault = true;
+        mbsync = {
+          enable = true;
+          create = "both";
+          expunge = "both";
+          remove = "both";
+          patterns = [ "*" "[Gmail]*" ]; # "[Gmail]/Sent Mail" ];
+        };
+        realName = name;
+        msmtp.enable = true;
+        mu.enable = true;
+      };
+      solomon = {
+        address = emails.solomon;
+        userName = emails.solomon;
+        flavor = "gmail.com";
+        passwordCommand = "${pkgs.pass}/bin/pass email/solomon";
+        # gpg.encryptByDefault = true;
+        mbsync = {
+          enable = true;
+          create = "both";
+          expunge = "both";
+          remove = "both";
+          # patterns = [ "*" "[Gmail]*" ]; # "[Gmail]/Sent Mail" ];
+        };
+        realName = name;
+        msmtp.enable = true;
+        mu.enable = true;
+      };
+      # uni = {
+      #   address = "${emails.uni}";
+      #   userName = "${emails.uni}";
+      #   flavor = "gmail.com";
+      #   passwordCommand = "${pkgs.pass}/bin/pass email/uni";
+      #   # imap.host = "imap.tau.ac.il";
+      #   mbsync = {
+      #     enable = true;
+      #     create = "both";
+      #     expunge = "both";
+      #     remove = "both";
+      #     # patterns = [ "*" "[Gmail]*" ]; # "[Gmail]/Sent Mail" ];
+      #   };
+      #   realName = "${name}";
+      #   # msmtp.enable = true;
+      #   mu.enable = true;
+      # };
+    };
+  };
+
   gtk = {
     enable = true;
     font = {name = "Source Sans Pro 15"; package = pkgs.source-sans-pro;};
@@ -87,6 +155,16 @@ in {
       # sqlite emacsql emacsql-mysql emacsql-sqlite emacsql-sqlite3
       ]);
   };
+
+  programs.mbsync.enable = true;
+  programs.mu.enable = true;
+  programs.msmtp.enable = true;
+  services.mbsync = {
+    enable = true;
+    # frequency = "*:0/5";
+    preExec = "${pkgs.isync}/bin/mbsync -Ha";
+    postExec = "sh -c 'mailcount 2>/dev/null; ${pkgs.mu}/bin/mu index; true'";
+  };
   services.gpg-agent = {
     enable = true;
     # defaultCacheTtl = 1800;
@@ -94,12 +172,19 @@ in {
   };
   programs.git = {
     enable = true;
-    userName = "Yoav Marco";
-    userEmail = "yoavm448@gmail.com";
+    package = pkgs.gitFull; # mail support
+    userName = name;
+    userEmail = emails.gmail;
     extraConfig = {
       pull.rebase = true;
       github.user = "ymarco";
       core.eol = "lf"; # REEEEE
+      sendemail = {
+       smtpserver = "smtp.gmail.com";
+       smtpuser = emails.gmail;
+       smtpencryption = "tls";
+       smtpserverport = 587;
+      };
     };
   };
 
