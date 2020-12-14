@@ -1,7 +1,8 @@
 #!/bin/sh
 
 SONG="$(mpc current)"
-STATUS="$(mpc status | awk 'NR==2 {print $3 "  " $4}')"
+STATUS="$(mpc -f "%date% %album%" |
+  awk 'NR==1 {print $0} NR==2 {print "<b>" $3 "</b>"}')"
 if mpc status | grep '\[playing\]'; then
 	PLAYING="  "
 elif mpc status | grep '\[paused\]'; then
