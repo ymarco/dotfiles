@@ -1,6 +1,5 @@
 set selection-clipboard clipboard
-set default-fg "#f0f2f0"
-set default-bg "#444444"
+set default-fg "#c0c5ce"
 set font "monospace normal 14"
 set guioptions "sv"
 set synctex true
@@ -16,3 +15,8 @@ map K zoom in
 map J zoom out
 map i recolor
 map p print
+set recolor
+set recolor-lightcolor "#2b303b"
+set recolor-darkcolor "#c0c5ce"
+set default-bg "#232830"
+set recolor-keephue
