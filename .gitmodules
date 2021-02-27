@@ -1,3 +1,9 @@
-[submodule "/home/yoavm448/.config/mpv/scripts/mpv-autosub"]
-	path = /home/yoavm448/.config/mpv/scripts/mpv-autosub
-	url = https://github.com/davidde/mpv-autosub
+[submodule ".config/mpv/plugin-repos/nextfile"]
+	path = .config/mpv/plugin-repos/nextfile
+	url = https://github.com/jonniek/mpv-nextfile.git
+[submodule ".config/mpv/plugin-repos/autosub"]
+	path = .config/mpv/plugin-repos/autosub
+	url = https://github.com/davidde/mpv-autosub.git
+[submodule ".config/doom"]
+	path = .config/doom
+	url = git@github.com:yoavm448/doom-emacs-config.git
