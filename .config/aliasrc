@@ -25,15 +25,7 @@ alias \
 	guix="SSL_CERT_FILE=$HOME/.guix-profile/etc/ssl/certs/ca-certificates.crt guix"
 
 
-
-# SHORTCUTS
-alias \
-	y="cd ~/yoav/" \
-	u="cd ~/yoav/uni/" \
-	s="cd ~/yoav/school/" \
-	d="cd ~/Desktop/" \
-	t="cd ~/to-be-sorted/" \
-	T="cd ~/to-be-sorted/Torrents/" \
+source ~/.local/share/shell-bookmarks
 
 # FUNCTIONS
 

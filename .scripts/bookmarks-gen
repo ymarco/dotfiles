@@ -1,0 +1,7 @@
+#!/bin/sh
+awk -F '	' '{print $1 ":~/" $2}' bookmarks.tsv >$XDG_DATA_HOME/lf/marks
+awk -F '	' \
+  'BEGIN {print "#!/bin/sh"}
+   BEGIN {print "alias \\"}
+   {print "    " $1 "=\"cd ~/" $2 "\" \\"}' \
+  bookmarks.tsv >$XDG_DATA_HOME/shell-bookmarks
