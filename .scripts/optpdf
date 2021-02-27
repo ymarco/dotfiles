@@ -29,5 +29,5 @@ for file in "$@"; do
     sizeSaved=$(numfmt --to iec --format "%.1f" $bytesSaved)
     percent=$(expr $optsize '*' 100 / $orgsize)
     echo saved you $sizeSaved \(now ${percent}% of old\)
-    mv "$optfile" "$file"
+    mv -f "$optfile" "$file"
 done
