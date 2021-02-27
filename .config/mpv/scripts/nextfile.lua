@@ -1,1 +1,0 @@
-mpv-nextfile/nextfile.lua
