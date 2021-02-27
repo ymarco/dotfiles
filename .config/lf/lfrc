@@ -6,19 +6,11 @@ set previewer ~/.config/lf/scope
 set shellopts '-eu'
 set ifs "\n"
 set scrolloff 10
-set color256
 set icons		# Enable icons. Requires nerd fonts and LF_ICONS variable.
 
 
 # Custom Functions
 
-# cmd open ${{
-	# case $(file --mime-type "$f" -bL) in
-		# text/*|application/json) $EDITOR "$f";;
-		# video/|image/|application/pdf) setsid xdg-open "$f" & disown;;
-		# *) xdg-open "$f" ;;
-	# esac
-# }}
 
 cmd xcopy ${{
 	xclip -selection clipboard -t $(file --mime-type -b "$f") -i "$f"
@@ -88,7 +80,26 @@ cmd copyto ${{
 map C copyto
 
 cmd open ${{
-	setsid xdg-open "$f"
+	# from https://github.com/gokcehan/lf/wiki/Integrations#archivemount
+	case "$f" in
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2|*.tar.gz|*.tgz|*.tar.xz|*.txz|*.zip|*.rar|*.iso)
+            mntdir="$f-archivemount"
+            [ ! -d "$mntdir" ] && {
+                mkdir "$mntdir"
+                archivemount "$f" "$mntdir"
+                echo "$mntdir" >> "/tmp/__lf_archivemount_$id"
+            }
+            lf -remote "send $id cd \"$mntdir\""
+            lf -remote "send $id reload"
+            ;;
+        *)
+            for f in $fx; do
+				case $(file --mime-type "$f" -bL) in
+					text/*|application/json) $EDITOR "$f" > /dev/null 2> /dev/null & disown;;
+					*) xdg-open "$f"  > /dev/null 2> /dev/null & disown;;
+				esac
+            done;;
+    esac
 }}
 
 # FIXME copied from
@@ -102,6 +113,9 @@ cmd link %{{
 	elif [ "$mode" = move ]; then
 		ln $files -t .
 	fi
+}}
+cmd emacsclient ${{
+	emacsclient "$f" > /dev/null 2>/dev/null & disown
 }}
 map P :link
 
@@ -122,12 +136,13 @@ map <c-r> reload
 map <enter> shell
 map x $$f
 map X !$f
-map o &mimeopen "$f"
+map o open "$f"
 map O $mimeopen --ask "$f"
 # mouse scrolls
 map <c-y> up
 map <c-e> down
 # C-z suspends lf
 map <c-z> $ kill -STOP $PPID
+map e emacsclient
 # FIXME
 # map = mkdir

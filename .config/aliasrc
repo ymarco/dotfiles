@@ -60,3 +60,32 @@ xevkeyinfo() {
 	# https://wiki.archlinux.org/index.php/Keyboard_input#Identifying_keycodes_in_Xorg
 	xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
 }
+
+lfcd () {
+    # from https://github.com/gokcehan/lf/wiki/Integrations#archivemount
+    tmp="$(mktemp)"
+    fid="$(mktemp)"
+    lf -command '$printf $id > '"$fid"'' -last-dir-path="$tmp" "$@"
+    id="$(cat "$fid")"
+    archivemount_dir="/tmp/__lf_archivemount_$id"
+    if [ -f "$archivemount_dir" ]; then
+        cat "$archivemount_dir" | \
+            while read -r line; do
+                fusermount -u "$line"
+                rmdir "$line"
+            done
+        rm -f "$archivemount_dir"
+    fi
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        if [ -d "$dir" ]; then
+            if [ "$dir" != "$(pwd)" ]; then
+                cd "$dir"
+            fi
+        fi
+    fi
+}
+# TODO bind lf to a key
+alias lf=lfcd \
+    a=lf
