@@ -5,7 +5,7 @@ alias \
 	diff="diff --color=auto" \
 	config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME" \
 	vim="nvim" \
-	v="emacsclient -t -a \"\"" \
+	v="nvim" \
 	ec="setsid emacsclient" \
 	sv="sk | xargs emacsclient -t -a \"\"" \
 	ce="edit-config" \
@@ -21,7 +21,9 @@ alias \
 	rn="react-native"\
 	xclip="xclip -sel clip"\
 	ns="nix-shell"\
-	hm="home-manager"
+	hm="home-manager"\
+	cp="cp -r --reflink=auto"\
+	guix="SSL_CERT_FILE=$HOME/.guix-profile/etc/ssl/certs/ca-certificates.crt guix"
 
 
 
@@ -49,7 +51,7 @@ pinfo() {
 
 # Sum statistics about me flacs
 musicinfo() {
-	soxi -D **/*.flac |
+	soxi -D **/*.{flac,mp3} |
 		awk '{a+=$0; tot+=1} END {print tot " songs, " a/(60*60) " hours of playback, average song length is " a/tot/60 " mins."}'
 	echo "summing $(du -sh .)"
 }
@@ -60,6 +62,13 @@ xevkeyinfo() {
 	# https://wiki.archlinux.org/index.php/Keyboard_input#Identifying_keycodes_in_Xorg
 	xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
 }
+mrm() {
+    N="$@"
+    printf "remove %s?[y/n] " "$(fd -t f $N)"
+    read ans
+    [ $ans = "y" ] && fd -t f $N -x rm '{}'
+}
+
 
 lfcd () {
     # from https://github.com/gokcehan/lf/wiki/Integrations#archivemount

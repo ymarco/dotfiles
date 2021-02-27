@@ -1,9 +1,5 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# xst-256color isn't supported over ssh, so revert to a known one
+[ "$TERM" = xst-256color ] && export TERM=xterm-256color
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
@@ -27,8 +23,8 @@ zstyle :compinstall filename "$HOME/.config/zsh/.zshrc"
 
 autoload -Uz compinit && compinit
 # history settings
-HISTSIZE=3000
-SAVEHIST=3000
+HISTSIZE=6000
+SAVEHIST=6000
 # up and down arrows search the entered text back in history
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
@@ -50,6 +46,6 @@ setopt interactivecomments
 [ -f "$HOME/.config/shortcuts" ] && source "$HOME/.config/shortcuts"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
-echo "$(tput bold)$(tput setaf 4)$(tput setaf 3)$USER$(tput setaf 7)@$(tput setaf 6)$HOST"
+# echo "$(tput bold)$(tput setaf 4)$(tput setaf 3)$USER$(tput setaf 7)@$(tput setaf 6)$HOST"
 
 export PS1="%F{5}%c%B%F{4}%F{6} $ %b%f"
