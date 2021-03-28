@@ -18,7 +18,7 @@ _do_rofi() {
     url=${url%</i>*}
     url=${url##*<i>}
     echo $url
-  done | xargs -r "$BROWSER"
+  done | xargs -d '\n' -r "$BROWSER"
 }
 
 case ${BROWSER:-firefox} in

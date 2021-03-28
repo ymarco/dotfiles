@@ -4,4 +4,4 @@ fd . -t f \
     | sed 's|/|❭|g' \
     | rofi -dmenu -i -theme-str 'textbox-icon{str: "    ";} prompt{enabled: false;}' \
     | sed 's|❭|/|g' \
-    | xargs -r -I % xdg-open "%"
+    | xargs -d '\n' -r xdg-open
