@@ -22,7 +22,8 @@ alias \
 	ns="nix-shell"\
 	hm="home-manager"\
 	cp="cp -r --reflink=auto"\
-	guix="SSL_CERT_FILE=$HOME/.guix-profile/etc/ssl/certs/ca-certificates.crt guix"
+	guix="SSL_CERT_FILE=$HOME/.guix-profile/etc/ssl/certs/ca-certificates.crt guix"\
+	ixio="curl -F 'f:1=<-' ix.io"
 
 
 source ~/.local/share/shell-bookmarks
@@ -31,7 +32,7 @@ source ~/.local/share/shell-bookmarks
 
 # search in bash history, copy selected to clipboard
 hs() {
-	sort -ubi "$HISTFILE" | sk | xargs -r -I % printf "%" | xclip -selection clipboard
+	sort -ubi "$HISTFILE" | sk | xclip -selection clipboard
 }
 
 # get preformance info about processes, how much of my resources they used since
@@ -54,6 +55,7 @@ xevkeyinfo() {
 	xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
 }
 mrm() {
+    cd ~/media/music
     N="$@"
     printf "remove %s?[y/n] " "$(fd -t f $N)"
     read ans

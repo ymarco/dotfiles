@@ -146,7 +146,7 @@ mod4 + o; {b,e,t,r,f,l}
 	{$BROWSER,$EDITOR,$TERMINAL,$READER,$FILE,lyx}
 ## Open terminal
 mod4 + Return
-	$TERMINAL
+	${TERMINAL-xst}
 ## Edit dotfiles config
 mod4 + x
 	$TERMINAL -e edit-config

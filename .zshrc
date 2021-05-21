@@ -1,5 +1,6 @@
 # xst-256color isn't supported over ssh, so revert to a known one
 [ "$TERM" = xst-256color ] && export TERM=xterm-256color
+set bell-style none
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
@@ -25,6 +26,7 @@ autoload -Uz compinit && compinit
 # history settings
 HISTSIZE=6000
 SAVEHIST=6000
+HISTFILE="$HOME/.zsh_history"
 # up and down arrows search the entered text back in history
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward

@@ -1,5 +1,5 @@
 #!/bin/sh
-unread="$(find $HOME/.local/share/mail/*/[Ii][Nn][Bb][Oo][Xx]/new/* \
+unread="$(find $HOME/.local/share/mail/*/\[Gmail\]/All\ Mail/new/* \
 	| wc -l 2>/dev/null)"
 [ -n "$unread" ] && [ "$unread" != "0" ] \
 	&& notify-send -i folder-white-mail "$unread new Emails"
