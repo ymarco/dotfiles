@@ -9,6 +9,14 @@ let
     uni = "yoavmarco@mail.tau.ac.il";
     solomon = "solomontheninja@gmail.com";
   };
+  email-patterns = [
+    "[Gmail]/All Mail"
+    "[Gmail]/Drafts"
+    "[Gmail]/Important"
+    "[Gmail]/Sent Mail"
+    # not "[Gmail]/Spam"
+    "[Gmail]/Starred"
+  ];
   certFile = "/etc/ssl/ca-bundle.pem";
 in {
   home.packages = with pkgs; [
@@ -81,7 +89,7 @@ in {
           create = "both";
           expunge = "both";
           remove = "both";
-          patterns = [ "*" "[Gmail]*" ]; # "[Gmail]/Sent Mail" ];
+          patterns = email-patterns; # "[Gmail]/Sent Mail" ];
         };
         realName = name;
         msmtp.enable = true;
@@ -98,7 +106,7 @@ in {
           create = "both";
           expunge = "both";
           remove = "both";
-          # patterns = [ "*" "[Gmail]*" ]; # "[Gmail]/Sent Mail" ];
+          patterns = email-patterns; # "[Gmail]/Sent Mail" ];
         };
         realName = name;
         msmtp.enable = true;
@@ -115,7 +123,7 @@ in {
       #     create = "both";
       #     expunge = "both";
       #     remove = "both";
-      #     # patterns = [ "*" "[Gmail]*" ]; # "[Gmail]/Sent Mail" ];
+      #     patterns = email-patterns; # "[Gmail]/Sent Mail" ];
       #   };
       #   realName = "${name}";
       #   # msmtp.enable = true;
