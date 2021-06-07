@@ -1,0 +1,4 @@
+# -*- mode: conf-space -*-
+bar {
+	swaybar_command "waybar"
+}

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+new=$(ls ~/.local/share/mail/yoavm448@gmail.com/INBOX/new | wc -l)
+if [ $new -gt 0 ]; then
+    echo " —<span font_family='monospace'> </span>$new— "
+fi

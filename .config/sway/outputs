@@ -1,0 +1,13 @@
+# -*- mode: conf-space -*-
+output eDP-1 pos 0 0
+output HDMI-A-1 pos 1920 0
+workspace $ws1 output eDP-1
+workspace $ws2 output eDP-1
+workspace $ws3 output eDP-1
+workspace $ws4 output eDP-1
+workspace $ws5 output HDMI-A-1
+workspace $ws6 output HDMI-A-1
+workspace $ws7 output HDMI-A-1
+workspace $ws8 output HDMI-A-1
+
+output * background ~/dotfiles/.wallpapers/blackhole-lines-spacegrey.png fill
