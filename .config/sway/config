@@ -12,7 +12,7 @@
 # is used in the bar {} block below.
 #font pango:monospace 8
 
-font pango:monospace 18
+font pango:sans 18
 #font pango:FontAwesome 13
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-kjhghhgjhggiso10646-1
@@ -44,11 +44,10 @@ set $fg           #c0c5ce
 
 
 #                        BORDER    BACKGROUND  TEXT      INDICATOR  CHILD_BORDER
-client.focused           $red      $red        $magenta  $cyan      $darkyellow
-client.unfocused         $bg       $blue       $white    $darkblue  $bg
-client.focused_inactive  $bg       $blue       $white    $darkblue  $bg
+client.focused           $darkred  $red        $black    $cyan      $darkyellow
+client.unfocused         $bg       $bg         $white    $darkblue  $bg
+client.focused_inactive  $bg       $bg         $white    $darkblue  $darkblue
 client.urgent            $darkred  $darkred    $black    $darkred   $darkred
-client.background        $black
 
 # set mod key to WinKey
 set $mod Mod4
@@ -118,7 +117,7 @@ bindsym $mod+m fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 #bindsym $mod+s layout stacking
-#bindsym $mod+w layout tabbed
+bindsym F2 layout toggle all
 #bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -150,6 +149,7 @@ set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
+set $ws9 "9"
 
 
 # switch to workspace

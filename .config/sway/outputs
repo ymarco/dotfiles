@@ -1,6 +1,11 @@
 # -*- mode: conf-space -*-
+# With scaling
+#output eDP-1 pos 0 0 scale 1.3
+#output HDMI-A-1 pos 1477 0
+# Without
 output eDP-1 pos 0 0
 output HDMI-A-1 pos 1920 0
+
 workspace $ws1 output eDP-1
 workspace $ws2 output eDP-1
 workspace $ws3 output eDP-1
