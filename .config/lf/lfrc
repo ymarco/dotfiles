@@ -13,7 +13,7 @@ set icons		# Enable icons. Requires nerd fonts and LF_ICONS variable.
 
 
 cmd xcopy ${{
-	xclip -selection clipboard -t $(file --mime-type -b "$f") -i "$f"
+	wl-copy <"$f"
 }}
 map Y xcopy
 

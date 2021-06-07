@@ -1,99 +1,24 @@
-#!/usr/bin/env bash
-#! nix-shell -i bash -p ffmpeg slop
+#!/bin/sh
 
-# Select a region and record it.
-#
-# If given a gif, it will record an mp4 and convert it afterwards using the
-# mov2gif script included in this repo (which is powered by gifsicle and
-# ffmpeg).
-#
-# Usage: scrrec somefile.mp4
-#        scrrec another.gif
+# On 1st invocation: start recording process and save its pid to /tmp/scrrec.
+# Once it is killed, remove /tmp/scrrec and notify user
 
-is_script=
-geom=
-delay=1
-count=3
-fps=30
-stopfile=/dev/shm/_stop
-while getopts c:d:f:g:ps opt; do
-  case $opt in
-    c) count=$OPTARG ;;
-    d) delay="$OPTARG" ;;
-    f) fps=$OPTARG ;;
-    g) geom="$OPTARG" ;;
-    p) picom= ;;
-    s) is_script=1 ;;
-  esac
-done
-shift $((OPTIND-1))
+# On 2nd invocation: kill the pid written in /tmp/scrrec
 
-##
-select-region() {
-  if [[ $geom ]]; then
-    echo "${geom//[x+]/ }"
-  else
-    slop -nof "%w %h %x %y"
-  fi
-}
-
-countdown() {
-  if (( count > 0 )); then
-    for ((i=count;i>0;i--)); do
-      if [[ $is_script ]]; then
-        notify-send -t 1000 "Recording in $i"
-      else
-        echo "Recording in $i"
-      fi
-      sleep 1
-    done
-  elif [[ $is_script ]]; then
-    notify-send -u critical "Starting recording..."
-  else
-    echo "Started recording..."
-  fi
-}
-
-recording-start() {
-  local ffmpeg_opts="-y -f x11grab -show_region 1 -ss $delay -s ${4}x${5} -i :0.0+${2},${3} -framerate ${fps}"
-  local dest=${1:-./rec.mp4}
-  local mp4dest=
-  [[ $dest == *.gif ]] && mp4dest="${dest%.*}.mp4"
-  countdown
-  ffmpeg $ffmpeg_opts "${mp4dest:-$dest}" &
-  pid=$!
-  echo $pid >$stopfile
-  wait $pid
-  rm -f $stopfile
-  if [[ -f "$mp4dest" ]]; then
-    mov2gif "$mp4dest" "$dest" && rm -fv "$mp4dest"
-  fi
-  echo -n "$dest" | xclip -selection clipboard -in
-  notify-send "Screencast successful" "Saved to $dest\nAnd copied to your clipboard!"
-}
-
-
-# If a recording session is already active, stop that one.
-if [[ -n "$is_script" && -f "$stopfile" ]]; then
-  kill $(cat $stopfile)
-  echo "Stopped previous recording"
+if [ -f /tmp/scrrec ]; then
+  wf_pid="$(cat /tmp/scrrec)"
+  echo "$wf_pid"
+  kill -INT "$wf_pid"
   exit 0
 fi
 
-read -r W H X Y < <(select-region)
-[[ -z "$W$H$X$Y" ]] && exit 1
 
-# picom with blur and/or transparencies cause unbearable flickering in
-# recordings, so temporarily disable it.
-picom=
-if systemctl is-enabled --user picom >/dev/null; then
-  systemctl --user stop picom
-  picom=1
-fi
-cleanup() { [[ $picom ]] && systemctl --user start picom; }
-trap cleanup EXIT
-
-# Let 'er rip
-recording-start "$1" "$X" "$Y" "$W" "$H"
-
-# vim:set ft=sh shiftwidth=2:
+cd ~ || exit 1
+region="$(slurp || exit 1)"
+file="recording-$(date -Iseconds | tr ':' '!').mp4"
+wf-recorder -g "$region" -f "$file" &
+wf_pid=$!
+echo $wf_pid >/tmp/scrrec
+wait $wf_pid
+rm /tmp/scrrec
+notify-send "Recording finished" "$file"

@@ -18,7 +18,6 @@ alias \
 	s="sudo" \
 	doom="$HOME/.config/emacs/bin/doom"\
 	rn="react-native"\
-	xclip="xclip -sel clip"\
 	ns="nix-shell"\
 	hm="home-manager"\
 	cp="cp -r --reflink=auto"\
@@ -32,7 +31,7 @@ source ~/.local/share/shell-bookmarks
 
 # search in bash history, copy selected to clipboard
 hs() {
-	sort -ubi "$HISTFILE" | sk | xclip -selection clipboard
+	sort -ubi "$HISTFILE" | sk | wl-copy
 }
 
 # get preformance info about processes, how much of my resources they used since
