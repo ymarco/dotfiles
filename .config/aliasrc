@@ -89,3 +89,5 @@ lfcd () {
 # TODO bind lf to a key
 alias lf=lfcd \
     a=lf
+# zle -N lfcd_widget lfcd
+# bindkey '^f' lfcd_widget

@@ -1,12 +1,36 @@
-group_albums: yes
-# paths:
-    # default: $albumartist/$title
+plugins: fetchart embedart lyrics convert the acousticbrainz edit #replaigain
 
-directory: ~/beets-music
-library: ~/beets-music/library.db
+replaygain:
+  overwrite: no
+
+convert:
+  auto: no
+  max_bitrate: 320
+lyrics:
+  auto: no
+  sources: lyricwiki musicmatch genius
+
+group_albums: yes
+paths:
+    default: "%the{$albumartist}/$original_year $album/$track $title"
+
+# directory: ~/beets-music
+# library: ~/beets-music/library.db
+directory: ~/media/music
+library: ~/media/music/.aux/library.db
 
 match:
     ignored: missing_tracks
-# match:
-    # max_rec:
-        # missing_tracks: none
+match:
+    max_rec:
+        missing_tracks: none
+
+import:
+    write: yes
+    copy: no
+    move: yes
+    resume: ask
+    # duplicate_action: merge
+    incremental: yes
+    # timid: no
+    log: ~/.config/beets/beet.log

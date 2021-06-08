@@ -44,7 +44,7 @@ cmd delete ${{
 	set -f
 	printf "delete? [y/n] "
 	read ans
-	[ $ans = "y" ] && rm -rf $fx
+	[ "$ans" = "y" ] && rm -rf $fx
 }}
 
 map D delete

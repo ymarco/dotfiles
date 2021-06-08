@@ -1,6 +1,6 @@
 {pkgs, lib, ...}:
 let
-  nixos-unstable = import <nixos-unstable> { };
+  unstable = import <nixpkgs-unstable> { };
   nixos-stable = import <nixos> { };
   name = "Yoav Marco";
   maildir = "/home/ym/.local/share/mail";
@@ -21,18 +21,16 @@ let
 in {
   home.packages = with pkgs; [
     htop xst hyperfine ghostscript pandoc youtube-dl
-    xkblayout-state ffmpeg peek maim vlc dragon-drop skim zip slop neofetch
+    xkblayout-state ffmpeg peek maim vlc dragon-drop skim zip neofetch
     mpc_cli feh  transmission-gtk calibre acpilight sxiv slop pdf2svg
-    libnotify lsof ncdu beets mpd mpv lf gimp  poppler_utils rsync
+    libnotify lsof ncdu beets mpd lf gimp poppler_utils rsync subdl
 
     aerc
     # disabled in favor of the native package manager
-    # rofi evince
-    nixos-unstable.inkscape # inkscape 1.0
-    # TODO keep?
-    nixos-unstable.keepassxc thunderbird birdtray
+    # rofi evince mpv
+    inkscape
 
-    gcc # so I can compile the damned emacsql-sqlite
+    # gcc # so I can compile the damned emacsql-sqlite
 
     # convert MS Excel xlsx to csv and other data tools
     gnumeric xsv
@@ -45,10 +43,10 @@ in {
     # cc
     ccls
     # javascript
-    nodePackages.javascript-typescript-langserver
-    nodePackages.js-beautify
-    nodePackages.prettier
-    html-tidy
+    # nodePackages.javascript-typescript-langserver
+    # nodePackages.js-beautify
+    # nodePackages.prettier
+    # html-tidy
     # json
     jq
     # shell
@@ -60,11 +58,13 @@ in {
 
     # python
     #python37Packages.black # FIXME
-    python37Packages.python-language-server
+    # python37Packages.python-language-server
     #python37Packages.pyls-black
-    python37Packages.pyls-isort
+    # python37Packages.pyls-isort
     # TODO
-    (python3.withPackages (ps: with ps; [numpy pandas scipy matplotlib]))
+    # (python3.withPackages (ps: with ps; [numpy pandas scipy matplotlib]))
+    python38Packages.gprof2dot
+    flamegraph
 
     # lf scope dependencies
     w3m bat atool #poppler
@@ -145,7 +145,7 @@ in {
       "${root}/.config"
     ];
     iconTheme = {name = "Papirus"; package = pkgs.papirus-icon-theme;};
-    theme = {name = "Arc"; package = pkgs.arc-theme;};
+    # theme = {name = "Arc"; package = pkgs.arc-theme;};
   };
 
   # disabled in favor of the native package manager
@@ -155,13 +155,13 @@ in {
   #   package = nixos-stable.firefox;
   # };
   programs.emacs = {
-    enable = true;
-    package = nixos-unstable.emacsGccPgtkWrapped;
-    extraPackages = (epkgs: with epkgs; [
-      vterm pdf-tools
+    # enable = true;
+    package = unstable.emacsPgtkGcc;
+    # extraPackages = (epkgs: with epkgs; [
+      # vterm pdf-tools
       # Doom doesn't detect these although I'd like to have them built by nix
       # sqlite emacsql emacsql-mysql emacsql-sqlite emacsql-sqlite3
-      ]);
+      # ]);
   };
 
   programs.mbsync.enable = true;
@@ -174,7 +174,7 @@ in {
     postExec = "sh -c 'mailcount 2>/dev/null; ${pkgs.mu}/bin/mu index; true'";
   };
   services.gpg-agent = {
-    enable = true;
+    # enable = true;
     # defaultCacheTtl = 1800;
     enableSshSupport = true;
   };
@@ -327,8 +327,8 @@ in {
   #   };
   # };
 
-  services.udiskie.enable = true;
-  services.network-manager-applet.enable = true;
+  # services.udiskie.enable = true;
+  # services.network-manager-applet.enable = true;
   # services.cbatticon = {
   #   enable = true;
   #   commandCriticalLevel = ''notify-send "Battery at 10%" ""'';
@@ -339,22 +339,22 @@ in {
   # services.blueman-applet.enable = true;
 
   # home-manager manual and list of options
-  manual.manpages.enable = true;
+  # manual.manpages.enable = true;
 
   programs.home-manager = {
     enable = true;
     path = "~/.config/nixpkgs/home.nix";
   };
-  systemd.user.services = {
-    transmission-gtk = {
-      Unit.Description = "Transmission-gtk in the background";
-      Unit.PartOf = [ "ac-power.target" ];
-      Unit.After = [ "ac-power.target" ];
-      Unit.Wants = [ "graphical-session-pre.target" ];
-      Install.WantedBy = [ "ac-power.target" ];
-      Service.ExecStart = ''
-        ${pkgs.transmission-gtk}/bin/transmission-gtk --minimized
-      '';
-    };
-  };
+  # systemd.user.services = {
+  #   transmission-gtk = {
+  #     Unit.Description = "Transmission-gtk in the background";
+  #     Unit.PartOf = [ "ac-power.target" ];
+  #     Unit.After = [ "ac-power.target" ];
+  #     Unit.Wants = [ "graphical-session-pre.target" ];
+  #     Install.WantedBy = [ "ac-power.target" ];
+  #     Service.ExecStart = ''
+  #       ${pkgs.transmission-gtk}/bin/transmission-gtk --minimized
+  #     '';
+  #   };
+  # };
 }

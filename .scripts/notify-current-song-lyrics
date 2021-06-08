@@ -1,0 +1,9 @@
+#!/bin/sh
+
+cd ~/media/music || exit
+file="$(mpc -f '%file%' | head -1)"
+title="$(mpc -f '%title%' | head -1)"
+
+lyrics="$(mediainfo "$file" | awk -F : '/^Lyrics/ {printf $2}' | tr / '\n')"
+
+notify-send "$title" "$lyrics"
