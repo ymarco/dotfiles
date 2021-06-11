@@ -1,8 +1,9 @@
 #!/bin/sh
 
 SONG="$(mpc current)"
-STATUS="$(mpc -f "%date% %track% %album%" |
-  awk 'NR==1 {print $0} NR==2 {print "<b>" $3 "</b>"}')"
+TIME="$(mpc | awk 'NR==2 {print $3}')"
+DATE="$(mpc -f '%originaldate%' | head -c 4)"
+STATUS="$TIME $DATE <b>$(mpc -f "%album%/%track% " | head -1)</b>"
 if mpc status | grep '\[playing\]'; then
 	PLAYING="  "
 elif mpc status | grep '\[paused\]'; then
@@ -10,6 +11,5 @@ elif mpc status | grep '\[paused\]'; then
 else
 	PLAYING=""
 fi
-
-ICON=/usr/share/icons/Papirus/48x48/apps/org.gnome.music.svg
+ICON="file://$HOME/media/music/$(dirname "$(mpc -f '%file%' | head -1)")/cover.jpg"
 notify-send "$PLAYING$SONG" "$STATUS" -i "$ICON"
