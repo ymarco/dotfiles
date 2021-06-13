@@ -69,6 +69,7 @@
 	},
 	"custom/mail": {
 		"exec": "~/.config/waybar/mailcount",
+		"return-type": "json",
 		"interval": 300
 	},
 	"sway/language": {

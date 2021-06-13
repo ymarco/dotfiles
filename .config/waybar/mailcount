@@ -2,5 +2,16 @@
 
 new=$(ls ~/.local/share/mail/yoavm448@gmail.com/INBOX/new | wc -l)
 if [ $new -gt 0 ]; then
-    echo " —<span font_family='monospace'> </span>$new— "
+    printf '{"text":'
+    printf "\"—<span font_family='monospace'> </span>$new— \""
+    mu index >/dev/null 2>&1
+    printf ', "tooltip":'
+    mu find flag:new --fields='f s' --format sexp |
+        awk -F'"' '
+        BEGIN { printf("\"") }
+        # every print prints the \\n of the previous line
+        # so the last line doesnt end with \\n
+        /:subject/ { printf("%s%s", n, $2); n="\\n" }
+        /:from/ { n="\\n"; printf("%s —<i>%s</i>", n, $2); n="\\n" }
+        END { printf("\"}\n") }'
 fi
