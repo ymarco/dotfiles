@@ -42,13 +42,13 @@ window#waybar {
 	color: #4db5bd;
 }
 #cpu {
-	color: #ECBE7B;
+	color: #EC8E7B;
 }
 #battery {
 	color: #A3BE8C;
 }
 #custom-mail {
-	color: #BF616A;
+	color: #FF717A;
 	/* no padding */
 }
 #language {
@@ -58,8 +58,14 @@ window#waybar {
 #disk {
 	color: #8FA1B3;
 }
-
+#backlight {
+	color: #ECBE7B;
+}
+#mpd, #clock {
+	color: #fdf6e3;
+}
 #mpd,
+#backlight,
 #clock,
 #pulseaudio,
 #memory,

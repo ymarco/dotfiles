@@ -1,9 +1,17 @@
 #!/bin/sh
 
+# waybar likes to call us twice concurrently, which makes the second mbsync process
+# error out because of locks
+while pgrep -x mbsync; do
+    sleep 1s
+done
+icon="<span font_family='monospace'> </span>"
+
+timeout 60 mbsync -Va 1>&2 || (echo "{\"text\": \"$icon!\"}" && exit)
 new=$(ls ~/.local/share/mail/yoavm448@gmail.com/INBOX/new | wc -l)
 if [ $new -gt 0 ]; then
     printf '{"text":'
-    printf "\"—<span font_family='monospace'> </span>$new— \""
+    printf "\"—$icon$new— \""
     mu index >/dev/null 2>&1
     printf ', "tooltip":'
     mu find flag:new --fields='f s' --format sexp |

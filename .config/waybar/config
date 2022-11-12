@@ -14,8 +14,9 @@
 		"pulseaudio",
 		"memory",
 		"cpu",
+		"backlight",
 		"battery",
-		"custom/mail",
+		// "custom/mail",
 		"sway/language",
 		"disk",
 		"tray"
@@ -46,11 +47,16 @@
 	},
 	"memory": {
 		"interval": 10,
-		"format": " {}%"
+		"format": "mem {}%"
 	},
 	"cpu": {
 		"interval": 5,
 		"format": " {usage:2}%"
+	},
+	"backlight": {
+		"on-scroll-up": "brightnessctl set 5%+",
+		"on-scroll-down": "brightnessctl set 5%-",
+		"format": " {percent}",
 	},
 	"battery": {
 		"states": {
@@ -84,7 +90,7 @@
 	"tray": {
 		"icon-size": 20
 	},
-	"mpd": {
-		"format": "{artist}: <i>{album}</i> - {title}"
-	}
+	// "mpd": {
+	// 	"format": "{artist}: <i>{album}</i> - {title}"
+	// }
 }
