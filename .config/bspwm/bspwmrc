@@ -48,11 +48,10 @@ bspc rule -a Firefox			split_ratio=0.32
 
 # General Settings
 bspc config directional_focus_tightness low
-# if ! pgrep lemonbar; then
-# 	cd ~/desk/lemonbarc/ || exit
-# 	./run.sh &
-# 	cd ~ || exit
-# fi
+if ! pgrep lemonbar; then
+	~/programs/lemonbarc/run.sh &
+	cd ~ || exit
+fi
 xset r rate 230 30
 # feh --randomize --bg-scale dotfiles/.wallpapers/*
 bspc rule -a ':Popup'  state=floating

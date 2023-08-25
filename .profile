@@ -25,12 +25,12 @@ export LF_ICONS="di=:fi=:ln=:or=:ex=:*.c=:*.cc=:*.clj=:*
 # export LESS_TERMCAP_us='\e[34m'   # start underline
 # export LESS_TERMCAP_ue='\e[0m'    # stop underline
 
-export JAVA_HOME='/usr/lib/jvm/java-11-openjdk-amd64'
+export JAVA_HOME='/usr/lib/jvm/java-11-openjdk'
 
-export GUIX_PROFILE="$HOME/.guix-profile"
-. "$GUIX_PROFILE/etc/profile"
-export GUIX_LOCPATH="$GUIX_PROFILE/lib/locale"
-#export _JAVA_AWT_WM_NONREPARENTING=1
+# export GUIX_PROFILE="$HOME/.guix-profile"
+# . "$GUIX_PROFILE/etc/profile"
+# export GUIX_LOCPATH="$GUIX_PROFILE/lib/locale"
+export _JAVA_AWT_WM_NONREPARENTING=1
 #pgrep mpd || mpd;
 
 

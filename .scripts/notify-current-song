@@ -11,5 +11,6 @@ elif mpc status | grep '\[paused\]'; then
 else
 	PLAYING=""
 fi
-ICON="file://$HOME/media/music/$(dirname "$(mpc -f '%file%' | head -1)")/cover.jpg"
+DIR="$HOME/media/music/$(dirname "$(mpc -f '%file%' | head -1)")/"
+ICON="file://$(fd cover -1 "$DIR")"
 notify-send "$PLAYING$SONG" "$STATUS" -i "$ICON"

@@ -1,4 +1,10 @@
-plugins: fetchart embedart lyrics convert the acousticbrainz edit #replaigain
+plugins: fetchart embedart lyrics convert the acousticbrainz edit lastgenre #follow #replaigain
+
+# follow:
+#   email: yoavm448@gmail.com
+#   password: aoeusnth
+#   userid: 1911olvjt6uygklecyk5kq0a0fknon
+#   auto: yes
 
 replaygain:
   overwrite: no
@@ -7,7 +13,7 @@ convert:
   auto: no
   max_bitrate: 320
 lyrics:
-  auto: no
+  auto: yes
   sources: lyricwiki musicmatch genius
 
 group_albums: yes

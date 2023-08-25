@@ -6,6 +6,8 @@
 \newcommand{\abs}[1]{\left|#1\right|}   % absolute value |a|
 \newcommand{\anb}[1]{\left\langle #1 \right\rangle} % angle brackets <a,b>
 \newcommand{\bra}[1]{\left[#1\right]}   % brackets [a]
+\newcommand{\bpa}[1]{\left[#1\right)}   % brackets [a]
+\newcommand{\pba}[1]{\left(#1\right]}   % brackets [a]
 \newcommand{\bre}[1]{\left\{#1\right\}} % braces {a}
 \newcommand{\ceil}[1]{\left\lceil #1 \right\rceil} % ceiling
 \newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor} % floor
@@ -16,13 +18,16 @@
 
 % Standard Sets
 \newcommand{\CC}{\mathbb{C}}
+\newcommand{\CE}{\mathcal{C}}
 \newcommand{\NE}{\NN_{\text{even}}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\NO}{\NN_{\text{odd}}}
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\FF}{\mathbb{F}}
 
+\DeclareMathOperator{\Id}{Id}
 % probability stuff
 \DeclareMathOperator*{\EX}{\mathbb{E}}
 \DeclareMathOperator{\Ber}{Ber}
@@ -40,6 +45,10 @@
 \DeclareMathOperator{\supp}{supp}
 % linear algebra
 \DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Dim}{Dim}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\Diag}{Diag}
+\DeclareMathOperator{\adj}{adj}
 \newcount\colveccount
 \newcommand*\colvec[1]{
         \global\colveccount#1
@@ -56,6 +65,20 @@
                 \end{pmatrix}
         \fi
 }
+% calculus
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\tr}{tr}
+% topology
+\newcommand{\TT}{\mathcal{T}}
+% stats
+\DeclareMathOperator{\MSE}{MSE}
+% computational models
+\DeclareMathOperator{\HALT}{HALT}
+\DeclareMathOperator{\Size}{Size}
+\DeclareMathOperator{\poly}{poly}
+% spectral graphs
+\DeclareMathOperator{\maxroot}{max\,root}
+\DeclareMathOperator{\sgn}{sgn}
 % Useful
 \newcommand{\rtr}{\RR\to\RR}
 \newcommand{\itr}{I\to\RR}
@@ -74,4 +97,6 @@
     \input{#2}
   \end{english}
 }
+\renewcommand\phi\varphi
 \newcommand{\midd}{\;\middle|\;} % \mid that scales with \reft\right
+\renewcommand{\epsilon}{\varepsilon}

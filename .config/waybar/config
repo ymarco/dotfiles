@@ -16,7 +16,7 @@
 		"cpu",
 		"backlight",
 		"battery",
-		// "custom/mail",
+		"custom/mail",
 		"sway/language",
 		"disk",
 		"tray"
@@ -79,7 +79,7 @@
 		"interval": 300
 	},
 	"sway/language": {
-		"format": " {}",
+		"format": " {short} {variant}",
 		"on-click": "swaymsg 'input * xkb_switch_layout next'"
 	},
 	"disk": {
@@ -90,7 +90,7 @@
 	"tray": {
 		"icon-size": 20
 	},
-	// "mpd": {
-	// 	"format": "{artist}: <i>{album}</i> - {title}"
-	// }
+	"mpd": {
+		"format": "{artist}: <i>{album}</i> - {title}"
+	}
 }

@@ -4,7 +4,8 @@ cd ~/media/music || exit
 file="$(mpc -f '%file%' | head -1)"
 title="$(mpc -f '%artist% - %title%' | head -1)"
 
-lyrics="$(mediainfo "$file" | awk -F : '/^Lyrics/ {printf $2}' | tr / '\n')"
+lyrics="$(mediainfo "$file" | awk -F ' : ' '/^Lyrics/ {printf $2}' | sed 's| \/ |\n|g')"
 
 # no icon to not take up space
 notify-send "$title" "$lyrics"
+echo "$lyrics"

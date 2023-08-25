@@ -3,6 +3,6 @@ exec swayidle -w \
 	timeout 600 'swaymsg "output * dpms off"'\
 	resume 'swaymsg "output * dpms on"'\
 	timeout 1200 'systemctl suspend'
-exec gammastep -l 31.5:34.75 -t 6500K:3100K
+exec gammastep -l 31.5:34.75 -t 6500K:3000K
 exec dunst
 

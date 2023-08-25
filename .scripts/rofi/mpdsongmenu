@@ -1,4 +1,4 @@
 #!/bin/sh
 
 cd ~/media/music || exit
-fd | bemenu -p "Song:" | mpc insert
+fd | grep -v '\.jpg$' | bemenu -p "Song:" | mpc insert

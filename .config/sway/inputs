@@ -1,11 +1,14 @@
 # -*- mode: conf-space -*-
 input type:keyboard {
-    xkb_layout "us,il"
-    xkb_variant "dvorak,"
-    xkb_options "caps:escape,grp:win_space_toggle,compose:ralt"
+    xkb_layout "us,us,il,il"
+    Xkb_variant "dvorak,,,"
+    xkb_options "caps:escape,compose:ralt"
 }
+bindsym $mod+Space exec "swaymsg input '*' xkb_switch_layout next; swaymsg input '*' xkb_switch_layout next"
+bindsym $mod+Ctrl+Space exec "swaymsg input '*' xkb_switch_layout next"
 
 input type:touchpad {
-	natural_scroll enabled
+    natural_scroll enabled
+    tap enabled
 }
 

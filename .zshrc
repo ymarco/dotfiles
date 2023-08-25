@@ -47,6 +47,7 @@ setopt interactivecomments
 # Load shortcut aliases
 [ -f "$HOME/.config/shortcuts" ] && source "$HOME/.config/shortcuts"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
+bindkey -s '^o' '^ulf\n' # Ctrl-o runs lf
 
 # echo "$(tput bold)$(tput setaf 4)$(tput setaf 3)$USER$(tput setaf 7)@$(tput setaf 6)$HOST"
 

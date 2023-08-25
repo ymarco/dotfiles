@@ -14,19 +14,19 @@ bindsym {
 
   $mod+bracketleft  exec mpc seek -20
   $mod+bracketright exec mpc seek +20
-  Control+$mod+bracketleft  exec set-sink-volume @DEFAULT_SINK@ -2%
-  Control+$mod+bracketright exec set-sink-volume @DEFAULT_SINK@ +2%
+  Control+$mod+bracketleft  exec pactl set-sink-volume @DEFAULT_SINK@ -2%
+  Control+$mod+bracketright exec pactl set-sink-volume @DEFAULT_SINK@ +2%
   Shift+$mod+bracketleft  exec mpc prev
   Shift+$mod+bracketright exec mpc next
   $mod+equal exec mpc toggle
   Shift+$mod+equal   exec notify-current-song
   Control+$mod+equal exec notify-current-song-lyrics
+  $mod+minus exec mpdsongmenu
 
-# TODO notify-current-song-lyrics
 
   XF86Search exec bemenu-run
 
-  $mod+minus exec mpdsongmenu
   print exec grimshot copy area
   Control+print exec grimshot copy active
+  $mod+print exec scrrec
 }

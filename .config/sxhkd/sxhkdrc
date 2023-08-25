@@ -1,5 +1,5 @@
 # ~/.config/sxhkd/sxhkdrc
-# setxkbmap us,us,il,il dvorak,,, caps:swapescape
+# setxkbmap us,us,il,il dvorak,,, caps:escape
 
 
 ##############
@@ -146,7 +146,7 @@ mod4 + o; {b,e,t,r,f,l}
 	{$BROWSER,$EDITOR,$TERMINAL,$READER,$FILE,lyx}
 ## Open terminal
 mod4 + Return
-	${TERMINAL-xst}
+	~/programs/st/st
 ## Edit dotfiles config
 mod4 + x
 	$TERMINAL -e edit-config

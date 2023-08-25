@@ -25,7 +25,7 @@
 \RequirePackage{amsmath}                        % math envs: align, gather...
 \RequirePackage{amssymb}                        % math symbols
 \RequirePackage{mathtools}                      % overbrace, multilined
-\RequirePackage{breqn}                              % better line breaks in math
+% \RequirePackage{breqn}                              % better line breaks in math
 \@ifpackageloaded{geometry}{}{
 	\RequirePackage[a4paper,margin=1.1in]{geometry} % margins setup
 }
@@ -123,7 +123,7 @@
 	\RequirePackage{polyglossia}
 	\setmainlanguage{hebrew}
 	\setotherlanguage{english}
-	\newfontfamily{\hebrewfont}[Script=Hebrew,AutoFakeSlant=0.15]{David CLM}
+	\newfontfamily{\hebrewfont}[Script=Hebrew,AutoFakeSlant=-0.15]{David CLM}
     % \setmainfont[Script=Hebrew]{DejaVu Sans}
 
 	% David CLM doesn't have a bullet symbol, use the math one
@@ -141,6 +141,7 @@
 		pdftitle={\@title},
 		pdfauthor={\@author},
 		pdfcreator={Doom Emacs, XeLaTeX and Hyperref}
+		linkcolor={cyan}
 	}
 \org@maketitle
 	}
@@ -216,5 +217,23 @@
 % } {
 %   \end{tcolorbox}
 % }
+
+
+
+\def\hebrewday#1{\ifcase#1%
+  \or שבת
+  \or ראשון
+    \or שני\or שלישי
+    \or רביעי\or חמישי
+    \or שישי\fi}
+
+\newcommand{\setlec}[5]{
+  \textcolor{black!50!white}{
+	הרצאה #1\quad
+	\hrulefill
+	\quad\hebrewday#2, #3/#4 #5}\par}
+
+\RequirePackage{graphicx}
+\graphicspath{{figures/}}
 
 \RequirePackage{macros}

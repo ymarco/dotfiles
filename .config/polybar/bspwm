@@ -1,0 +1,232 @@
+[bar/left]
+modules-left = bspwm
+modules-center =
+modules-right = title_bar
+height = 2.25%
+width = 28%
+offset-x = 3% 
+offset-y = 1% 
+radius = 0.0
+padding = 1 
+padding-right = 2
+override-redirect = true
+line-size = 2
+border-size = 0.1% 
+border-color = ${colors.alphaborder}
+wm-restack = bspwm
+enable-ipc = true
+background = ${colors.alphabg}
+foreground = ${colors.foreground}
+font-0 = FiraCode:size=18;5
+font-1 = Hack Nerd Font:size=20;5
+
+
+[bar/center]
+modules-left = battery
+modules-center = 
+modules-right = wireless 
+height = ${bar/left.height}
+width = 28%
+offset-x = 36%
+offset-y = ${bar/left.offset-y}
+radius = ${bar/left.radius}
+module-margin = 1
+padding = 2
+override-redirect = true
+border-size = ${bar/left.border-size}
+border-color = ${bar/left.border-color}
+wm-restack = bspwm
+background = ${bar/left.background}
+foreground = ${bar/left.foreground}
+font-0 = ${bar/left.font-0} 
+font-1 = ${bar/left.font-1}
+
+
+[bar/right]
+modules-left = cpu temperature memory 
+modules-center = backlight pulseaudio
+modules-right = date
+height = ${bar/left.height}
+width = 28%
+offset-x = 69%
+offset-y = ${bar/left.offset-y}
+radius = ${bar/left.radius}
+module-margin = 1 
+padding = 1 
+override-redirect = true
+fixed-center = false
+border-size = ${bar/left.border-size}
+border-color = ${bar/left.border-color}
+wm-restack = bspwm
+background = ${bar/left.background}
+foreground = ${bar/left.foreground}
+font-0 = ${bar/left.font-0} 
+font-1 = ${bar/left.font-1}
+
+
+[module/bspwm]
+type = internal/bspwm
+format = <label-state>
+label-focused = %name%
+label-focused-underline = ${colors.05}
+label-focused-padding = 1
+label-occupied = %name%
+label-occupied-underline = ${colors.06}
+label-occupied-padding = 1
+label-urgent = %name%
+label-empty = %name%
+label-empty-padding = 1
+label-empty-foreground = ${colors.08}
+label-separator = |
+label-separator-foreground = ${colors.foreground}
+
+
+[module/title_bar]
+type = custom/ipc
+hook-0 = python ~/.config/polybar/scripts/title_bar.py
+initial = 1
+;polybar-msg hook MODULENAME HOOKNUMBER
+
+
+[module/date]
+type = internal/date
+;time = %I:%M %P
+time = %H:%M
+date = %a, %b %d/%y
+format = <label>
+label = %time%
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+sink = alsa_output.pci-0000_00_1b.0.analog-stereo
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage:2:3%%
+format-muted = <label-muted>
+label-muted = %{T2}ﱝ%{T-}
+ramp-volume-0 = %{T2}%{T-}
+ramp-volume-1 = %{T2}%{T-}
+ramp-volume-2 = %{T2}%{T-}
+ramp-volume-3 = %{T2}墳%{T-}
+ramp-volume-4 = %{T2}墳%{T-}
+ramp-volume-5 = %{T2}墳%{T-}
+
+
+[module/wireless]
+type = internal/network
+interface = "wlp3s0"
+interval = 2
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+label-connected = %{F#5AF78E}%{T2}直%{T-}%{F-} down %downspeed% up %upspeed%
+label-disconnected = %{F#FF5C57}%{T2}睊%{T-}%{F-} disconnected
+
+
+[module/backlight]
+type = internal/backlight
+card = gmux_backlight
+format = %{F#F3F99D}%{T2}盛%{T-}%{F-} <label>
+label = %percentage:2:3%%
+
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 99
+poll-interval = 2
+time-format = %H:%M
+label-charging = %percentage%%  %time%
+label-discharging = %percentage%%  %time%  %consumption% W
+format-charging = <ramp-capacity> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging> 
+ramp-capacity-0 =  %{F#cc241d}%{T2}%{T-}%{F-}
+ramp-capacity-1 =  %{F#fabd2f}%{T2}%{T-}%{F-}
+ramp-capacity-2 =  %{F#fabd2f}%{T2}%{T-}%{F-} 
+ramp-capacity-3 =  %{T2}%{T-} 
+ramp-capacity-4 =  %{T2}%{T-}
+ramp-capacity-5 =  %{T2}%{T-}
+ramp-capacity-6 =  %{T2}%{T-}
+ramp-capacity-7 =  %{T2}%{T-} 
+ramp-capacity-8 =  %{T2}%{T-}
+ramp-capacity-9 =  %{T2}%{T-}
+ramp-capacity-10 = %{T2}%{T-}
+ramp-capacity-11 = %{T2}%{T-} 
+ramp-capacity-12 = %{T2}%{T-}
+ramp-capacity-13 = %{T2}%{T-}
+ramp-capacity-14 = %{T2}%{T-}
+ramp-capacity-15 = %{T2}%{T-}
+ramp-capacity-16 = %{T2}%{T-}
+ramp-capacity-17 = %{T2}%{T-}
+ramp-capacity-18 = %{T2}%{T-}
+ramp-capacity-19 = %{T2}%{T-}
+
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format = <label>
+label = cpu %percentage:1:3%% 
+
+
+[module/memory]
+type = internal/memory
+interval = 2
+format = <label>
+label = mem %percentage_used:1:3%%
+
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon0/temp1_input
+base-temperature = 45
+warn-temperature = 70
+format = temp <label>
+format-warn = temp <label-warn>
+label = %temperature-c:2:3%C
+label-foreground = ${colors.06}
+label-warn = %temperature-c:2:3%C
+label-warn-foreground = ${colors.01}
+interval = 2
+
+
+[colors]
+background = ${xrdb:background}
+foreground = ${xrdb:foreground}
+
+;Black
+00 = ${xrdb:color0}
+08 = ${xrdb:color8}
+
+;Red
+01 = ${xrdb:color1}
+09 = ${xrdb:color9}
+
+;Green
+02 = ${xrdb:color2}
+10 = ${xrdb:color10}
+
+;Yellow
+03 = ${xrdb:color3}
+11 = ${xrdb:color11}
+
+;Blue
+04 = ${xrdb:color4}
+12 = ${xrdb:color12}
+
+;Magenta
+05 = ${xrdb:color5}
+13 = ${xrdb:color13}
+
+;Cyan
+06 = ${xrdb:color6}
+14 = ${xrdb:color14}
+
+;White
+07 = ${xrdb:color7}
+15 = ${xrdb:color15}
+
+clear = #00000000
+alphabg = #CC282a36
+alphaborder = #CC686868

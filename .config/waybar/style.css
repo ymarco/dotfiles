@@ -73,5 +73,11 @@ window#waybar {
 #battery,
 #language,
 #disk {
-	padding: 0 5px;
+	padding: 0 4px;
+}
+
+button:hover {
+	color: #2b303b;
+	background: #D08770;
+	font-weight: 400;
 }

@@ -4,6 +4,9 @@
 # Which monitor should the notifications be displayed on.
 monitor = 0
 
+height = 400
+width = 600
+
 # Display notification on focused monitor.  Possible modes are:
 #   mouse: follow mouse pointer
 #   keyboard: follow window with keyboard focus
@@ -17,21 +20,7 @@ monitor = 0
 # will be ignored.
 follow = mouse
 
-# The geometry of the window:
-#   [{width}]x{height}[+/-{x}+/-{y}]
-# The geometry of the message window.
-# The height is measured in number of notifications everything else
-# in pixels.  If the width is omitted but the height is given
-# ("-geometry x2"), the message window expands over the whole screen
-# (dmenu-like).  If width is 0, the window expands to the longest
-# message displayed.  A positive x is measured from the left, a
-# negative from the right side of the screen.  Y is measured from
-# the top and down respectively.
-# The width can be negative.  In this case the actual width is the
-# screen width minus the width defined in within the geometry option.
-geometry = "600x5-20+45"
-
-# Show how many messages are currently hidden (because of geometry).
+# Show
 indicate_hidden = yes
 
 # Shrink window if it's smaller than the width.  Will be ignored if
@@ -42,11 +31,6 @@ shrink = no
 # This option will only work if a compositing window manager is
 # present (e.g. xcompmgr, compiz, etc.).
 transparency = 100
-
-# The height of the entire notification.  If the height is smaller
-# than the font height and padding combined, it will be raised
-# to the font height and padding.
-notification_height = 0
 
 # Draw a line of "separator_height" pixel height between two
 # notifications.
@@ -162,7 +146,7 @@ show_indicators = yes
 icon_position = left
 
 # Scale larger icons down to this size, set to 0 to disable
-max_icon_size = 32
+max_icon_size = 128
 
 # Paths to default icons.
 icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
@@ -193,10 +177,6 @@ title = Dunst
 # Define the class of the windows spawned by dunst
 class = Dunst
 
-# Print a notification on startup.
-# This is mainly for error detection, since dbus (re-)starts dunst
-# automatically after a crash.
-startup_notification = false
 corner_radius = 6;
 
 ### Legacy
@@ -220,28 +200,6 @@ force_xinerama = false
 # using the resolution and physical size. This might be useful in setups
 # where there are multiple screens with very different dpi values.
 per_monitor_dpi = false
-
-[shortcuts]
-
-# Shortcuts are specified as [modifier+][modifier+]...key
-# Available modifiers are "ctrl", "mod1" (the alt-key), "mod2",
-# "mod3" and "mod4" (windows-key).
-# Xev might be helpful to find names for keys.
-
-# Close notification.
-close = ctrl+space
-
-# Close all notifications.
-close_all = ctrl+shift+space
-
-# Redisplay last message(s).
-# On the US keyboard layout "grave" is normally above TAB and left
-# of "1". Make sure this key actually exists on your keyboard layout,
-# e.g. check output of 'xmodmap -pke'
-history = ctrl+grave
-
-# Context menu.
-context = ctrl+shift+period
 
 [urgency_low]
 # IMPORTANT: colors have to be defined in quotation marks.

@@ -16,7 +16,7 @@ fi
 cd ~ || exit 1
 region="$(slurp || exit 1)"
 file="recording-$(date -Iseconds | tr ':' '!').mp4"
-wf-recorder -g "$region" -f "$file" &
+wf-recorder -a -g "$region" -f "$file" &
 wf_pid=$!
 echo $wf_pid >/tmp/scrrec
 wait $wf_pid

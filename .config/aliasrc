@@ -22,8 +22,21 @@ alias \
 	hm="home-manager"\
 	cp="cp -r --reflink=auto"\
 	guix="SSL_CERT_FILE=$HOME/.guix-profile/etc/ssl/certs/ca-certificates.crt guix"\
-	ixio="curl -F 'f:1=<-' ix.io"
+	ixio="curl -F 'f:1=<-' ix.io"\
+    sc="systemctl"\
+    ip="ip --color=auto"
 
+
+backup() (
+    cd ~
+    # exit when nothing mounted on /mnt
+    [ "$(df ~)" = "$(df /mnt)" ] && exit 1
+    sudo su <<EOF
+rsync --delete -av /home/ym /mnt --exclude .cache --exclude Torrents --exclude media/programmes
+rsync -av /home/ym/to-be-sorted/Torrents /mnt/ym/to-be-sorted --exclude "*.part"
+rsync -av /home/ym/media/programmes /mnt/ym/media/ --exclude "*.part"
+EOF
+)
 
 source ~/.local/share/shell-bookmarks
 
@@ -61,6 +74,8 @@ mrm() {
     [ $ans = "y" ] && fd -t f $N -x rm '{}'
 }
 
+cht() { curl "cht.sh/$1"; }
+
 lfcd () {
     # from https://github.com/gokcehan/lf/wiki/Integrations#archivemount
     tmp="$(mktemp)"
@@ -86,7 +101,6 @@ lfcd () {
         fi
     fi
 }
-# TODO bind lf to a key
 alias lf=lfcd \
     a=lf
 # zle -N lfcd_widget lfcd

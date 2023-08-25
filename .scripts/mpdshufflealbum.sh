@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Play albums in random order
 set -euo pipefail
 DIR=~/media/music
 

@@ -1,22 +1,28 @@
+# -*- mode: conf-space -*-
 set selection-clipboard clipboard
 set default-fg "#c0c5ce"
 set font "monospace normal 14"
-set guioptions "sv"
+set guioptions "" # "sv"
 set synctex true
 set statusbar-h-padding 0
 set statusbar-v-padding 0
-set page-padding 1
-map u scroll half-up
-map d scroll half-down
-map D toggle_page_mode
-map r reload
-map R rotate
-map K zoom in
-map J zoom out
-map i recolor
-map p print
-set recolor
+set page-padding 0
+# map u scroll half-up
+# map d scroll half-down
+# map D toggle_page_mode
+# map r reload
+# map R rotate
+# map K zoom in
+# map J zoom out
+# map i recolor
+# map p print
+# set recolor
+map k scroll full-up
+map j scroll full-down
 set recolor-lightcolor "#2b303b"
 set recolor-darkcolor "#c0c5ce"
 set default-bg "#232830"
-set recolor-keephue
+# set recolor-keephue
+set first-page-column 1:2
+set page-right-to-left true
+

@@ -138,9 +138,6 @@ map x $$f
 map X !$f
 map o open "$f"
 map O $mimeopen --ask "$f"
-# mouse scrolls
-map <c-y> up
-map <c-e> down
 # C-z suspends lf
 map <c-z> $ kill -STOP $PPID
 map e emacsclient
